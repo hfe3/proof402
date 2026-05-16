@@ -1,0 +1,26 @@
+{
+  "name": "proof402",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "x402-compatible timestamped proof service for autonomous agents.",
+  "scripts": {
+    "dev": "node src/server.js",
+    "dev:demo": "node scripts/start-profile.js demo",
+    "dev:testnet": "node scripts/start-profile.js testnet",
+    "dev:mainnet": "node scripts/start-profile.js mainnet",
+    "deploy:check": "node scripts/deploy-check.js",
+    "smoke:x402": "node scripts/x402-smoke.js",
+    "start": "node src/server.js",
+    "test": "node --import ./scripts/test-env.js --test test"
+  },
+  "dependencies": {
+    "@coinbase/x402": "latest",
+    "@x402/core": "latest",
+    "@x402/evm": "latest",
+    "@x402/express": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "pg": "^8.20.0"
+  }
+}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 Landing Mockups</title>
+    <link rel="stylesheet" href="landing-mockups.css?v=2">
+  </head>
+  <body>
+    <header class="mockup-topbar" aria-label="Landing mockup navigation">
+      <a class="brand-lockup" href="/">
+        <img src="proof402-mark.svg" alt="Proof402 mark">
+        <span>Proof402</span>
+      </a>
+      <nav class="mockup-nav" aria-label="Mockup variants">
+        <a href="#ledger">Ledger</a>
+        <a href="#console">Console</a>
+        <a href="#badge">Badge</a>
+        <a href="/openapi.json">OpenAPI</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="mockup-shell ledger" id="ledger" aria-labelledby="ledger-title">
+        <div class="hero-backdrop ledger-backdrop" aria-hidden="true">
+          <div class="proof-stamp">
+            <img src="proof402-mark.svg" alt="">
+            <span>verified: true</span>
+          </div>
+          <div class="ledger-table">
+            <div class="ledger-row ledger-head">
+              <span>route</span>
+              <span>price</span>
+              <span>network</span>
+              <span>receipt</span>
+            </div>
+            <div class="ledger-row">
+              <span>POST /api/proof/notarize</span>
+              <span>$0.005</span>
+              <span>eip155:8453</span>
+              <span>proof_...</span>
+            </div>
+            <div class="ledger-row">
+              <span>GET /api/verify/proofs/{id}</span>
+              <span>public</span>
+              <span>hmac-sha256</span>
+              <span>verified</span>
+            </div>
+            <div class="ledger-row">
+              <span>GET /proof/{id}</span>
+              <span>badge</span>
+              <span>public</span>
+              <span>cite</span>
+            </div>
+          </div>
+          <div class="code-slab">
+            <span>{</span>
+            <span>"contentHash": "sha256:7b3d...a35cc",</span>
+            <span>"idempotencyKey": "proof-task-123"</span>
+            <span>}</span>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">x402 proof primitive</p>
+          <h1 id="ledger-title">Proof402</h1>
+          <p class="lead">Pay once. Prove forever. Agents submit a SHA-256 hash and receive a signed timestamped proof with verification links and a public badge.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="/demo">Create proof</a>
+            <a class="button secondary" href="/api/quickstart">Open quickstart</a>
+          </div>
+        </div>
+        <div class="below-fold-cue">
+          <span>Hash locally</span>
+          <span>Prove publicly</span>
+          <span>Cite forever</span>
+        </div>
+      </section>
+
+      <section class="content-band ledger-band" aria-label="Ledger landing details">
+        <div class="band-heading">
+          <p class="eyebrow">Route first</p>
+          <h2>A compact landing page for buyers who need the API shape immediately.</h2>
+        </div>
+        <div class="three-up">
+          <article class="info-card">
+            <h3>Paid action</h3>
+            <p><code>POST /api/proof/notarize</code></p>
+            <p>Submit a hash, label, public-safe metadata, and an idempotency key.</p>
+          </article>
+          <article class="info-card">
+            <h3>Verification</h3>
+            <p><code>GET /api/verify/proofs/{id}</code></p>
+            <p>Machine-readable verification returns the proof, signed fields, and checks.</p>
+          </article>
+          <article class="info-card">
+            <h3>Public badge</h3>
+            <p><code>GET /proof/{id}</code></p>
+            <p>A citable page for the proof without exposing private payloads.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mockup-shell console" id="console" aria-labelledby="console-title">
+        <div class="console-stage" aria-hidden="true">
+          <div class="console-window">
+            <div class="console-titlebar">
+              <span>agent-checkout</span>
+              <span>mainnet</span>
+            </div>
+            <div class="terminal-lines">
+              <span>$ hash result.json</span>
+              <strong>sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc</strong>
+              <span>$ proof402 create --price $0.005</span>
+              <strong>proof.id proof_...</strong>
+              <span>$ curl /api/verify/proofs/proof_...</span>
+              <strong>verified: true</strong>
+            </div>
+          </div>
+          <div class="status-strip">
+            <div>
+              <span class="metric-label">x402</span>
+              <strong>enabled</strong>
+            </div>
+            <div>
+              <span class="metric-label">store</span>
+              <strong>postgres</strong>
+            </div>
+            <div>
+              <span class="metric-label">mode</span>
+              <strong>exact</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hero-copy console-copy">
+          <p class="eyebrow">Agent workflow</p>
+          <h1 id="console-title">Proof402</h1>
+          <p class="lead">Hash locally. Prove publicly. Cite forever. A checkout-like proof step for autonomous agents that need receipts without leaking raw work.</p>
+          <div class="route-stack" aria-label="Important endpoints">
+            <span>POST /api/proof/notarize</span>
+            <span>GET /api/actions</span>
+            <span>GET /api/bazaar</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band console-band" aria-label="Console landing details">
+        <div class="split-band">
+          <div>
+            <p class="eyebrow">Designed for retries</p>
+            <h2>Idempotent proof creation for agent loops.</h2>
+            <p>Every paid call requires an idempotency key, so a workflow can retry without creating duplicate receipts.</p>
+          </div>
+          <pre><code>{
+  "ok": true,
+  "mode": "x402",
+  "idempotentReplay": false,
+  "links": {
+    "proof": "/proof/proof_...",
+    "verify": "/api/verify/proofs/proof_..."
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="mockup-shell badge" id="badge" aria-labelledby="badge-title">
+        <div class="badge-board" aria-hidden="true">
+          <div class="badge-card">
+            <div class="badge-head">
+              <img src="proof402-mark.svg" alt="">
+              <div>
+                <span>Public proof badge</span>
+                <strong>proof_...</strong>
+              </div>
+            </div>
+            <div class="badge-status">verified: true</div>
+            <dl class="badge-facts">
+              <div>
+                <dt>contentHash</dt>
+                <dd>sha256:7b3d...a35cc</dd>
+              </div>
+              <div>
+                <dt>timestamp</dt>
+                <dd>2026-05-16T00:00:00.000Z</dd>
+              </div>
+              <div>
+                <dt>signature</dt>
+                <dd>hmac-sha256:...</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="verification-rail">
+            <span>canonicalPayload: proof402.proof.v1</span>
+            <span>signedFields: proofId, timestamp, contentHash</span>
+            <span>metadata: metadataHash and metadataKeys only</span>
+          </div>
+        </div>
+        <div class="hero-copy badge-copy">
+          <p class="eyebrow">Public receipt</p>
+          <h1 id="badge-title">Proof402</h1>
+          <p class="lead">Public proof badges for private agent work. Proof402 timestamps hashes, not secrets, and keeps verification easy to cite.</p>
+          <div class="hero-actions" aria-label="Badge actions">
+            <a class="button primary" href="/proofs">Verify proof</a>
+            <a class="button secondary" href="/api/trust">Inspect trust summary</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band badge-band" aria-label="Badge landing details">
+        <div class="feature-list">
+          <article>
+            <span class="list-index">01</span>
+            <h2>Send hashes, not secrets.</h2>
+            <p>The caller keeps private payloads local and submits only a content hash plus public-safe metadata.</p>
+          </article>
+          <article>
+            <span class="list-index">02</span>
+            <h2>Verify through API or badge.</h2>
+            <p>Each proof can be checked by another agent with a direct verification endpoint.</p>
+          </article>
+          <article>
+            <span class="list-index">03</span>
+            <h2>Use only for hash existence.</h2>
+            <p>Proof402 does not claim legal notarization or factual truth beyond the submitted content hash.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

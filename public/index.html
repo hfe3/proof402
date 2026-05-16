@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+        <nav class="nav">
+          <a href="/agents">Agents</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/demo">Demo</a>
+          <a href="/actions">Actions</a>
+          <a href="/trust">Trust</a>
+          <a href="/proofs">Proofs</a>
+          <a href="/llms.txt">llms.txt</a>
+        </nav>
+      </header>
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">x402-compatible proof primitive</p>
+            <h1>Proof402</h1>
+            <p>Pay once. Prove forever. Autonomous agents send a SHA-256 result hash and receive a signed timestamped proof with verification links.</p>
+            <p><span class="route">POST /api/proof/notarize</span></p>
+          </div>
+          <div class="seal">
+            <img src="/proof402-mark.svg" alt="Proof402 proof seal">
+          </div>
+        </section>
+        <section class="band">
+          <div class="grid">
+            <article class="card">
+              <h2>Paid primitive</h2>
+              <p>Create a proof for a hash, not for a private payload. The raw output stays with the caller.</p>
+            </article>
+            <article class="card">
+              <h2>Verification</h2>
+              <p>Every proof has a public badge and a machine-readable verification endpoint.</p>
+            </article>
+            <article class="card">
+              <h2>Local first</h2>
+              <p>This MVP runs in demo mode locally. Mainnet x402 config is present but not claimed as deployed.</p>
+            </article>
+          </div>
+        </section>
+        <section class="band">
+          <h2>Request</h2>
+          <pre><code>{
+  "contentHash": "sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc",
+  "label": "agent result hash",
+  "metadata": {
+    "agent": "research-bot",
+    "taskId": "task_123"
+  },
+  "idempotencyKey": "proof-task-123"
+}</code></pre>
+        </section>
+      </main>
+      <footer class="footer">Discovery: <a href="/api/capabilities">capabilities</a> · <a href="/api/bazaar">bazaar</a> · <a href="/api/quickstart">quickstart</a> · <a href="/openapi.json">openapi</a></footer>
+    </div>
+  </body>
+</html>

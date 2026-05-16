@@ -1,0 +1,75 @@
+{
+  "name": "Proof402",
+  "version": "0.1.0",
+  "tagline": "Pay once. Prove forever.",
+  "brandEssence": "Hash locally. Prove publicly. Cite forever.",
+  "shortDescription": "Timestamped hash proof for autonomous agents.",
+  "publicBaseUrl": "https://proof402.vercel.app",
+  "category": "agent-infrastructure",
+  "status": {
+    "profile": "mainnet",
+    "x402Enabled": true,
+    "network": "eip155:8453",
+    "price": "$0.005",
+    "storeDriver": "postgres",
+    "storeDurable": true
+  },
+  "paidAction": {
+    "id": "proof.notarize",
+    "method": "POST",
+    "path": "/api/proof/notarize",
+    "fullUrl": "https://proof402.vercel.app/api/proof/notarize"
+  },
+  "verification": {
+    "proofApi": "/api/proofs/{id}",
+    "verifyApi": "/api/verify/proofs/{id}",
+    "proofBadge": "/proof/{id}"
+  },
+  "discovery": {
+    "capabilities": "/api/capabilities",
+    "bazaar": "/api/bazaar",
+    "quickstart": "/api/quickstart",
+    "actions": "/api/actions",
+    "trust": "/api/trust",
+    "openapi": "/openapi.json",
+    "llms": "/llms.txt",
+    "keywords": [
+      "Proof402",
+      "paid timestamp proof",
+      "x402 proof notarization",
+      "AI agent proof receipt",
+      "hash timestamp service",
+      "agent result verification",
+      "public proof badge",
+      "pay once prove forever",
+      "proof notary for autonomous agents",
+      "verifiable agent output"
+    ]
+  },
+  "brand": {
+    "colors": {
+      "ink": "#111418",
+      "muted": "#5d6570",
+      "line": "#d7ded8",
+      "paper": "#fbfaf6",
+      "panel": "#ffffff",
+      "proofGreen": "#1f7a5c",
+      "stampRed": "#b64646",
+      "sealGold": "#b8872f",
+      "code": "#182028"
+    },
+    "fontSans": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+    "fontMono": "ui-monospace, SFMono-Regular, Consolas, monospace",
+    "logo": "Brand/proof402-mark.svg"
+  },
+  "useWhen": [
+    "You need a compact signed timestamp for a result hash.",
+    "You want a public badge another agent can cite without exposing the original payload.",
+    "You need idempotent proof creation for workflow retries."
+  ],
+  "avoidWhen": [
+    "You need legal notarization or a regulated attestation.",
+    "You need Proof402 to store private raw payloads, tokens, headers, or secrets.",
+    "You need Proof402 to prove facts that are not represented by the submitted contentHash."
+  ]
+}

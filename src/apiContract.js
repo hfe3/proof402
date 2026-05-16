@@ -1,0 +1,331 @@
+import { config } from "./config.js";
+import {
+  AGENT_PROMPT,
+  AVOID_WHEN,
+  DISCOVERY_KEYWORDS,
+  EXAMPLE_REQUEST,
+  EXAMPLE_RESPONSE,
+  SERVICE,
+  SERVICE_TAGS,
+  USE_WHEN
+} from "./serviceInfo.js";
+
+export const proofRequestSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["contentHash", "label", "idempotencyKey"],
+  properties: {
+    contentHash: {
+      type: "string",
+      pattern: "^sha256:[a-fA-F0-9]{64}$",
+      description: "SHA-256 hash of the result or artifact. Do not send the raw payload."
+    },
+    label: {
+      type: "string",
+      minLength: 1,
+      maxLength: config.maxLabelLength
+    },
+    metadata: {
+      type: "object",
+      additionalProperties: true,
+      description: "Optional non-secret metadata. Proof402 stores and exposes only metadataHash and metadataKeys."
+    },
+    idempotencyKey: {
+      type: "string",
+      minLength: 1,
+      maxLength: 160
+    }
+  }
+};
+
+export const proofResponseSchema = {
+  type: "object",
+  required: ["ok", "mode", "idempotentReplay", "proof", "links"],
+  properties: {
+    ok: { type: "boolean" },
+    mode: { type: "string", enum: ["demo", "x402"] },
+    idempotentReplay: { type: "boolean" },
+    proof: {
+      type: "object",
+      required: ["id", "verified", "timestamp", "contentHash", "metadataHash", "signature"],
+      properties: {
+        id: { type: "string" },
+        verified: { type: "boolean" },
+        timestamp: { type: "string", format: "date-time" },
+        contentHash: { type: "string" },
+        label: { type: "string" },
+        metadataHash: { type: "string" },
+        signature: { type: "string" }
+      }
+    },
+    links: {
+      type: "object",
+      properties: {
+        proof: { type: "string" },
+        verify: { type: "string" }
+      }
+    }
+  }
+};
+
+const errorSchema = {
+  type: "object",
+  properties: {
+    error: {
+      type: "object",
+      properties: {
+        code: { type: "string" },
+        message: { type: "string" },
+        details: { type: "object" }
+      }
+    }
+  }
+};
+
+function abs(path) {
+  return `${config.publicBaseUrl}${path}`;
+}
+
+export function publicCapabilities() {
+  return {
+    name: SERVICE.name,
+    version: SERVICE.version,
+    tagline: SERVICE.tagline,
+    description: SERVICE.description,
+    shortDescription: SERVICE.shortDescription,
+    publicBaseUrl: config.publicBaseUrl,
+    discoveryKeywords: DISCOVERY_KEYWORDS,
+    tags: SERVICE_TAGS,
+    agentPrompt: AGENT_PROMPT,
+    agentInstructions: {
+      callFlow: [
+        "Hash your private result locally with SHA-256.",
+        `POST the hash, label, metadata, and idempotencyKey to ${SERVICE.paidPath}.`,
+        "If x402 is enabled, satisfy the 402 Payment Required challenge and retry with payment.",
+        "Verify the returned proof through /api/verify/proofs/{id}.",
+        "Cite /proof/{id} in reports instead of publishing raw payloads."
+      ],
+      useWhen: USE_WHEN,
+      avoidWhen: AVOID_WHEN
+    },
+    x402: {
+      enabled: config.x402Enabled,
+      scheme: "exact",
+      network: config.x402Network,
+      price: config.x402Price,
+      payTo: config.payTo || null,
+      localMock: config.x402Mock
+    },
+    actions: [
+      {
+        id: SERVICE.paidActionId,
+        method: "POST",
+        path: SERVICE.paidPath,
+        paid: true,
+        price: config.x402Price,
+        requestSchema: proofRequestSchema,
+        responseSchema: proofResponseSchema,
+        avoidWhen: AVOID_WHEN
+      }
+    ],
+    actionCatalog: {
+      path: "/api/actions"
+    },
+    quickstart: {
+      path: "/api/quickstart"
+    },
+    verification: {
+      proof: "/api/proofs/{id}",
+      proofVerification: SERVICE.verifyPathTemplate,
+      proofBadge: SERVICE.proofPathTemplate,
+      recentProofs: "/api/proofs/recent"
+    },
+    safety: {
+      rawPayloadStorage: false,
+      privateHeadersStored: false,
+      metadataPublishedRaw: false,
+      payloadSizeLimit: "128kb request body, metadata separately capped",
+      maxMetadataBytes: config.maxMetadataBytes,
+      idempotencyRequired: true,
+      rateLimit: {
+        enabled: config.rateLimitEnabled,
+        windowMs: config.rateLimitWindowMs,
+        maxRequests: config.rateLimitMaxRequests
+      }
+    },
+    links: {
+      home: abs("/"),
+      agents: abs("/agents"),
+      pricing: abs("/pricing"),
+      demo: abs("/demo"),
+      actions: abs("/actions"),
+      trust: abs("/trust"),
+      proofs: abs("/proofs"),
+      llms: abs("/llms.txt"),
+      openapi: abs("/openapi.json"),
+      bazaar: abs("/api/bazaar"),
+      quickstart: abs("/api/quickstart"),
+      actionCatalog: abs("/api/actions"),
+      paidEndpoint: abs(SERVICE.paidPath)
+    }
+  };
+}
+
+export function openApiSpec() {
+  return {
+    openapi: "3.1.0",
+    info: {
+      title: SERVICE.name,
+      version: SERVICE.version,
+      description: SERVICE.description
+    },
+    servers: [
+      {
+        url: config.publicBaseUrl
+      }
+    ],
+    paths: {
+      "/health": {
+        get: {
+          summary: "Runtime health and mode summary",
+          responses: {
+            "200": { description: "Health response" }
+          }
+        }
+      },
+      "/api/capabilities": {
+        get: {
+          summary: "Machine-readable service capabilities",
+          responses: {
+            "200": { description: "Capabilities response" }
+          }
+        }
+      },
+      "/api/bazaar": {
+        get: {
+          summary: "Bazaar/x402 discovery metadata",
+          responses: {
+            "200": { description: "Bazaar metadata" }
+          }
+        }
+      },
+      "/api/quickstart": {
+        get: {
+          summary: "Compact agent quickstart",
+          responses: {
+            "200": { description: "Quickstart response" }
+          }
+        }
+      },
+      "/api/actions": {
+        get: {
+          summary: "Action templates for agent task matching",
+          responses: {
+            "200": { description: "Action catalog response" }
+          }
+        }
+      },
+      "/api/trust": {
+        get: {
+          summary: "Public trust summary",
+          responses: {
+            "200": { description: "Trust response" }
+          }
+        }
+      },
+      [SERVICE.paidPath]: {
+        post: {
+          summary: "Create or replay a timestamped proof for a SHA-256 hash",
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: proofRequestSchema,
+                example: EXAMPLE_REQUEST
+              }
+            }
+          },
+          responses: {
+            "200": {
+              description: "Proof created or replayed",
+              content: {
+                "application/json": {
+                  schema: proofResponseSchema,
+                  example: EXAMPLE_RESPONSE
+                }
+              }
+            },
+            "400": {
+              description: "Invalid proof request",
+              content: {
+                "application/json": {
+                  schema: errorSchema
+                }
+              }
+            },
+            "402": {
+              description: "Payment required when x402 is enabled",
+              content: {
+                "application/json": {
+                  schema: errorSchema
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/proofs/recent": {
+        get: {
+          summary: "Recent public proofs with redacted signatures",
+          responses: {
+            "200": { description: "Recent proof summaries" }
+          }
+        }
+      },
+      "/api/proofs/{id}": {
+        get: {
+          summary: "Public proof document",
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Proof document" },
+            "404": { description: "Proof not found" }
+          }
+        }
+      },
+      "/api/verify/proofs/{id}": {
+        get: {
+          summary: "Verify stored proof signature",
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Verification report" },
+            "404": { description: "Proof not found" }
+          }
+        }
+      },
+      "/proof/{id}": {
+        get: {
+          summary: "Public proof badge page",
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Proof badge HTML" }
+          }
+        }
+      },
+      "/llms.txt": {
+        get: {
+          summary: "Plain-text guidance for LLM and agent crawlers",
+          responses: {
+            "200": { description: "LLM guidance" }
+          }
+        }
+      }
+    },
+    components: {
+      schemas: {
+        ProofRequest: proofRequestSchema,
+        ProofResponse: proofResponseSchema,
+        ErrorResponse: errorSchema
+      }
+    }
+  };
+}

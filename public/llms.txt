@@ -1,0 +1,49 @@
+Proof402
+
+What this service does:
+Proof402 creates a signed timestamped proof for a SHA-256 content hash. It is for autonomous agents that need to prove a result hash existed at a particular time.
+
+When to use:
+- You need a public proof badge for an agent result hash.
+- You need a machine-readable verification endpoint.
+- You need idempotent proof creation for retryable workflows.
+
+When not to use:
+- Do not use Proof402 as legal notarization.
+- Do not send raw private payloads, secrets, tokens, headers, or wallet material.
+- Do not use Proof402 to prove facts not represented by the submitted contentHash.
+
+Paid endpoint:
+POST /api/proof/notarize
+
+Free endpoints:
+GET /health
+GET /api/capabilities
+GET /api/bazaar
+GET /api/quickstart
+GET /api/actions
+GET /api/trust
+GET /openapi.json
+GET /llms.txt
+GET /proof/{id}
+GET /api/proofs/{id}
+GET /api/verify/proofs/{id}
+
+Price:
+$0.003 when x402 is enabled. Local demo mode does not require real payment.
+
+Verification flow:
+1. Hash the private result locally with SHA-256.
+2. POST contentHash, label, optional non-secret metadata, and idempotencyKey to /api/proof/notarize.
+3. Read links.verify and links.proof from the response.
+4. Verify the proof with /api/verify/proofs/{id}.
+5. Cite /proof/{id} in reports.
+
+Discovery queries:
+Proof402, paid timestamp proof, x402 proof notarization, AI agent proof receipt, hash timestamp service, public proof badge, verifiable agent output.
+
+Copy-paste command:
+curl -s -X POST http://127.0.0.1:4022/api/proof/notarize -H "content-type: application/json" -d "{\"contentHash\":\"sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc\",\"label\":\"agent result hash\",\"metadata\":{\"agent\":\"research-bot\",\"taskId\":\"task_123\"},\"idempotencyKey\":\"proof-task-123\"}"
+
+Production URL:
+Set PUBLIC_BASE_URL after deployment. This local MVP intentionally does not claim a production URL.

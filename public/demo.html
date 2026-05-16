@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 demo</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+      <nav class="nav"><a href="/agents">Agents</a><a href="/pricing">Pricing</a><a href="/actions">Actions</a><a href="/trust">Trust</a></nav>
+    </header>
+    <main class="band">
+      <p class="eyebrow">Local demo console</p>
+      <h1>Create a demo proof</h1>
+      <form id="proof-form" class="form">
+        <label>Content hash
+          <input name="contentHash" value="sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc">
+        </label>
+        <label>Label
+          <input name="label" value="agent result hash">
+        </label>
+        <label>Idempotency key
+          <input name="idempotencyKey" value="proof-demo-001">
+        </label>
+        <label>Metadata JSON
+          <textarea name="metadata">{"agent":"demo-agent","taskId":"task_123"}</textarea>
+        </label>
+        <button class="button" type="submit">Create proof</button>
+      </form>
+      <pre id="demo-output"><code>Waiting for request...</code></pre>
+    </main>
+    <script src="/demo.js"></script>
+  </body>
+</html>

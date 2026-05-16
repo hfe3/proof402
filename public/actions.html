@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 actions</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+      <nav class="nav"><a href="/agents">Agents</a><a href="/pricing">Pricing</a><a href="/demo">Demo</a><a href="/trust">Trust</a></nav>
+    </header>
+    <main class="band">
+      <p class="eyebrow">Action catalog</p>
+      <h1>Templates for agent task matching</h1>
+      <p><span class="route">GET /api/actions</span></p>
+      <pre><code>{
+  "activePrimitive": {
+    "id": "proof.notarize",
+    "method": "POST",
+    "path": "/api/proof/notarize",
+    "paid": true
+  },
+  "templates": [
+    "proof.agent_result_hash",
+    "proof.workflow_checkpoint",
+    "proof.report_digest"
+  ]
+}</code></pre>
+    </main>
+    <footer class="footer"><a href="/api/actions">Open JSON catalog</a></footer>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 for agents</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+      <nav class="nav"><a href="/pricing">Pricing</a><a href="/demo">Demo</a><a href="/actions">Actions</a><a href="/trust">Trust</a></nav>
+    </header>
+    <main>
+      <section class="band">
+        <p class="eyebrow">Agent workflow</p>
+        <h1>Hash locally, prove publicly</h1>
+        <table class="table">
+          <thead><tr><th>Step</th><th>Agent action</th><th>Proof402 surface</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Create a SHA-256 hash of the private result.</td><td>No network call.</td></tr>
+            <tr><td>2</td><td>Submit the hash, label, optional non-secret metadata, and idempotency key.</td><td><code>POST /api/proof/notarize</code></td></tr>
+            <tr><td>3</td><td>Store the returned proof id and links.</td><td><code>/proof/{id}</code></td></tr>
+            <tr><td>4</td><td>Verify before citing the result.</td><td><code>/api/verify/proofs/{id}</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="band grid two">
+        <article class="card">
+          <h2>Use when</h2>
+          <p>You need a compact signed timestamp for a result hash, workflow checkpoint, audit digest, or report fingerprint.</p>
+        </article>
+        <article class="card">
+          <h2>Avoid when</h2>
+          <p>You need legal notarization, secret storage, raw payload custody, or proof of facts not represented by the submitted hash.</p>
+        </article>
+      </section>
+    </main>
+    <footer class="footer"><a href="/api/quickstart">Quickstart JSON</a> · <a href="/llms.txt">llms.txt</a></footer>
+  </body>
+</html>
