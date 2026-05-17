@@ -50,6 +50,21 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
         paidSmoke: "npm run smoke:x402 -- https://proof402.vercel.app"
       },
       note: "Public launch checks are complete; keep secret and payment material out of tracked files."
+    },
+    links: {
+      home: "/",
+      marketplace: "/marketplace",
+      marketplaceJson: "/marketplace.json",
+      capabilities: "/api/capabilities",
+      bazaar: "/api/bazaar",
+      quickstart: "/api/quickstart",
+      actions: "/api/actions",
+      status: "/api/status",
+      openapi: "/openapi.json",
+      llms: "/llms.txt",
+      proofBadge: SERVICE.proofPathTemplate,
+      verify: SERVICE.verifyPathTemplate,
+      securityTxt: "/.well-known/security.txt"
     }
   };
 }
@@ -94,7 +109,16 @@ export async function buildStatusSummary({ storeStats }) {
       health: "/health",
       trust: "/api/trust",
       capabilities: "/api/capabilities",
+      bazaar: "/api/bazaar",
+      quickstart: "/api/quickstart",
+      actions: "/api/actions",
+      marketplace: "/marketplace",
+      marketplaceJson: "/marketplace.json",
       openapi: "/openapi.json",
+      llms: "/llms.txt",
+      robots: "/robots.txt",
+      sitemap: "/sitemap.xml",
+      securityTxt: "/.well-known/security.txt",
       paidEndpoint: SERVICE.paidPath
     }
   };

@@ -98,6 +98,8 @@ GET /llms.txt
 GET /robots.txt
 GET /sitemap.xml
 GET /.well-known/security.txt
+GET /marketplace
+GET /marketplace.json
 GET /api/proofs/recent
 GET /api/proofs/{id}
 GET /api/verify/proofs/{id}
@@ -177,6 +179,9 @@ The production paid endpoint probes as x402 on Base mainnet (`eip155:8453`) for
 `5000` micro-USDC (`$0.005`). The origin has also been added to the local
 AgentCash origins list; restart the AgentCash MCP server for that local client
 entry to appear in model context.
+
+For marketplace and directory crawlers, use `GET /marketplace` for the public
+listing page and `GET /marketplace.json` for machine-readable listing metadata.
 
 ## Required Production Env Vars
 

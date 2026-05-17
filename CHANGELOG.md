@@ -4,7 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
-No unreleased changes yet.
+### Changed
+
+- Propagated marketplace and status discovery links across bazaar, actions,
+  trust/status summaries, README, and brand listing metadata.
 
 ## 0.1.3 - 2026-05-17
 

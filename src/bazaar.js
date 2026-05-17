@@ -61,6 +61,7 @@ export function publicBazaarMetadata() {
         "Demo mode is explicit and does not claim real payment settlement",
         "OpenAPI 3.1 contract is available",
         "Agent-readable capabilities document is available",
+        "Public marketplace listing kit and machine-readable marketplace JSON are available",
         "Machine-readable action catalog is available",
         "Compact quickstart endpoint is available",
         "Public proof badge pages are available",
@@ -78,12 +79,18 @@ export function publicBazaarMetadata() {
     routeConfig: proofRouteConfig(),
     links: {
       home: abs("/"),
+      marketplace: abs("/marketplace"),
+      marketplaceJson: abs("/marketplace.json"),
       quickstart: abs("/api/quickstart"),
       actions: abs("/api/actions"),
       capabilities: abs("/api/capabilities"),
       trust: abs("/api/trust"),
+      status: abs("/api/status"),
       openapi: abs("/openapi.json"),
       llms: abs("/llms.txt"),
+      robots: abs("/robots.txt"),
+      sitemap: abs("/sitemap.xml"),
+      securityTxt: abs("/.well-known/security.txt"),
       proofBadge: abs(SERVICE.proofPathTemplate),
       verify: abs(SERVICE.verifyPathTemplate)
     }

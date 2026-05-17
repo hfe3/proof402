@@ -27,13 +27,18 @@
   "discovery": {
     "marketplacePage": "https://proof402.vercel.app/marketplace",
     "marketplaceJson": "https://proof402.vercel.app/marketplace.json",
+    "health": "https://proof402.vercel.app/health",
     "capabilities": "https://proof402.vercel.app/api/capabilities",
     "bazaar": "https://proof402.vercel.app/api/bazaar",
     "quickstart": "https://proof402.vercel.app/api/quickstart",
     "actions": "https://proof402.vercel.app/api/actions",
     "trust": "https://proof402.vercel.app/api/trust",
+    "status": "https://proof402.vercel.app/api/status",
     "openapi": "https://proof402.vercel.app/openapi.json",
-    "llms": "https://proof402.vercel.app/llms.txt"
+    "llms": "https://proof402.vercel.app/llms.txt",
+    "robots": "https://proof402.vercel.app/robots.txt",
+    "sitemap": "https://proof402.vercel.app/sitemap.xml",
+    "securityTxt": "https://proof402.vercel.app/.well-known/security.txt"
   },
   "assets": {
     "mark": "https://proof402.vercel.app/proof402-mark.svg",

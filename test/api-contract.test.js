@@ -60,6 +60,9 @@ test("status document exposes safe launch metadata", async () => {
   assert.equal(body.safety.rawPayloadStorage, false);
   assert.equal(body.safety.secretFilesCommitted, false);
   assert.equal(body.links.trust, "/api/trust");
+  assert.equal(body.links.marketplace, "/marketplace");
+  assert.equal(body.links.marketplaceJson, "/marketplace.json");
+  assert.equal(body.links.securityTxt, "/.well-known/security.txt");
   assert.equal(body.links.paidEndpoint, "/api/proof/notarize");
 });
 
@@ -70,18 +73,29 @@ test("bazaar, quickstart, and action catalog expose agent discovery metadata", a
   assert.equal(bazaar.body.resource.endsWith("/api/proof/notarize"), true);
   assert.equal(bazaar.body.payment.price, "$0.003");
   assert.ok(bazaar.body.discovery.qualitySignals.some((signal) => signal.includes("Demo mode")));
+  assert.ok(bazaar.body.discovery.qualitySignals.some((signal) => signal.includes("marketplace listing")));
+  assert.ok(bazaar.body.links.marketplace.endsWith("/marketplace"));
+  assert.ok(bazaar.body.links.marketplaceJson.endsWith("/marketplace.json"));
 
   const quickstart = await request("/api/quickstart");
   assert.equal(quickstart.response.status, 200);
   assert.equal(quickstart.body.payment.route.endsWith("/api/proof/notarize"), true);
   assert.equal(quickstart.body.minimalRequest.idempotencyKey, "proof-task-123");
   assert.ok(quickstart.body.callFlow.some((step) => step.includes("Hash")));
+  assert.ok(quickstart.body.nextDiscoverySteps.some((step) => step.endsWith("/marketplace")));
 
   const actions = await request("/api/actions");
   assert.equal(actions.response.status, 200);
   assert.equal(actions.body.activePrimitive.id, "proof.notarize");
   assert.ok(actions.body.templates.some((template) => template.id === "proof.agent_result_hash"));
   assert.ok(actions.body.discoveryKeywords.includes("public proof badge"));
+  assert.ok(actions.body.links.marketplace.endsWith("/marketplace"));
+  assert.ok(actions.body.links.status.endsWith("/api/status"));
+
+  const trust = await request("/api/trust");
+  assert.equal(trust.response.status, 200);
+  assert.equal(trust.body.links.marketplace, "/marketplace");
+  assert.equal(trust.body.links.marketplaceJson, "/marketplace.json");
 });
 
 test("llms.txt and public pages load", async () => {
@@ -111,6 +125,8 @@ test("llms.txt and public pages load", async () => {
   assert.equal(marketplaceJson.body.paidAction.path, "/api/proof/notarize");
   assert.equal(marketplaceJson.body.x402.price, "$0.005");
   assert.equal(marketplaceJson.body.safety.rawPayloadStorage, false);
+  assert.equal(marketplaceJson.body.discovery.status, "https://proof402.vercel.app/api/status");
+  assert.equal(marketplaceJson.body.discovery.securityTxt, "https://proof402.vercel.app/.well-known/security.txt");
 
   const securityTxt = await request("/.well-known/security.txt");
   assert.equal(securityTxt.response.status, 200);

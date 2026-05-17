@@ -96,12 +96,16 @@ export function publicActionCatalog() {
     useWhen: USE_WHEN,
     avoidWhen: AVOID_WHEN,
     links: {
+      marketplace: abs("/marketplace"),
+      marketplaceJson: abs("/marketplace.json"),
       quickstart: abs("/api/quickstart"),
       capabilities: abs("/api/capabilities"),
       bazaar: abs("/api/bazaar"),
       trust: abs("/api/trust"),
+      status: abs("/api/status"),
       proofs: abs("/proofs"),
-      openapi: abs("/openapi.json")
+      openapi: abs("/openapi.json"),
+      llms: abs("/llms.txt")
     }
   };
 }
@@ -153,6 +157,9 @@ export function publicQuickstart() {
       abs("/api/capabilities"),
       abs("/api/actions"),
       abs("/api/bazaar"),
+      abs("/api/status"),
+      abs("/marketplace"),
+      abs("/marketplace.json"),
       abs("/openapi.json"),
       abs("/llms.txt")
     ]

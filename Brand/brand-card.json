@@ -26,13 +26,20 @@
     "proofBadge": "/proof/{id}"
   },
   "discovery": {
+    "marketplacePage": "/marketplace",
+    "marketplaceJson": "/marketplace.json",
+    "health": "/health",
     "capabilities": "/api/capabilities",
     "bazaar": "/api/bazaar",
     "quickstart": "/api/quickstart",
     "actions": "/api/actions",
     "trust": "/api/trust",
+    "status": "/api/status",
     "openapi": "/openapi.json",
     "llms": "/llms.txt",
+    "robots": "/robots.txt",
+    "sitemap": "/sitemap.xml",
+    "securityTxt": "/.well-known/security.txt",
     "keywords": [
       "Proof402",
       "paid timestamp proof",

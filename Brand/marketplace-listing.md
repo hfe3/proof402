@@ -46,7 +46,13 @@ https://proof402.vercel.app/api/bazaar
 https://proof402.vercel.app/api/quickstart
 https://proof402.vercel.app/api/actions
 https://proof402.vercel.app/api/trust
+https://proof402.vercel.app/api/status
 https://proof402.vercel.app/llms.txt
+https://proof402.vercel.app/marketplace
+https://proof402.vercel.app/marketplace.json
+https://proof402.vercel.app/robots.txt
+https://proof402.vercel.app/sitemap.xml
+https://proof402.vercel.app/.well-known/security.txt
 ```
 
 ## API Example
