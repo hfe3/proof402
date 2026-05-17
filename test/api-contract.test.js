@@ -23,6 +23,8 @@ test("capabilities document exposes Proof402 paid action", async () => {
   assert.ok(body.discoveryKeywords.includes("paid timestamp proof"));
   assert.ok(body.agentPrompt.includes("Use Proof402"));
   assert.ok(body.links.llms.endsWith("/llms.txt"));
+  assert.ok(body.links.marketplace.endsWith("/marketplace"));
+  assert.ok(body.links.marketplaceJson.endsWith("/marketplace.json"));
   assert.ok(body.links.status.endsWith("/api/status"));
   assert.ok(body.links.securityTxt.endsWith("/.well-known/security.txt"));
 });
@@ -38,6 +40,8 @@ test("openapi document exposes proof routes", async () => {
   assert.ok(body.paths["/api/proofs/{id}"].get);
   assert.ok(body.paths["/api/verify/proofs/{id}"].get);
   assert.ok(body.paths["/proof/{id}"].get);
+  assert.ok(body.paths["/marketplace"].get);
+  assert.ok(body.paths["/marketplace.json"].get);
   assert.ok(body.paths["/api/status"].get);
   assert.ok(body.components.schemas.ProofRequest);
   assert.ok(body.components.schemas.ProofResponse);

@@ -159,6 +159,8 @@ export function publicCapabilities() {
       pricing: abs("/pricing"),
       demo: abs("/demo"),
       actions: abs("/actions"),
+      marketplace: abs("/marketplace"),
+      marketplaceJson: abs("/marketplace.json"),
       trust: abs("/trust"),
       proofs: abs("/proofs"),
       llms: abs("/llms.txt"),
@@ -320,6 +322,22 @@ export function openApiSpec() {
           parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
           responses: {
             "200": { description: "Proof badge HTML" }
+          }
+        }
+      },
+      "/marketplace": {
+        get: {
+          summary: "Public-safe marketplace listing kit page",
+          responses: {
+            "200": { description: "Marketplace listing HTML" }
+          }
+        }
+      },
+      "/marketplace.json": {
+        get: {
+          summary: "Machine-readable marketplace listing kit",
+          responses: {
+            "200": { description: "Marketplace listing JSON" }
           }
         }
       },
