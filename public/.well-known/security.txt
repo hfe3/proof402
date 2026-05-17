@@ -1,0 +1,5 @@
+Contact: https://github.com/hfe3/proof402/security
+Policy: https://github.com/hfe3/proof402/blob/main/SECURITY.md
+Preferred-Languages: en, ru
+Canonical: https://proof402.vercel.app/.well-known/security.txt
+Expires: 2027-05-17T00:00:00.000Z
