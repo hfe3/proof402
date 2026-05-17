@@ -7,18 +7,15 @@ AgentCash account data as private operational material.
 ## Supported Versions
 
 Only the current `main` branch and the active Vercel deployment are supported.
-The repository remains private until the launch checklist is complete.
+The public GitHub repository is supported together with the active production
+deployment.
 
 ## Reporting a Vulnerability
 
-While the repository is private, report vulnerabilities directly to the
-repository owner through the private GitHub repository or the established
-operator channel. Do not include live secrets, wallet private keys, CDP keys,
-database URLs, x402 payment headers, or raw private customer payloads in an
-issue, pull request, commit, screenshot, or log excerpt.
-
-For public launch, enable GitHub private vulnerability reporting or publish a
-dedicated security contact before making the repository public.
+Report vulnerabilities through GitHub Security Advisories when available, or
+through the established operator channel. Do not include live secrets, wallet
+private keys, CDP keys, database URLs, x402 payment headers, or raw private
+customer payloads in an issue, pull request, commit, screenshot, or log excerpt.
 
 ## Secret Handling
 
@@ -31,9 +28,9 @@ dedicated security contact before making the repository public.
   managed secret store.
 - Redact x402 payment headers and private request metadata from logs.
 
-## Verification Before Public Release
+## Release Verification
 
-Run these checks before changing repository visibility to public:
+Run these checks before release changes and after any public deployment update:
 
 ```powershell
 git status --short --ignored

@@ -1,18 +1,18 @@
 # Proof402 Launch Checklist
 
-Use this checklist before changing the GitHub repository from private to public.
+Use this checklist for the public launch and post-launch verification.
 
 ## Current State
 
 - GitHub repository: `https://github.com/hfe3/proof402`
-- Repository visibility: private until final launch approval
+- Repository visibility: public after final launch approval
 - Production URL: `https://proof402.vercel.app`
 - Paid endpoint: `POST /api/proof/notarize`
 - Price: `$0.005`
 - Network: Base mainnet, `eip155:8453`
 - Storage: Postgres in production, JSON store for local demo
 - License: MIT
-- GitHub Actions: latest `main` CI run must be green before public launch
+- GitHub Actions: latest `main` CI run must be green before and after public launch
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
 - Latest paid AgentCash smoke: `proof_d5ca3894148e3c1dc73fd028`,
@@ -59,14 +59,14 @@ managed secret store.
 - `SECURITY.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` are present.
 - The README links to the production URL, paid endpoint, proof example, verify
   endpoint, and security policy.
-- Repository is still private until this checklist is complete.
+- Repository visibility is public only after this checklist is complete.
 
 ## Vercel Review
 
 - `https://proof402.vercel.app/health` reports `profile=mainnet` and
   `x402Enabled=true`.
 - `https://proof402.vercel.app/api/status` reports repository visibility as
-  `private_until_launch`.
+  `public`.
 - Environment Variables are configured in Vercel, not committed to GitHub.
 - Add the GitHub Login Connection in Vercel:
   `https://vercel.com/account/settings/login-connections`

@@ -137,7 +137,7 @@ Mainnet is deployed at `https://proof402.vercel.app`.
 
 ```text
 GitHub: https://github.com/hfe3/proof402
-Visibility: private until launch cleanup is complete
+Visibility: public
 License: MIT
 CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
 ```
@@ -198,10 +198,9 @@ payment canary automation
 
 ## Security
 
-See `SECURITY.md` before reporting vulnerabilities or moving the repository to
-public visibility. Do not include live secrets, wallet material, payment
-headers, database URLs, or private payloads in GitHub issues, commits, logs, or
-screenshots.
+See `SECURITY.md` before reporting vulnerabilities. Do not include live
+secrets, wallet material, payment headers, database URLs, or private payloads
+in GitHub issues, commits, logs, or screenshots.
 
 ## License
 

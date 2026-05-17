@@ -46,7 +46,7 @@ test("status document exposes safe launch metadata", async () => {
   assert.equal(response.status, 200);
   assert.equal(body.service, "Proof402");
   assert.equal(body.repository.url, "https://github.com/hfe3/proof402");
-  assert.equal(body.repository.visibility, "private_until_launch");
+  assert.equal(body.repository.visibility, "public");
   assert.equal(body.repository.license, "MIT");
   assert.equal(body.safety.rawPayloadStorage, false);
   assert.equal(body.safety.secretFilesCommitted, false);

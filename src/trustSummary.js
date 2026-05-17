@@ -36,7 +36,7 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
       localMvp: true,
       repository: {
         url: "https://github.com/hfe3/proof402",
-        visibility: "private_until_launch",
+        visibility: "public",
         ciConfigured: true
       },
       deployment: {
@@ -49,7 +49,7 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
         deploymentCheck: "npm run deploy:check -- https://proof402.vercel.app --expect-x402",
         paidSmoke: "npm run smoke:x402 -- https://proof402.vercel.app"
       },
-      note: "Repository remains private until final public-launch review."
+      note: "Public launch checks are complete; keep secret and payment material out of tracked files."
     }
   };
 }
@@ -80,7 +80,7 @@ export async function buildStatusSummary({ storeStats }) {
     },
     repository: {
       url: "https://github.com/hfe3/proof402",
-      visibility: "private_until_launch",
+      visibility: "public",
       ci: "/.github/workflows/ci.yml",
       license: "MIT"
     },
