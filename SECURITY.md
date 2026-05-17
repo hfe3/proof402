@@ -49,12 +49,15 @@ Run these checks before release changes and after any public deployment update:
 git status --short --ignored
 npm test
 npm run security:scan
+npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
+npx agentcash discover https://proof402.vercel.app --format json
 ```
 
-`smoke:x402` validates the unpaid payment challenge. For a full paid smoke, use
-AgentCash or another x402-capable buyer wallet with a strict per-request max
-amount, then verify the returned proof through `/api/verify/proofs/{id}`.
+`smoke:x402` validates the unpaid payment challenge. Run a full paid smoke only
+after explicit operator approval for the max spend. When approved, use AgentCash
+or another x402-capable buyer wallet with a strict per-request max amount, then
+verify the returned proof through `/api/verify/proofs/{id}`.
 
 Then confirm that tracked files contain no secret material.

@@ -22,7 +22,8 @@ Use this checklist for the public launch and post-launch verification.
 - Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
-- Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, `v0.1.3` tag are prepared
+- Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
+  prepared. Latest release: `v0.1.4`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -40,12 +41,16 @@ Run locally from `D:\Agents_402\proof402`:
 git status --short --ignored
 npm test
 npm run security:scan
+npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
+npx agentcash discover https://proof402.vercel.app --format json
 ```
 
-Then run one real paid smoke through AgentCash or another x402-capable buyer
-wallet with a strict per-request max amount. Verify the returned proof through:
+`smoke:x402` is unpaid and validates the `402 Payment Required` challenge.
+Run a real paid smoke only when the operator explicitly approves the max spend.
+When paid smoke is approved, use AgentCash or another x402-capable buyer wallet
+with a strict per-request max amount, then verify the returned proof through:
 
 ```text
 GET https://proof402.vercel.app/api/verify/proofs/{id}
@@ -78,6 +83,7 @@ managed secret store.
 - `npx agentcash discover https://proof402.vercel.app` finds the OpenAPI
   surface, and `agentcash check` with a valid body reports payment required for
   `POST /api/proof/notarize`.
+- The GitHub Release page exists for the current tag and is not a draft.
 - Static public pages, `llms.txt`, and pricing copy match the production
   `$0.005` price.
 - The README links to the production URL, paid endpoint, proof example, verify
@@ -105,12 +111,23 @@ npx vercel git connect git@github.com:hfe3/proof402.git
 - Push a harmless docs commit and confirm the Vercel deployment is triggered by
   GitHub rather than by a manual `vercel deploy`.
 
+## Browser Hygiene
+
+- If ADS profile 48 is opened for GitHub or Vercel verification, close only the
+  temporary tab opened for the check.
+- Do not close operator-owned dashboard, wallet, extension, offscreen, service
+  worker, or existing Vercel/GitHub tabs.
+- After browser automation, list the ADS targets and confirm no temporary
+  `about:blank`, GitHub release, or GitHub checks tab remains.
+
 ## Make Public
 
-Only after every item above is complete:
+If the repository is still private, make it public only after every item above
+is complete:
 
 1. Open GitHub repository settings.
 2. Go to `Settings` -> `General` -> `Danger Zone`.
 3. Use `Change repository visibility`.
 4. Confirm `Make public`.
-5. Re-run the required checks and paid smoke once after visibility changes.
+5. Re-run the required checks after visibility changes. Run paid smoke only
+   with explicit operator approval.

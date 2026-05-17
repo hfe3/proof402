@@ -37,6 +37,12 @@
 ```powershell
 cd D:\Agents_402\proof402
 npm test
+npm run security:scan
+npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
+npx agentcash discover https://proof402.vercel.app --format json
 ```
+
+`smoke:x402` is unpaid. Run a real paid smoke only after explicit operator
+approval for the maximum spend.

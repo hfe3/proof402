@@ -4,7 +4,11 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
-No unreleased changes yet.
+### Changed
+
+- Updated launch and security checklists for the current release, dependency
+  audit, AgentCash discovery, ADS browser hygiene, and explicit paid-smoke
+  approval.
 
 ## 0.1.4 - 2026-05-17
 
