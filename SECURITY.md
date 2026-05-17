@@ -27,6 +27,18 @@ customer payloads in an issue, pull request, commit, screenshot, or log excerpt.
 - Store production values only in Vercel Environment Variables or another
   managed secret store.
 - Redact x402 payment headers and private request metadata from logs.
+- GitHub Secret Protection is enabled for the public repository, but local
+  `npm run security:scan` remains the release gate for tracked files.
+
+## GitHub Security Controls
+
+- Private vulnerability reporting is enabled.
+- Dependency graph, Dependabot alerts, Dependabot security updates, and grouped
+  security updates are enabled.
+- Dependabot version updates are configured in `.github/dependabot.yml`.
+- CodeQL code scanning is configured in `.github/workflows/codeql.yml`.
+- The `main` branch has a classic protection rule; force pushes and branch
+  deletions are not allowed by default.
 
 ## Release Verification
 

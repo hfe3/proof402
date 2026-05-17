@@ -13,6 +13,13 @@ Use this checklist for the public launch and post-launch verification.
 - Storage: Postgres in production, JSON store for local demo
 - License: MIT
 - GitHub Actions: latest `main` CI run must be green before and after public launch
+- Branch protection: classic `main` rule enabled; force pushes and branch
+  deletions are not allowed by default
+- GitHub security: private vulnerability reporting, dependency graph,
+  Dependabot alerts, Dependabot security updates, grouped security updates, and
+  Secret Protection are enabled
+- Dependabot version updates: configured in `.github/dependabot.yml`
+- Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
 - Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
@@ -56,6 +63,7 @@ managed secret store.
 ## GitHub Review
 
 - GitHub Actions CI is green on `main`.
+- Branch protection is enabled for `main`.
 - `SECURITY.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` are present.
 - The README links to the production URL, paid endpoint, proof example, verify
   endpoint, and security policy.
@@ -70,7 +78,7 @@ managed secret store.
 - Environment Variables are configured in Vercel, not committed to GitHub.
 - Add the GitHub Login Connection in Vercel:
   `https://vercel.com/account/settings/login-connections`
-- Install or configure the Vercel GitHub App so it has access to the private
+- Install or configure the Vercel GitHub App so it has access to the
   `hfe3/proof402` repository. Verify in GitHub:
   `https://github.com/hfe3/proof402/settings/installations`
 - Confirm this project is connected to the repository:
