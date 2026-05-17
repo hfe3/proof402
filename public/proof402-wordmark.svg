@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="128" viewBox="0 0 560 128" role="img" aria-labelledby="title desc">
+  <title id="title">Proof402 wordmark</title>
+  <desc id="desc">Proof402 wordmark with the proof seal mark and tagline.</desc>
+  <rect width="560" height="128" rx="8" fill="#fbfaf6"/>
+  <g transform="translate(24 16)">
+    <rect width="96" height="96" rx="18" fill="#111418"/>
+    <circle cx="48" cy="48" r="28" fill="#f4f0e8"/>
+    <circle cx="48" cy="48" r="20" fill="none" stroke="#1f7a5c" stroke-width="5"/>
+    <path d="M32 49h32M36 39h24M38 59h20" stroke="#111418" stroke-width="5" stroke-linecap="round"/>
+    <path d="M65 67l13 13" stroke="#b64646" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="144" y="62" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Proof402</text>
+  <text x="146" y="94" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Pay once. Prove forever.</text>
+  <text x="386" y="94" fill="#5d6570" font-family="Consolas, 'Courier New', monospace" font-size="16">x402 proof API</text>
+</svg>

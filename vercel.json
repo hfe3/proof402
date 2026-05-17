@@ -41,6 +41,10 @@
       "destination": "/actions.html"
     },
     {
+      "source": "/marketplace",
+      "destination": "/marketplace.html"
+    },
+    {
       "source": "/trust",
       "destination": "/trust.html"
     },

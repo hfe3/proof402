@@ -15,6 +15,7 @@
 - Confirm copy says "timestamped hash proof", not "legal notarization".
 - Confirm examples use fake hashes and non-secret metadata.
 - Use `Brand/marketplace-listing.md` as the public-safe listing source.
+- Check `https://proof402.vercel.app/marketplace` and `https://proof402.vercel.app/marketplace.json`.
 - Use SVG assets from `Brand/` first; export PNG copies only when a directory requires bitmap uploads.
 
 ## Before Social Announcement

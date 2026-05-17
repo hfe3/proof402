@@ -50,6 +50,8 @@ Recommended use:
 - Logo/wordmark field: `Brand/proof402-wordmark.svg`
 - Proof example field: `Brand/proof402-proof-badge-example.svg`
 - Social preview: `public/proof402-social.svg`
+- Public listing page: `https://proof402.vercel.app/marketplace`
+- Machine-readable listing: `https://proof402.vercel.app/marketplace.json`
 
 ## Machine-Readable Sources
 

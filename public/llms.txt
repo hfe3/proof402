@@ -25,6 +25,8 @@ GET /api/actions
 GET /api/trust
 GET /openapi.json
 GET /llms.txt
+GET /marketplace
+GET /marketplace.json
 GET /proof/{id}
 GET /api/proofs/{id}
 GET /api/verify/proofs/{id}

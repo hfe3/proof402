@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 marketplace kit</title>
+    <meta name="description" content="Public-safe marketplace listing kit for Proof402: routes, price, x402 metadata, discovery links, and assets.">
+    <link rel="canonical" href="https://proof402.vercel.app/marketplace">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Proof402">
+    <meta property="og:title" content="Proof402 marketplace kit">
+    <meta property="og:description" content="Public-safe listing data for the x402-paid timestamped hash proof service.">
+    <meta property="og:url" content="https://proof402.vercel.app/marketplace">
+    <meta property="og:image" content="https://proof402.vercel.app/proof402-social.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Proof402 marketplace kit">
+    <meta name="twitter:description" content="Routes, price, x402 metadata, discovery links, and assets.">
+    <meta name="twitter:image" content="https://proof402.vercel.app/proof402-social.svg">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+      <nav class="nav"><a href="/agents">Agents</a><a href="/pricing">Pricing</a><a href="/actions">Actions</a><a href="/trust">Trust</a><a href="/proofs">Proofs</a></nav>
+    </header>
+    <main>
+      <section class="band">
+        <p class="eyebrow">Marketplace listing</p>
+        <h1>Public-safe listing kit</h1>
+        <p class="muted">Use these fields for agent directories, x402 catalogs, and public marketplace submissions. The kit contains no secrets, wallet material, raw private payloads, or dashboard screenshots.</p>
+        <p><span class="route">GET /marketplace.json</span></p>
+      </section>
+      <section class="band grid">
+        <article class="card">
+          <h2>Paid action</h2>
+          <p><code>POST /api/proof/notarize</code></p>
+          <p class="muted">Submit a SHA-256 content hash, label, optional non-secret metadata, and an idempotency key.</p>
+        </article>
+        <article class="card">
+          <h2>Price</h2>
+          <p><code>$0.005</code></p>
+          <p class="muted">Production mainnet price, paid through x402 on Base mainnet.</p>
+        </article>
+        <article class="card">
+          <h2>Verify</h2>
+          <p><code>GET /api/verify/proofs/{id}</code></p>
+          <p class="muted">Public verification confirms the stored proof signature and timestamp payload.</p>
+        </article>
+      </section>
+      <section class="band">
+        <h2>Directory fields</h2>
+        <table class="table">
+          <tbody>
+            <tr><th>Name</th><td>Proof402</td></tr>
+            <tr><th>Tagline</th><td>Pay once. Prove forever.</td></tr>
+            <tr><th>Category</th><td><code>agent-infrastructure</code></td></tr>
+            <tr><th>Short description</th><td>Timestamped hash proof for autonomous agents.</td></tr>
+            <tr><th>Network</th><td>Base mainnet, <code>eip155:8453</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="band grid two">
+        <article class="card">
+          <h2>Assets</h2>
+          <p><a href="/proof402-wordmark.svg">Wordmark SVG</a></p>
+          <p><a href="/proof402-marketplace-banner.svg">Marketplace banner SVG</a></p>
+          <p><a href="/proof402-proof-badge-example.svg">Proof badge example SVG</a></p>
+          <p><a href="/proof402-social.svg">Social preview SVG</a></p>
+        </article>
+        <article class="card">
+          <h2>Discovery</h2>
+          <p><a href="/marketplace.json">Marketplace JSON</a></p>
+          <p><a href="/api/capabilities">Capabilities</a></p>
+          <p><a href="/api/bazaar">Bazaar metadata</a></p>
+          <p><a href="/openapi.json">OpenAPI</a></p>
+        </article>
+      </section>
+      <section class="band">
+        <h2>Safety language</h2>
+        <pre><code>Proof402 timestamps hashes, not private payloads.
+Proof402 creates signed proof receipts for submitted content hashes.
+Proof402 is not legal notarization and does not prove factual truth beyond the submitted contentHash.</code></pre>
+      </section>
+    </main>
+    <footer class="footer"><a href="/marketplace.json">Marketplace JSON</a> | <a href="/llms.txt">llms.txt</a> | <a href="/.well-known/security.txt">security.txt</a></footer>
+  </body>
+</html>

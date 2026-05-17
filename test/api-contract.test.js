@@ -93,6 +93,14 @@ test("llms.txt and public pages load", async () => {
   const sitemap = await request("/sitemap.xml");
   assert.equal(sitemap.response.status, 200);
   assert.ok(sitemap.body.includes("https://proof402.vercel.app/api/status"));
+  assert.ok(sitemap.body.includes("https://proof402.vercel.app/marketplace"));
+
+  const marketplaceJson = await request("/marketplace.json");
+  assert.equal(marketplaceJson.response.status, 200);
+  assert.equal(marketplaceJson.body.name, "Proof402");
+  assert.equal(marketplaceJson.body.paidAction.path, "/api/proof/notarize");
+  assert.equal(marketplaceJson.body.x402.price, "$0.005");
+  assert.equal(marketplaceJson.body.safety.rawPayloadStorage, false);
 
   const securityTxt = await request("/.well-known/security.txt");
   assert.equal(securityTxt.response.status, 200);
@@ -102,12 +110,23 @@ test("llms.txt and public pages load", async () => {
   assert.equal(socialCard.response.status, 200);
   assert.ok(socialCard.body.includes("Proof402 social preview"));
 
+  for (const [assetPath, marker] of [
+    ["/proof402-wordmark.svg", "Proof402 wordmark"],
+    ["/proof402-marketplace-banner.svg", "Proof402 marketplace banner"],
+    ["/proof402-proof-badge-example.svg", "Proof402 proof badge example"]
+  ]) {
+    const asset = await request(assetPath);
+    assert.equal(asset.response.status, 200, `${assetPath} should load`);
+    assert.ok(asset.body.includes(marker), `${assetPath} should include title`);
+  }
+
   for (const path of [
     "/",
     "/agents",
     "/pricing",
     "/demo",
     "/actions",
+    "/marketplace",
     "/trust",
     "/proofs",
     "/proof/proof_missing",

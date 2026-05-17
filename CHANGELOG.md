@@ -13,6 +13,7 @@ All notable Proof402 changes are documented here.
 ### Added
 
 - Added a public-safe marketplace listing kit and SVG assets in `Brand/`.
+- Added public marketplace discovery surfaces: `/marketplace`, `/marketplace.json`, and public SVG listing assets.
 
 ## 0.1.1 - 2026-05-17
 

@@ -24,6 +24,7 @@ const checks = [
   ["/api/trust", "json"],
   ["/api/status", "json"],
   ["/openapi.json", "json"],
+  ["/marketplace.json", "json"],
   ["/llms.txt", "text"],
   ["/robots.txt", "text"],
   ["/sitemap.xml", "text"],
@@ -33,6 +34,7 @@ const checks = [
   ["/pricing", "text"],
   ["/demo", "text"],
   ["/actions", "text"],
+  ["/marketplace", "text"],
   ["/trust", "text"],
   ["/proofs", "text"]
 ];

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Proof402 proof badge example</title>
+  <desc id="desc">Example proof badge showing verified hash proof metadata.</desc>
+  <rect width="960" height="520" fill="#fbfaf6"/>
+  <rect x="48" y="48" width="864" height="424" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="2"/>
+  <text x="84" y="118" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Proof402 verified proof</text>
+  <text x="86" y="150" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700">signed timestamped hash receipt</text>
+  <rect x="84" y="196" width="792" height="196" rx="8" fill="#f4f0e8" stroke="#d7ded8" stroke-width="2"/>
+  <text x="116" y="242" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18">Proof ID</text>
+  <text x="304" y="242" fill="#111418" font-family="Consolas, 'Courier New', monospace" font-size="22">proof_example1234567890</text>
+  <text x="116" y="286" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18">Timestamp</text>
+  <text x="304" y="286" fill="#111418" font-family="Consolas, 'Courier New', monospace" font-size="22">2026-05-17T00:00:00.000Z</text>
+  <text x="116" y="330" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18">Content hash</text>
+  <text x="304" y="330" fill="#111418" font-family="Consolas, 'Courier New', monospace" font-size="20">sha256:7b3d0f0f7c847c28...f2a35cc</text>
+  <text x="116" y="374" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18">Verified</text>
+  <text x="304" y="374" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="700">true</text>
+  <rect x="84" y="416" width="500" height="40" rx="8" fill="#182028"/>
+  <text x="108" y="443" fill="#ffffff" font-family="Consolas, 'Courier New', monospace" font-size="18">GET /api/verify/proofs/{id}</text>
+  <text x="620" y="443" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700">proof402.vercel.app</text>
+</svg>

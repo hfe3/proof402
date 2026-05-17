@@ -1,0 +1,70 @@
+{
+  "name": "Proof402",
+  "tagline": "Pay once. Prove forever.",
+  "category": "agent-infrastructure",
+  "shortDescription": "Timestamped hash proof for autonomous agents.",
+  "publicBaseUrl": "https://proof402.vercel.app",
+  "publicSafe": true,
+  "x402": {
+    "enabled": true,
+    "network": "eip155:8453",
+    "networkName": "Base mainnet",
+    "price": "$0.005",
+    "scheme": "exact"
+  },
+  "paidAction": {
+    "id": "proof.notarize",
+    "method": "POST",
+    "path": "/api/proof/notarize",
+    "url": "https://proof402.vercel.app/api/proof/notarize"
+  },
+  "verification": {
+    "proofApi": "https://proof402.vercel.app/api/proofs/{id}",
+    "verifyApi": "https://proof402.vercel.app/api/verify/proofs/{id}",
+    "proofBadge": "https://proof402.vercel.app/proof/{id}"
+  },
+  "discovery": {
+    "marketplacePage": "https://proof402.vercel.app/marketplace",
+    "marketplaceJson": "https://proof402.vercel.app/marketplace.json",
+    "capabilities": "https://proof402.vercel.app/api/capabilities",
+    "bazaar": "https://proof402.vercel.app/api/bazaar",
+    "quickstart": "https://proof402.vercel.app/api/quickstart",
+    "actions": "https://proof402.vercel.app/api/actions",
+    "trust": "https://proof402.vercel.app/api/trust",
+    "openapi": "https://proof402.vercel.app/openapi.json",
+    "llms": "https://proof402.vercel.app/llms.txt"
+  },
+  "assets": {
+    "mark": "https://proof402.vercel.app/proof402-mark.svg",
+    "wordmark": "https://proof402.vercel.app/proof402-wordmark.svg",
+    "banner": "https://proof402.vercel.app/proof402-marketplace-banner.svg",
+    "proofBadgeExample": "https://proof402.vercel.app/proof402-proof-badge-example.svg",
+    "socialPreview": "https://proof402.vercel.app/proof402-social.svg"
+  },
+  "safety": {
+    "rawPayloadStorage": false,
+    "legalNotarization": false,
+    "storesSecrets": false,
+    "proofScope": "Proof402 verifies the signed timestamp/hash proof, not the factual truth of the original claim."
+  },
+  "exampleRequest": {
+    "contentHash": "sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc",
+    "label": "agent result hash",
+    "metadata": {
+      "agent": "research-bot",
+      "taskId": "task_123"
+    },
+    "idempotencyKey": "proof-task-123"
+  },
+  "keywords": [
+    "Proof402",
+    "paid timestamp proof",
+    "x402 proof notarization",
+    "AI agent proof receipt",
+    "hash timestamp service",
+    "agent result verification",
+    "public proof badge",
+    "pay once prove forever",
+    "verifiable agent output"
+  ]
+}
