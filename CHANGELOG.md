@@ -10,6 +10,10 @@ All notable Proof402 changes are documented here.
   - `actions/checkout` from `v4` to `v6`
   - `actions/setup-node` from `v4` to `v6`
 
+### Added
+
+- Added a public-safe marketplace listing kit and SVG assets in `Brand/`.
+
 ## 0.1.1 - 2026-05-17
 
 ### Added

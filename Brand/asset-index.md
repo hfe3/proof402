@@ -4,6 +4,7 @@
 
 ```text
 Brand/proof402-mark.svg
+Brand/proof402-wordmark.svg
 public/proof402-mark.svg
 ```
 
@@ -34,6 +35,22 @@ https://proof402.vercel.app/trust
 https://proof402.vercel.app/proofs
 ```
 
+## Marketplace Assets
+
+```text
+Brand/marketplace-listing.md
+Brand/proof402-marketplace-banner.svg
+Brand/proof402-proof-badge-example.svg
+public/proof402-social.svg
+```
+
+Recommended use:
+
+- Marketplace banner: `Brand/proof402-marketplace-banner.svg`
+- Logo/wordmark field: `Brand/proof402-wordmark.svg`
+- Proof example field: `Brand/proof402-proof-badge-example.svg`
+- Social preview: `public/proof402-social.svg`
+
 ## Machine-Readable Sources
 
 ```text
@@ -49,10 +66,8 @@ https://proof402.vercel.app/llms.txt
 
 ## Future Assets To Add
 
-- `proof402-wordmark.svg`
 - `proof402-social-card.png`
 - `proof402-og-image.png`
-- `proof402-marketplace-banner.png`
-- `proof402-proof-badge-example.png`
+- Optional PNG exports of the SVG marketplace assets above.
 
 Keep source files in `Brand/` and deploy-ready web assets in `public/`.

@@ -14,6 +14,10 @@ This folder is the brand and agent-information source for Proof402. It is safe t
 - `asset-index.md` - where assets live and how to use them.
 - `launch-checklist.md` - brand/design checklist before GitHub, Vercel, or marketplace publication.
 - `proof402-mark.svg` - local copy of the current Proof402 mark.
+- `proof402-wordmark.svg` - wordmark for listings and README-style surfaces.
+- `proof402-marketplace-banner.svg` - public-safe marketplace banner.
+- `proof402-proof-badge-example.svg` - fake proof badge example for directories.
+- `marketplace-listing.md` - copy, fields, links, assets, and safety language for marketplace submissions.
 
 ## Current Public Service
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Proof402 marketplace banner</title>
+  <desc id="desc">Marketplace banner for Proof402, a timestamped hash proof service for autonomous agents.</desc>
+  <rect width="1600" height="900" fill="#fbfaf6"/>
+  <rect x="64" y="64" width="1472" height="772" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="3"/>
+  <g transform="translate(118 118)">
+    <rect width="132" height="132" rx="24" fill="#111418"/>
+    <circle cx="66" cy="66" r="39" fill="#f4f0e8"/>
+    <circle cx="66" cy="66" r="28" fill="none" stroke="#1f7a5c" stroke-width="7"/>
+    <path d="M44 68h44M50 54h33M52 82h28" stroke="#111418" stroke-width="7" stroke-linecap="round"/>
+    <path d="M90 92l18 18" stroke="#b64646" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="286" y="177" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="82" font-weight="700">Proof402</text>
+  <text x="290" y="240" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Pay once. Prove forever.</text>
+  <text x="118" y="356" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="46" font-weight="700">Timestamped hash proof for autonomous agents</text>
+  <text x="118" y="418" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="30">Agents submit a SHA-256 hash, pay through x402, and receive a signed proof with public verification links.</text>
+  <g transform="translate(118 506)">
+    <rect width="590" height="96" rx="8" fill="#182028"/>
+    <text x="32" y="60" fill="#ffffff" font-family="Consolas, 'Courier New', monospace" font-size="30">POST /api/proof/notarize</text>
+  </g>
+  <g transform="translate(748 506)">
+    <rect width="270" height="96" rx="8" fill="#f4f0e8" stroke="#d7ded8" stroke-width="2"/>
+    <text x="32" y="40" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20">Production price</text>
+    <text x="32" y="70" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="34" font-weight="700">$0.005</text>
+  </g>
+  <g transform="translate(1058 506)">
+    <rect width="360" height="96" rx="8" fill="#f4f0e8" stroke="#d7ded8" stroke-width="2"/>
+    <text x="32" y="40" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20">Network</text>
+    <text x="32" y="70" fill="#111418" font-family="Consolas, 'Courier New', monospace" font-size="28" font-weight="700">Base mainnet</text>
+  </g>
+  <g fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28">
+    <text x="118" y="688">Hash locally. Publish proofs, not private payloads.</text>
+    <text x="118" y="734">Verify through /api/verify/proofs/{id} or cite /proof/{id}.</text>
+  </g>
+  <text x="118" y="800" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="30" font-weight="700">https://proof402.vercel.app</text>
+</svg>

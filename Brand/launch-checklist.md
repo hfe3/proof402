@@ -14,6 +14,8 @@
 - Confirm unpaid `POST /api/proof/notarize` returns `402 Payment Required`.
 - Confirm copy says "timestamped hash proof", not "legal notarization".
 - Confirm examples use fake hashes and non-secret metadata.
+- Use `Brand/marketplace-listing.md` as the public-safe listing source.
+- Use SVG assets from `Brand/` first; export PNG copies only when a directory requires bitmap uploads.
 
 ## Before Social Announcement
 
