@@ -1,0 +1,53 @@
+# Changelog
+
+All notable Proof402 changes are documented here.
+
+## 0.1.0 - 2026-05-17
+
+Initial public release.
+
+### Added
+
+- x402-compatible paid notarization endpoint: `POST /api/proof/notarize`.
+- Public proof pages and verification endpoints:
+  - `GET /proof/{id}`
+  - `GET /api/proofs/{id}`
+  - `GET /api/verify/proofs/{id}`
+  - `GET /api/proofs/recent`
+- Free discovery endpoints for agents, OpenAPI clients, and trust review:
+  - `GET /health`
+  - `GET /openapi.json`
+  - `GET /api/capabilities`
+  - `GET /api/bazaar`
+  - `GET /api/quickstart`
+  - `GET /api/actions`
+  - `GET /api/trust`
+  - `GET /api/status`
+  - `GET /llms.txt`
+  - `GET /robots.txt`
+  - `GET /sitemap.xml`
+  - `GET /.well-known/security.txt`
+- Signed proof receipts with canonical JSON hashing, `metadataHash`, and HMAC
+  verification.
+- Idempotent proof creation through `idempotencyKey`.
+- Local JSON storage, memory storage for tests, and production Postgres path.
+- Demo, testnet, and mainnet config profiles.
+- Public pages for the service, agents, pricing, demo, actions, trust, recent
+  proofs, and proof badges.
+- Local verification scripts:
+  - `npm test`
+  - `npm run security:scan`
+  - `npm run deploy:check`
+  - `npm run smoke:x402`
+- GitHub Actions CI, CodeQL scanning, Dependabot config, branch protection, and
+  community issue/PR templates.
+
+### Launch Verification
+
+- Production URL: `https://proof402.vercel.app`
+- Price: `$0.005`
+- Network: Base mainnet, `eip155:8453`
+- Latest post-public paid AgentCash smoke:
+  - Proof: `proof_d8cfab2c1413f0f173967641`
+  - Verify: `https://proof402.vercel.app/api/verify/proofs/proof_d8cfab2c1413f0f173967641`
+  - Transaction: `0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e`
