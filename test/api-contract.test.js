@@ -83,6 +83,8 @@ test("llms.txt and public pages load", async () => {
 
   const localLlms = readFileSync("public/llms.txt", "utf8");
   assert.ok(localLlms.includes("Production URL"));
+  assert.ok(localLlms.includes("https://proof402.vercel.app"));
+  assert.ok(localLlms.includes("$0.005"));
 
   const robots = await request("/robots.txt");
   assert.equal(robots.response.status, 200);
@@ -96,9 +98,25 @@ test("llms.txt and public pages load", async () => {
   assert.equal(securityTxt.response.status, 200);
   assert.ok(securityTxt.body.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"));
 
-  for (const path of ["/", "/agents", "/pricing", "/demo", "/actions", "/trust", "/proofs", "/proof/proof_missing"]) {
+  const socialCard = await request("/proof402-social.svg");
+  assert.equal(socialCard.response.status, 200);
+  assert.ok(socialCard.body.includes("Proof402 social preview"));
+
+  for (const path of [
+    "/",
+    "/agents",
+    "/pricing",
+    "/demo",
+    "/actions",
+    "/trust",
+    "/proofs",
+    "/proof/proof_missing",
+    "/landing-mockups.html"
+  ]) {
     const page = await request(path);
     assert.equal(page.response.status, 200, `${path} should load`);
     assert.ok(String(page.body).includes("Proof402"), `${path} should mention Proof402`);
+    assert.ok(String(page.body).includes('meta property="og:title"'), `${path} should include Open Graph title`);
+    assert.ok(String(page.body).includes('meta name="twitter:card"'), `${path} should include Twitter card metadata`);
   }
 });

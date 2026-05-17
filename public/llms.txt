@@ -30,7 +30,7 @@ GET /api/proofs/{id}
 GET /api/verify/proofs/{id}
 
 Price:
-$0.003 when x402 is enabled. Local demo mode does not require real payment.
+$0.005 on production mainnet when x402 is enabled. Local demo mode does not require real payment.
 
 Verification flow:
 1. Hash the private result locally with SHA-256.
@@ -46,4 +46,4 @@ Copy-paste command:
 curl -s -X POST http://127.0.0.1:4022/api/proof/notarize -H "content-type: application/json" -d "{\"contentHash\":\"sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc\",\"label\":\"agent result hash\",\"metadata\":{\"agent\":\"research-bot\",\"taskId\":\"task_123\"},\"idempotencyKey\":\"proof-task-123\"}"
 
 Production URL:
-Set PUBLIC_BASE_URL after deployment. This local MVP intentionally does not claim a production URL.
+https://proof402.vercel.app

@@ -10,6 +10,12 @@ All notable Proof402 changes are documented here.
   it to the local AgentCash origins list for agent-client context.
 - Documented AgentCash discovery and x402 payment probing in the README and
   launch checklist.
+- Added Open Graph/Twitter metadata and a social preview image for public pages.
+
+### Fixed
+
+- Updated static pricing and `llms.txt` production metadata from the local
+  `$0.003` default to the live `$0.005` production price.
 
 ## 0.1.0 - 2026-05-17
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Proof402 social preview</title>
+  <desc id="desc">Proof402: Pay once. Prove forever.</desc>
+  <rect width="1200" height="630" fill="#101820"/>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="#f8fbf8"/>
+  <circle cx="182" cy="180" r="78" fill="#1f7a5a"/>
+  <path d="M142 184l28 28 58-68" fill="none" stroke="#f8fbf8" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="174" fill="#101820" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">Proof402</text>
+  <text x="300" y="252" fill="#1f7a5a" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Pay once. Prove forever.</text>
+  <text x="96" y="374" fill="#27343b" font-family="Arial, Helvetica, sans-serif" font-size="34">x402-paid timestamped hash proofs for autonomous agents.</text>
+  <text x="96" y="428" fill="#27343b" font-family="Arial, Helvetica, sans-serif" font-size="30">Submit a SHA-256 hash. Receive a signed proof and public verification links.</text>
+  <rect x="96" y="484" width="560" height="58" rx="12" fill="#101820"/>
+  <text x="126" y="523" fill="#f8fbf8" font-family="Consolas, 'Courier New', monospace" font-size="26">POST /api/proof/notarize</text>
+  <text x="720" y="523" fill="#1f7a5a" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">proof402.vercel.app</text>
+</svg>
