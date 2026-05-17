@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest a Proof402 improvement or integration.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep examples public-safe. Do not include secrets, payment headers, wallet material, private payloads, database URLs, or CDP credentials.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What agent workflow or verification gap should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the endpoint, page, metadata, storage, or x402 behavior you want.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - API contract
+        - Proof signing or verification
+        - x402 payment flow
+        - Storage
+        - Public pages
+        - Agent discovery
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional notes about other approaches.
+    validations:
+      required: false

@@ -202,6 +202,11 @@ See `SECURITY.md` before reporting vulnerabilities. Do not include live
 secrets, wallet material, payment headers, database URLs, or private payloads
 in GitHub issues, commits, logs, or screenshots.
 
+## Contributing
+
+See `CONTRIBUTING.md` before opening issues or pull requests. Public reports
+must use fake hashes and non-secret metadata only.
+
 ## License
 
 Proof402 is licensed under the MIT License. See `LICENSE` and

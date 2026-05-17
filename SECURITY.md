@@ -16,6 +16,7 @@ Report vulnerabilities through GitHub Security Advisories when available, or
 through the established operator channel. Do not include live secrets, wallet
 private keys, CDP keys, database URLs, x402 payment headers, or raw private
 customer payloads in an issue, pull request, commit, screenshot, or log excerpt.
+For non-security bugs and feature requests, use the public issue templates.
 
 ## Secret Handling
 

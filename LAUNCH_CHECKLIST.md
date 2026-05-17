@@ -20,6 +20,8 @@ Use this checklist for the public launch and post-launch verification.
   Secret Protection are enabled
 - Dependabot version updates: configured in `.github/dependabot.yml`
 - Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
+- Community health: `CONTRIBUTING.md`, pull request template, and issue
+  templates are configured with no-secrets guidance
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
 - Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
@@ -65,6 +67,7 @@ managed secret store.
 - GitHub Actions CI is green on `main`.
 - Branch protection is enabled for `main`.
 - `SECURITY.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` are present.
+- `CONTRIBUTING.md`, issue templates, and pull request template are present.
 - The README links to the production URL, paid endpoint, proof example, verify
   endpoint, and security policy.
 - Repository visibility is public only after this checklist is complete.

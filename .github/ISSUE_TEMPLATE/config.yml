@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/hfe3/proof402/security/advisories/new
+    about: Report vulnerabilities privately. Do not post secrets or exploit details in public issues.
+  - name: Live service
+    url: https://proof402.vercel.app
+    about: Check the public Proof402 deployment.

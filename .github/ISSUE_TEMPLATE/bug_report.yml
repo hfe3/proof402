@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible Proof402 bug without sharing secrets.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include live secrets, payment headers, wallet material, database URLs, CDP credentials, or raw private payloads.
+  - type: input
+    id: endpoint
+    attributes:
+      label: Endpoint or page
+      description: Example: /api/proof/notarize, /api/verify/proofs/{id}, /proof/{id}
+      placeholder: /api/...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Use fake hashes and non-secret metadata only.
+      placeholder: |
+        1. Start demo mode with npm run dev:demo
+        2. Call ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification run
+      description: Paste high-level pass/fail output only. Redact secrets.
+      placeholder: |
+        npm test
+        npm run security:scan
+        npm run deploy:check -- http://127.0.0.1:4022
+    validations:
+      required: false
