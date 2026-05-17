@@ -8,7 +8,7 @@ import { ApiError, errorBody } from "./errors.js";
 import { logEvent, observabilitySummary, recordMetric, requestLogger } from "./observability.js";
 import { proofLinks, publicProof } from "./proofService.js";
 import { createRateLimiter } from "./rateLimit.js";
-import { buildTrustSummary } from "./trustSummary.js";
+import { buildStatusSummary, buildTrustSummary } from "./trustSummary.js";
 import { maybeInstallX402 } from "./x402.js";
 import { getProof, initStore, listRecentProofs, storeStats } from "./store.js";
 import { notarizeProof } from "./proofService.js";
@@ -71,6 +71,18 @@ app.get("/api/trust", async (_req, res, next) => {
       await buildTrustSummary({
         storeStats,
         listRecentProofs
+      })
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/status", async (_req, res, next) => {
+  try {
+    res.json(
+      await buildStatusSummary({
+        storeStats
       })
     );
   } catch (error) {

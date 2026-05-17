@@ -22,6 +22,7 @@ const checks = [
   ["/api/quickstart", "json"],
   ["/api/actions", "json"],
   ["/api/trust", "json"],
+  ["/api/status", "json"],
   ["/openapi.json", "json"],
   ["/llms.txt", "text"],
   ["/", "text"],

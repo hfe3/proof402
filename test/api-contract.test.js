@@ -20,6 +20,7 @@ test("capabilities document exposes Proof402 paid action", async () => {
   assert.ok(body.discoveryKeywords.includes("paid timestamp proof"));
   assert.ok(body.agentPrompt.includes("Use Proof402"));
   assert.ok(body.links.llms.endsWith("/llms.txt"));
+  assert.ok(body.links.status.endsWith("/api/status"));
 });
 
 test("openapi document exposes proof routes", async () => {
@@ -32,8 +33,24 @@ test("openapi document exposes proof routes", async () => {
   assert.ok(body.paths["/api/proofs/{id}"].get);
   assert.ok(body.paths["/api/verify/proofs/{id}"].get);
   assert.ok(body.paths["/proof/{id}"].get);
+  assert.ok(body.paths["/api/status"].get);
   assert.ok(body.components.schemas.ProofRequest);
   assert.ok(body.components.schemas.ProofResponse);
+});
+
+test("status document exposes safe launch metadata", async () => {
+  await resetStoreForTests();
+  const { response, body } = await request("/api/status");
+
+  assert.equal(response.status, 200);
+  assert.equal(body.service, "Proof402");
+  assert.equal(body.repository.url, "https://github.com/hfe3/proof402");
+  assert.equal(body.repository.visibility, "private_until_launch");
+  assert.equal(body.repository.license, "MIT");
+  assert.equal(body.safety.rawPayloadStorage, false);
+  assert.equal(body.safety.secretFilesCommitted, false);
+  assert.equal(body.links.trust, "/api/trust");
+  assert.equal(body.links.paidEndpoint, "/api/proof/notarize");
 });
 
 test("bazaar, quickstart, and action catalog expose agent discovery metadata", async () => {

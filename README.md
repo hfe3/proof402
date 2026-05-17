@@ -93,6 +93,7 @@ GET /api/bazaar
 GET /api/quickstart
 GET /api/actions
 GET /api/trust
+GET /api/status
 GET /llms.txt
 GET /api/proofs/recent
 GET /api/proofs/{id}

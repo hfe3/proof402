@@ -166,6 +166,7 @@ export function publicCapabilities() {
       bazaar: abs("/api/bazaar"),
       quickstart: abs("/api/quickstart"),
       actionCatalog: abs("/api/actions"),
+      status: abs("/api/status"),
       paidEndpoint: abs(SERVICE.paidPath)
     }
   };
@@ -230,6 +231,14 @@ export function openApiSpec() {
           summary: "Public trust summary",
           responses: {
             "200": { description: "Trust response" }
+          }
+        }
+      },
+      "/api/status": {
+        get: {
+          summary: "Public launch and runtime status summary",
+          responses: {
+            "200": { description: "Status response" }
           }
         }
       },
