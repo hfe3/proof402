@@ -15,8 +15,8 @@ Use this checklist for the public launch and post-launch verification.
 - GitHub Actions: latest `main` CI run must be green before and after public launch
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
-- Latest paid AgentCash smoke: `proof_d5ca3894148e3c1dc73fd028`,
-  transaction `0x6fcd55aec9f442e0b65815fb1f76c13b0e5213e75c00e61612ddd01f9f1e0b66`
+- Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
+  transaction `0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e`
 
 ## Required Checks
 

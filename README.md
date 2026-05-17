@@ -32,13 +32,13 @@ Storage: Postgres
 Paid endpoint: POST https://proof402.vercel.app/api/proof/notarize
 ```
 
-Latest paid AgentCash smoke test:
+Latest post-public paid AgentCash smoke test:
 
 ```text
-Proof ID: proof_d5ca3894148e3c1dc73fd028
-Proof page: https://proof402.vercel.app/proof/proof_d5ca3894148e3c1dc73fd028
-Verify API: https://proof402.vercel.app/api/verify/proofs/proof_d5ca3894148e3c1dc73fd028
-Payment tx: 0x6fcd55aec9f442e0b65815fb1f76c13b0e5213e75c00e61612ddd01f9f1e0b66
+Proof ID: proof_d8cfab2c1413f0f173967641
+Proof page: https://proof402.vercel.app/proof/proof_d8cfab2c1413f0f173967641
+Verify API: https://proof402.vercel.app/api/verify/proofs/proof_d8cfab2c1413f0f173967641
+Payment tx: 0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e
 ```
 
 ## Paid Primitive
