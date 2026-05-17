@@ -21,7 +21,7 @@
     "deploy:check": "node scripts/deploy-check.js",
     "smoke:x402": "node scripts/x402-smoke.js",
     "start": "node src/server.js",
-    "test": "node --import ./scripts/test-env.js --test test"
+    "test": "node --import ./scripts/test-env.js --test test/api-contract.test.js test/proof.test.js test/store.test.js test/x402.test.js"
   },
   "dependencies": {
     "@coinbase/x402": "latest",
