@@ -150,6 +150,8 @@ Release history is tracked in `CHANGELOG.md`. The latest release notes are in
 Operational checks, rollback notes, and receipt-secret rotation steps are in
 `OPERATIONS.md`.
 
+Community safety expectations are documented in `CODE_OF_CONDUCT.md`.
+
 ## Verification
 
 ```powershell
@@ -254,6 +256,8 @@ For production operations, rollback, and secret-rotation procedures, see
 
 See `CONTRIBUTING.md` before opening issues or pull requests. Public reports
 must use fake hashes and non-secret metadata only.
+
+All public collaboration must also follow `CODE_OF_CONDUCT.md`.
 
 ## License
 

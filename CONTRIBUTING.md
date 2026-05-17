@@ -44,6 +44,11 @@ only be run with an explicit per-request max amount and operator approval.
   handling, or public discovery metadata.
 - Keep public examples non-secret and reproducible.
 
+## Conduct
+
+Follow `CODE_OF_CONDUCT.md` for public issues, pull requests, reviews, and
+release discussions.
+
 ## Security Reports
 
 Use GitHub private vulnerability reporting when available. Do not disclose

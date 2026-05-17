@@ -20,11 +20,11 @@ Use this checklist for the public launch and post-launch verification.
   Secret Protection are enabled
 - Dependabot version updates: configured in `.github/dependabot.yml`
 - Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
-- Community health: `CONTRIBUTING.md`, pull request template, and issue
-  templates are configured with no-secrets guidance
+- Community health: `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, pull request
+  template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.8`.
+  prepared. Latest release: `v0.1.9`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -77,9 +77,11 @@ managed secret store.
 
 - GitHub Actions CI is green on `main`.
 - Branch protection is enabled for `main`.
-- `SECURITY.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` are present.
+- `SECURITY.md`, `CODE_OF_CONDUCT.md`, `LICENSE`, and
+  `THIRD_PARTY_NOTICES.md` are present.
 - `OPERATIONS.md` is present and current.
-- `CONTRIBUTING.md`, issue templates, and pull request template are present.
+- `CONTRIBUTING.md`, issue templates, pull request template, and code of
+  conduct are present.
 - `CHANGELOG.md` and `RELEASE_NOTES.md` are present before tagging a public
   release.
 - `npx agentcash discover https://proof402.vercel.app` finds the OpenAPI

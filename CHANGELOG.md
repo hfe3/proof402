@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.9 - 2026-05-17
+
+### Added
+
+- Added `CODE_OF_CONDUCT.md` and linked it from contributor and launch docs for
+  public community-health hardening.
+
 ## 0.1.8 - 2026-05-17
 
 ### Added

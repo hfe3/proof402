@@ -1,17 +1,16 @@
-# Proof402 0.1.8 Release Notes
+# Proof402 0.1.9 Release Notes
 
-Proof402 0.1.8 is an operations runbook patch for the x402-compatible
+Proof402 0.1.9 is a community-health patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `OPERATIONS.md` with routine production verification, release checks,
-  incident triage, rollback guidance, receipt-secret rotation, paid-smoke rules,
-  and ADS browser hygiene.
-- README, `SECURITY.md`, and `LAUNCH_CHECKLIST.md` now point operators to the
-  runbook.
+- Added `CODE_OF_CONDUCT.md` with collaboration, public-safety, and
+  security-sensitive reporting expectations.
+- README, `CONTRIBUTING.md`, and `LAUNCH_CHECKLIST.md` now point contributors
+  to the code of conduct.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.8`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.9`.
 
 ## Production
 
