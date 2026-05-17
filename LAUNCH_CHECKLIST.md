@@ -14,7 +14,7 @@ Use this checklist before changing the GitHub repository from private to public.
 - License: MIT
 - GitHub Actions: latest `main` CI run must be green before public launch
 - Vercel GitHub integration: pending until the Vercel account has a GitHub
-  Login Connection for `hfe3/proof402`
+  Login Connection and the Vercel GitHub App is installed for `hfe3/proof402`
 
 ## Required Checks
 
@@ -68,6 +68,9 @@ managed secret store.
 - Environment Variables are configured in Vercel, not committed to GitHub.
 - Add the GitHub Login Connection in Vercel:
   `https://vercel.com/account/settings/login-connections`
+- Install or configure the Vercel GitHub App so it has access to the private
+  `hfe3/proof402` repository. Verify in GitHub:
+  `https://github.com/hfe3/proof402/settings/installations`
 - Then connect this project to the repository:
 
 ```powershell
