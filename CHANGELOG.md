@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.15 - 2026-05-18
+
+### Added
+
+- Added `npm run release:check` for post-release verification of the clean
+  `main` checkout, current tag, GitHub Release, required GitHub check-runs, and
+  live production metadata without settling a payment.
+
 ## 0.1.14 - 2026-05-18
 
 ### Added

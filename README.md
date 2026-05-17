@@ -197,9 +197,19 @@ Or run the full production verification bundle:
 npm run verify:production
 ```
 
+After publishing a tag and GitHub Release, run the post-release gate:
+
+```powershell
+npm run release:check
+```
+
 `version:check` verifies that package metadata, runtime config, OpenAPI/service
 metadata, marketplace JSON, brand docs, changelog, release notes, and launch
 checklist all report the same version.
+
+`release:check` verifies the clean `main` checkout, current release tag,
+published GitHub Release, successful GitHub check-runs, and live production
+metadata for `https://proof402.vercel.app`. It does not settle a payment.
 
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
 run through AgentCash or another x402-capable buyer wallet with a strict
