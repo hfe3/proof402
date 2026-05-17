@@ -19,6 +19,7 @@
     "dev:testnet": "node scripts/start-profile.js testnet",
     "dev:mainnet": "node scripts/start-profile.js mainnet",
     "deploy:check": "node scripts/deploy-check.js",
+    "security:scan": "node scripts/security-scan.js",
     "smoke:x402": "node scripts/x402-smoke.js",
     "start": "node src/server.js",
     "test": "node --import ./scripts/test-env.js --test test/api-contract.test.js test/proof.test.js test/store.test.js test/x402.test.js"

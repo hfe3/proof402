@@ -143,6 +143,7 @@ CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
 
 ```powershell
 npm test
+npm run security:scan
 npm run deploy:check -- http://127.0.0.1:4022
 ```
 

@@ -23,6 +23,7 @@ Run locally from `D:\Agents_402\proof402`:
 ```powershell
 git status --short --ignored
 npm test
+npm run security:scan
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
 ```
