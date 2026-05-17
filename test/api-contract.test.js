@@ -21,6 +21,7 @@ test("capabilities document exposes Proof402 paid action", async () => {
   assert.ok(body.agentPrompt.includes("Use Proof402"));
   assert.ok(body.links.llms.endsWith("/llms.txt"));
   assert.ok(body.links.status.endsWith("/api/status"));
+  assert.ok(body.links.securityTxt.endsWith("/.well-known/security.txt"));
 });
 
 test("openapi document exposes proof routes", async () => {
@@ -82,6 +83,18 @@ test("llms.txt and public pages load", async () => {
 
   const localLlms = readFileSync("public/llms.txt", "utf8");
   assert.ok(localLlms.includes("Production URL"));
+
+  const robots = await request("/robots.txt");
+  assert.equal(robots.response.status, 200);
+  assert.ok(robots.body.includes("Sitemap: https://proof402.vercel.app/sitemap.xml"));
+
+  const sitemap = await request("/sitemap.xml");
+  assert.equal(sitemap.response.status, 200);
+  assert.ok(sitemap.body.includes("https://proof402.vercel.app/api/status"));
+
+  const securityTxt = await request("/.well-known/security.txt");
+  assert.equal(securityTxt.response.status, 200);
+  assert.ok(securityTxt.body.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"));
 
   for (const path of ["/", "/agents", "/pricing", "/demo", "/actions", "/trust", "/proofs", "/proof/proof_missing"]) {
     const page = await request(path);

@@ -24,6 +24,10 @@ app.set("trust proxy", true);
 app.use(requestLogger);
 app.use(express.static("public", { extensions: ["html"] }));
 
+app.get(["/security.txt", "/.well-known/security.txt"], (_req, res) => {
+  res.type("text/plain").sendFile("security.txt", { root: "public" });
+});
+
 app.get("/health", async (_req, res, next) => {
   try {
     res.json({
