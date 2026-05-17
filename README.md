@@ -164,6 +164,20 @@ npm run smoke:x402 -- https://proof402.vercel.app
 run through AgentCash or another x402-capable buyer wallet with a strict
 per-request max amount.
 
+## AgentCash Discovery
+
+Proof402 is discoverable through AgentCash from the production origin:
+
+```powershell
+npx agentcash discover https://proof402.vercel.app
+npx agentcash check https://proof402.vercel.app/api/proof/notarize -m POST -b '{...}'
+```
+
+The production paid endpoint probes as x402 on Base mainnet (`eip155:8453`) for
+`5000` micro-USDC (`$0.005`). The origin has also been added to the local
+AgentCash origins list; restart the AgentCash MCP server for that local client
+entry to appear in model context.
+
 ## Required Production Env Vars
 
 ```text

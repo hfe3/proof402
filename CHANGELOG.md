@@ -2,6 +2,15 @@
 
 All notable Proof402 changes are documented here.
 
+## Unreleased
+
+### Added
+
+- Registered the production Proof402 origin with AgentCash discovery and added
+  it to the local AgentCash origins list for agent-client context.
+- Documented AgentCash discovery and x402 payment probing in the README and
+  launch checklist.
+
 ## 0.1.0 - 2026-05-17
 
 Initial public release.

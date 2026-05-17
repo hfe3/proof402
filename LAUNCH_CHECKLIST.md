@@ -23,6 +23,8 @@ Use this checklist for the public launch and post-launch verification.
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and `v0.1.0` tag are prepared
+- AgentCash discovery: production origin registered and added locally; paid
+  endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
 - Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
@@ -71,6 +73,9 @@ managed secret store.
 - `CONTRIBUTING.md`, issue templates, and pull request template are present.
 - `CHANGELOG.md` and `RELEASE_NOTES.md` are present before tagging a public
   release.
+- `npx agentcash discover https://proof402.vercel.app` finds the OpenAPI
+  surface, and `agentcash check` with a valid body reports payment required for
+  `POST /api/proof/notarize`.
 - The README links to the production URL, paid endpoint, proof example, verify
   endpoint, and security policy.
 - Repository visibility is public only after this checklist is complete.
