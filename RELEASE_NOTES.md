@@ -1,20 +1,20 @@
-# Proof402 0.1.4 Release Notes
+# Proof402 0.1.5 Release Notes
 
-Proof402 0.1.4 is a discovery consistency patch for the x402-compatible
+Proof402 0.1.5 is an operational checklist patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- `/api/bazaar`, `/api/actions`, `/api/quickstart`, `/api/trust`, and
-  `/api/status` now consistently point agents to the marketplace page,
-  marketplace JSON, status summary, llms.txt, and public safety files.
-- README and brand listing metadata now include `/marketplace`,
-  `/marketplace.json`, `/api/status`, `robots.txt`, `sitemap.xml`, and
-  `security.txt` where useful for marketplace and directory crawlers.
+- Launch and security checklists now include `npm audit --omit=dev` and
+  `npx agentcash discover https://proof402.vercel.app --format json`.
+- Paid smoke guidance now clearly distinguishes unpaid x402 challenge checks
+  from real paid smoke tests, and requires explicit operator approval for any
+  paid max spend.
+- ADS browser hygiene is documented: close only temporary verification tabs and
+  leave operator dashboard, wallet, extension, offscreen, and service-worker tabs
+  alone.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.4`.
-- Verification: production deploy-check passes, unpaid x402 smoke passes,
-  local tests pass, dependency audit passes, and secret scanning passes.
+  marketplace JSON, package metadata, and brand docs now report `0.1.5`.
 
 ## Production
 
@@ -33,6 +33,7 @@ npm run security:scan
 npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
+npx agentcash discover https://proof402.vercel.app --format json
 ```
 
 The latest post-public paid AgentCash smoke remains:

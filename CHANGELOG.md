@@ -4,6 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.5 - 2026-05-17
+
 ### Changed
 
 - Updated launch and security checklists for the current release, dependency
