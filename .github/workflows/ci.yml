@@ -33,6 +33,9 @@ jobs:
       - name: Check forbidden tracked files
         run: npm run security:scan
 
+      - name: Audit production dependencies
+        run: npm audit --omit=dev
+
       - name: Run tests
         run: npm test
 
@@ -45,6 +48,7 @@ jobs:
           trap 'kill "$demo_pid" 2>/dev/null || true' EXIT
           for _ in $(seq 1 30); do
             if curl -fsS http://127.0.0.1:4022/health > /dev/null; then
+              npm run local:doctor -- http://127.0.0.1:4022
               npm run deploy:check -- http://127.0.0.1:4022
               exit 0
             fi

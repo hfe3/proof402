@@ -1,17 +1,18 @@
-# Proof402 0.1.11 Release Notes
+# Proof402 0.1.12 Release Notes
 
-Proof402 0.1.11 is a local-operations hardening patch for the x402-compatible
+Proof402 0.1.12 is a CI verification hardening patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `npm run local:doctor` to verify that the local `/health` response
-  matches the current checkout version, demo profile, and local x402-disabled
-  mode.
-- The doctor command reports the listening PID on Windows when default port
-  `4022` is occupied by a stale local service.
+- GitHub Actions now runs `npm audit --omit=dev` as a production dependency
+  gate.
+- GitHub Actions now runs `npm run local:doctor -- http://127.0.0.1:4022`
+  before local demo `deploy:check`.
+- PR and bug-report templates now include the same local doctor and production
+  dependency audit checks.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.11`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.12`.
 
 ## Production
 

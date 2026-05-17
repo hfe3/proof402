@@ -146,7 +146,8 @@ Mainnet is deployed at `https://proof402.vercel.app`.
 GitHub: https://github.com/hfe3/proof402
 Visibility: public
 License: MIT
-CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
+CI: GitHub Actions runs npm ci, security scan, production dependency audit,
+npm test, local doctor, local demo smoke, and deploy-check
 ```
 
 Release history is tracked in `CHANGELOG.md`. The latest release notes are in

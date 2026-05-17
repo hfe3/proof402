@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.12 - 2026-05-18
+
+### Changed
+
+- Added `npm run local:doctor` and `npm audit --omit=dev` to the GitHub Actions
+  CI gate, PR checklist, and bug-report verification prompts.
+
 ## 0.1.11 - 2026-05-18
 
 ### Added
