@@ -11,6 +11,7 @@ cd D:\Agents_402\proof402
 npm install
 npm run dev:demo
 npm run local:doctor
+npm run verify:local
 ```
 
 Open:
@@ -161,9 +162,23 @@ Community safety expectations are documented in `CODE_OF_CONDUCT.md`.
 ## Verification
 
 ```powershell
+npm run verify:local
+```
+
+`verify:local` expects the current checkout to be running on
+`http://127.0.0.1:4022`. To verify a different local port:
+
+```powershell
+npm run verify:local -- http://127.0.0.1:4028
+```
+
+The individual local checks are:
+
+```powershell
 npm test
 npm run local:doctor -- http://127.0.0.1:4022
 npm run security:scan
+npm audit --omit=dev
 npm run deploy:check -- http://127.0.0.1:4022
 ```
 
@@ -172,6 +187,12 @@ When testing an x402-protected deployment:
 ```powershell
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
+```
+
+Or run the full production verification bundle:
+
+```powershell
+npm run verify:production
 ```
 
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be

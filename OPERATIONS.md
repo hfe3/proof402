@@ -22,13 +22,8 @@ Run from `D:\Agents_402\proof402`:
 
 ```powershell
 git status --short --ignored
-npm test
-npm run local:doctor -- http://127.0.0.1:4022
-npm run security:scan
-npm audit --omit=dev
-npm run deploy:check -- https://proof402.vercel.app --expect-x402
-npm run smoke:x402 -- https://proof402.vercel.app
-npx agentcash discover https://proof402.vercel.app --format json
+npm run verify:local
+npm run verify:production
 ```
 
 `smoke:x402` is unpaid. It checks the `402 Payment Required` challenge and does
@@ -50,6 +45,8 @@ Before tagging:
   same version.
 - Run `npm run local:doctor -- http://127.0.0.1:4022` before trusting local
   demo results.
+- Prefer `npm run verify:local` and `npm run verify:production` when preparing
+  releases; they run the routine command bundle in a fixed order.
 - Run the routine verification commands above.
 - Confirm `git status --short --ignored` shows only expected ignored local
   files such as `.env`, `.vercel/`, `data/`, `node_modules/`, and logs.

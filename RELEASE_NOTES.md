@@ -1,18 +1,17 @@
-# Proof402 0.1.12 Release Notes
+# Proof402 0.1.13 Release Notes
 
-Proof402 0.1.12 is a CI verification hardening patch for the x402-compatible
+Proof402 0.1.13 is an operator-verification patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- GitHub Actions now runs `npm audit --omit=dev` as a production dependency
-  gate.
-- GitHub Actions now runs `npm run local:doctor -- http://127.0.0.1:4022`
-  before local demo `deploy:check`.
-- PR and bug-report templates now include the same local doctor and production
-  dependency audit checks.
+- Added `npm run verify:local` for the full local release-check bundle.
+- Added `npm run verify:production` for the full production release-check
+  bundle, including unpaid x402 smoke and AgentCash discovery.
+- README, operations, launch checklist, PR template, and bug-report template now
+  point to the verification bundles.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.12`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.13`.
 
 ## Production
 

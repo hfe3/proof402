@@ -9,6 +9,7 @@ Describe the change and why it is needed.
 - [ ] `npm run security:scan`
 - [ ] `npm audit --omit=dev`
 - [ ] `npm run deploy:check -- http://127.0.0.1:4022`
+- [ ] Local bundle: `npm run verify:local`
 - [ ] Production-facing change: `npm run deploy:check -- https://proof402.vercel.app --expect-x402`
 - [ ] Production-facing x402 change: unpaid `npm run smoke:x402 -- https://proof402.vercel.app`
 

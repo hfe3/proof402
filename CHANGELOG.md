@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.13 - 2026-05-18
+
+### Added
+
+- Added `npm run verify:local` and `npm run verify:production` operator bundles
+  for repeatable local and production release verification.
+
 ## 0.1.12 - 2026-05-18
 
 ### Changed
