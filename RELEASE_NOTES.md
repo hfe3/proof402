@@ -1,20 +1,16 @@
-# Proof402 0.1.5 Release Notes
+# Proof402 0.1.6 Release Notes
 
-Proof402 0.1.5 is an operational checklist patch for the x402-compatible
+Proof402 0.1.6 is a launch checklist wording patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Launch and security checklists now include `npm audit --omit=dev` and
-  `npx agentcash discover https://proof402.vercel.app --format json`.
-- Paid smoke guidance now clearly distinguishes unpaid x402 challenge checks
-  from real paid smoke tests, and requires explicit operator approval for any
-  paid max spend.
-- ADS browser hygiene is documented: close only temporary verification tabs and
-  leave operator dashboard, wallet, extension, offscreen, and service-worker tabs
-  alone.
+- The root launch checklist now reflects the live GitHub state: the canonical
+  `hfe3/proof402` repository is public.
+- The old "make public" instructions are now framed as guidance only for a
+  future private fork or rebuild, not for ordinary Proof402 release work.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.5`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.6`.
 
 ## Production
 

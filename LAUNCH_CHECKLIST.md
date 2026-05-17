@@ -5,7 +5,7 @@ Use this checklist for the public launch and post-launch verification.
 ## Current State
 
 - GitHub repository: `https://github.com/hfe3/proof402`
-- Repository visibility: public after final launch approval
+- Repository visibility: public
 - Production URL: `https://proof402.vercel.app`
 - Paid endpoint: `POST /api/proof/notarize`
 - Price: `$0.005`
@@ -23,7 +23,7 @@ Use this checklist for the public launch and post-launch verification.
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.5`.
+  prepared. Latest release: `v0.1.6`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -88,7 +88,7 @@ managed secret store.
   `$0.005` price.
 - The README links to the production URL, paid endpoint, proof example, verify
   endpoint, and security policy.
-- Repository visibility is public only after this checklist is complete.
+- Repository visibility is public and should remain public after release checks.
 
 ## Vercel Review
 
@@ -120,14 +120,11 @@ npx vercel git connect git@github.com:hfe3/proof402.git
 - After browser automation, list the ADS targets and confirm no temporary
   `about:blank`, GitHub release, or GitHub checks tab remains.
 
-## Make Public
+## Visibility Changes
 
-If the repository is still private, make it public only after every item above
-is complete:
+The canonical repository is already public. Do not change repository visibility
+during ordinary release work.
 
-1. Open GitHub repository settings.
-2. Go to `Settings` -> `General` -> `Danger Zone`.
-3. Use `Change repository visibility`.
-4. Confirm `Make public`.
-5. Re-run the required checks after visibility changes. Run paid smoke only
-   with explicit operator approval.
+If rebuilding from a private fork, make that repository public only after every
+item above is complete, then re-run the required checks. Run paid smoke only
+with explicit operator approval.

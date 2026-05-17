@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.6 - 2026-05-17
+
+### Changed
+
+- Updated launch checklist repository visibility wording now that the canonical
+  GitHub repository is public.
+
 ## 0.1.5 - 2026-05-17
 
 ### Changed
