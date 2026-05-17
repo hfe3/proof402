@@ -129,6 +129,15 @@ npm run dev:mainnet
 
 Mainnet is deployed at `https://proof402.vercel.app`.
 
+## Repository
+
+```text
+GitHub: https://github.com/hfe3/proof402
+Visibility: private until launch cleanup is complete
+License: MIT
+CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
+```
+
 ## Verification
 
 ```powershell
@@ -177,3 +186,15 @@ CDP secrets
 private keys
 payment canary automation
 ```
+
+## Security
+
+See `SECURITY.md` before reporting vulnerabilities or moving the repository to
+public visibility. Do not include live secrets, wallet material, payment
+headers, database URLs, or private payloads in GitHub issues, commits, logs, or
+screenshots.
+
+## License
+
+Proof402 is licensed under the MIT License. See `LICENSE` and
+`THIRD_PARTY_NOTICES.md`.

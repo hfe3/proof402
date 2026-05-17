@@ -2,8 +2,17 @@
   "name": "proof402",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "description": "x402-compatible timestamped proof service for autonomous agents.",
+  "homepage": "https://proof402.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hfe3/proof402.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hfe3/proof402/issues"
+  },
   "scripts": {
     "dev": "node src/server.js",
     "dev:demo": "node scripts/start-profile.js demo",

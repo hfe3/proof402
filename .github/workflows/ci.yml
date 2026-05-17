@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test and local smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check forbidden tracked files
+        shell: bash
+        run: |
+          set -euo pipefail
+          forbidden="$(
+            git ls-files |
+            grep -E '(^|/)(data|\.vercel|node_modules|wallets?|agentcash|secrets?|private|keys|tokens|local-canary)/|(^|/)\.env$|(^|/)\.env\.(local|demo|testnet|mainnet|production)$|\.(pem|key|p12|pfx|crt|cer|jwk|secret|secrets)$|(^|/)settlement-canary' || true
+          )"
+          if [ -n "$forbidden" ]; then
+            echo "Forbidden tracked files:"
+            echo "$forbidden"
+            exit 1
+          fi
+
+      - name: Run tests
+        run: npm test
+
+      - name: Local demo deploy check
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run dev:demo > /tmp/proof402-demo.log 2>&1 &
+          demo_pid=$!
+          trap 'kill "$demo_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4022/health > /dev/null; then
+              npm run deploy:check -- http://127.0.0.1:4022
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/proof402-demo.log
+          exit 1
