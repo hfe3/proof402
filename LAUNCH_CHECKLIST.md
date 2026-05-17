@@ -12,6 +12,9 @@ Use this checklist before changing the GitHub repository from private to public.
 - Network: Base mainnet, `eip155:8453`
 - Storage: Postgres in production, JSON store for local demo
 - License: MIT
+- GitHub Actions: latest `main` CI run must be green before public launch
+- Vercel GitHub integration: pending until the Vercel account has a GitHub
+  Login Connection for `hfe3/proof402`
 
 ## Required Checks
 
@@ -62,8 +65,16 @@ managed secret store.
 - `https://proof402.vercel.app/api/status` reports repository visibility as
   `private_until_launch`.
 - Environment Variables are configured in Vercel, not committed to GitHub.
-- If GitHub integration is enabled, confirm future `main` pushes trigger a
-  production deployment or a controlled preview workflow.
+- Add the GitHub Login Connection in Vercel:
+  `https://vercel.com/account/settings/login-connections`
+- Then connect this project to the repository:
+
+```powershell
+npx vercel git connect git@github.com:hfe3/proof402.git
+```
+
+- After connection, push a harmless docs commit and confirm the Vercel
+  deployment is triggered by GitHub rather than by a manual `vercel deploy`.
 
 ## Make Public
 
