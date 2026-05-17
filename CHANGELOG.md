@@ -4,6 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.4 - 2026-05-17
+
 ### Changed
 
 - Propagated marketplace and status discovery links across bazaar, actions,
