@@ -4,6 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.3 - 2026-05-17
+
 ### Added
 
 - Added `/marketplace` and `/marketplace.json` to OpenAPI and capabilities

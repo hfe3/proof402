@@ -22,7 +22,7 @@ Use this checklist for the public launch and post-launch verification.
 - Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
-- Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, `v0.1.2` tag are prepared
+- Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, `v0.1.3` tag are prepared
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
