@@ -35,10 +35,10 @@ Paid endpoint: POST https://proof402.vercel.app/api/proof/notarize
 Latest paid AgentCash smoke test:
 
 ```text
-Proof ID: proof_8d950ac70c17b62be2c0919f
-Proof page: https://proof402.vercel.app/proof/proof_8d950ac70c17b62be2c0919f
-Verify API: https://proof402.vercel.app/api/verify/proofs/proof_8d950ac70c17b62be2c0919f
-Payment tx: 0x063d6d71fed51a180f3b94d7646342f5aa6ab50724f7ea6cafb6992491b864b3
+Proof ID: proof_d5ca3894148e3c1dc73fd028
+Proof page: https://proof402.vercel.app/proof/proof_d5ca3894148e3c1dc73fd028
+Verify API: https://proof402.vercel.app/api/verify/proofs/proof_d5ca3894148e3c1dc73fd028
+Payment tx: 0x6fcd55aec9f442e0b65815fb1f76c13b0e5213e75c00e61612ddd01f9f1e0b66
 ```
 
 ## Paid Primitive
