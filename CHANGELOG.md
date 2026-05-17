@@ -4,6 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.2 - 2026-05-17
+
 ### Changed
 
 - Updated GitHub Actions maintenance dependencies:

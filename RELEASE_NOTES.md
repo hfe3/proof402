@@ -1,18 +1,20 @@
-# Proof402 0.1.1 Release Notes
+# Proof402 0.1.2 Release Notes
 
-Proof402 0.1.1 is a post-launch discovery and public-sharing patch for the
+Proof402 0.1.2 is a marketplace discovery and maintenance patch for the
 x402-compatible timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- AgentCash discovery: the production origin is registered and added to the
-  local AgentCash origins list for agent-client context.
-- Public sharing: public pages now include Open Graph/Twitter metadata and the
-  `proof402-social.svg` preview image.
-- Price consistency: static pricing pages and `llms.txt` now match the live
-  production price of `$0.005`.
-- Launch posture: CI, CodeQL, Vercel deploy-check, unpaid x402 smoke, and local
-  secret scanning pass on the release commit.
+- Marketplace discovery: `/marketplace`, `/marketplace.json`, and public SVG
+  listing assets are live for agent directories and x402 catalogs.
+- Brand kit: `Brand/` now includes a public-safe marketplace listing source,
+  wordmark, marketplace banner, and proof badge example.
+- Maintenance: GitHub Actions dependencies were updated to
+  `actions/checkout@v6` and `actions/setup-node@v6`.
+- Version consistency: runtime health, capabilities, OpenAPI metadata,
+  marketplace JSON, package metadata, and brand docs now report `0.1.2`.
+- Verification: AgentCash discovery, production deploy-check, unpaid x402
+  smoke, local tests, secret scan, and production dependency audit pass.
 
 ## Production
 

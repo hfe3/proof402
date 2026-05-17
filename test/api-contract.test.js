@@ -4,12 +4,15 @@ import { readFileSync } from "node:fs";
 import { request } from "./helpers.js";
 import { resetStoreForTests } from "../src/store.js";
 
+const packageVersion = JSON.parse(readFileSync("package.json", "utf8")).version;
+
 test("capabilities document exposes Proof402 paid action", async () => {
   await resetStoreForTests();
   const { response, body } = await request("/api/capabilities");
 
   assert.equal(response.status, 200);
   assert.equal(body.name, "Proof402");
+  assert.equal(body.version, packageVersion);
   assert.equal(body.actions[0].id, "proof.notarize");
   assert.equal(body.actions[0].path, "/api/proof/notarize");
   assert.equal(body.actions[0].paid, true);
@@ -29,6 +32,7 @@ test("openapi document exposes proof routes", async () => {
 
   assert.equal(response.status, 200);
   assert.equal(body.openapi, "3.1.0");
+  assert.equal(body.info.version, packageVersion);
   assert.ok(body.paths["/api/proof/notarize"].post);
   assert.ok(body.paths["/api/proofs/recent"].get);
   assert.ok(body.paths["/api/proofs/{id}"].get);
@@ -45,6 +49,7 @@ test("status document exposes safe launch metadata", async () => {
 
   assert.equal(response.status, 200);
   assert.equal(body.service, "Proof402");
+  assert.equal(body.version, packageVersion);
   assert.equal(body.repository.url, "https://github.com/hfe3/proof402");
   assert.equal(body.repository.visibility, "public");
   assert.equal(body.repository.license, "MIT");
@@ -98,6 +103,7 @@ test("llms.txt and public pages load", async () => {
   const marketplaceJson = await request("/marketplace.json");
   assert.equal(marketplaceJson.response.status, 200);
   assert.equal(marketplaceJson.body.name, "Proof402");
+  assert.equal(marketplaceJson.body.version, packageVersion);
   assert.equal(marketplaceJson.body.paidAction.path, "/api/proof/notarize");
   assert.equal(marketplaceJson.body.x402.price, "$0.005");
   assert.equal(marketplaceJson.body.safety.rawPayloadStorage, false);
