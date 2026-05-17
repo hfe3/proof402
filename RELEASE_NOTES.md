@@ -1,16 +1,17 @@
-# Proof402 0.1.9 Release Notes
+# Proof402 0.1.10 Release Notes
 
-Proof402 0.1.9 is a community-health patch for the x402-compatible
-timestamp/hash proof service for autonomous agents.
+Proof402 0.1.10 is a deployment-verification hardening patch for the
+x402-compatible timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `CODE_OF_CONDUCT.md` with collaboration, public-safety, and
-  security-sensitive reporting expectations.
-- README, `CONTRIBUTING.md`, and `LAUNCH_CHECKLIST.md` now point contributors
-  to the code of conduct.
+- `npm run deploy:check` now verifies version consistency, paid action
+  metadata, public repository status, marketplace safety fields, and
+  `security.txt`/sitemap contents.
+- With `--expect-x402`, deploy checks now assert production mainnet settings:
+  `profile=mainnet`, `x402Enabled=true`, `eip155:8453`, and `$0.005`.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.9`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.10`.
 
 ## Production
 

@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs";
+
 const baseUrl = normalizeBaseUrl(process.argv[2]);
 const expectX402 = process.argv.includes("--expect-x402");
+const packageVersion = JSON.parse(readFileSync("package.json", "utf8")).version;
 
 if (!baseUrl) {
   console.error("Usage: npm run deploy:check -- <base-url> [--expect-x402]");
@@ -40,9 +43,12 @@ const checks = [
 ];
 
 try {
+  const results = new Map();
   for (const [path, kind] of checks) {
-    await checkGet(path, kind);
+    results.set(path, await checkGet(path, kind));
   }
+
+  checkDiscoveryDocuments(results);
 
   if (expectX402) {
     const response = await fetch(`${baseUrl}/api/proof/notarize`, {
@@ -80,10 +86,70 @@ async function checkGet(path, kind) {
   const response = await fetch(`${baseUrl}${path}`);
   assert(response.ok, `${path} returned ${response.status}`);
   if (kind === "json") {
-    await response.json();
-  } else {
-    const text = await response.text();
-    assert(text.length > 0, `${path} returned empty text`);
+    return response.json();
+  }
+  const text = await response.text();
+  assert(text.length > 0, `${path} returned empty text`);
+  return text;
+}
+
+function checkDiscoveryDocuments(results) {
+  const health = results.get("/health");
+  assert(health.service === "Proof402", "/health service mismatch");
+  assert(health.version === packageVersion, `/health version mismatch: expected ${packageVersion}, got ${health.version}`);
+
+  if (expectX402) {
+    assert(health.profile === "mainnet", `/health expected profile=mainnet, got ${health.profile}`);
+    assert(health.x402Enabled === true, "/health expected x402Enabled=true");
+    assert(health.network === "eip155:8453", `/health network mismatch: ${health.network}`);
+    assert(health.price === "$0.005", `/health price mismatch: ${health.price}`);
+  }
+
+  const capabilities = results.get("/api/capabilities");
+  assert(capabilities.name === "Proof402", "/api/capabilities name mismatch");
+  assert(capabilities.version === packageVersion, "/api/capabilities version mismatch");
+  assert(capabilities.actions?.some((action) => action.path === "/api/proof/notarize" && action.paid === true), "/api/capabilities missing paid proof action");
+
+  const status = results.get("/api/status");
+  assert(status.version === packageVersion, "/api/status version mismatch");
+  assert(status.repository?.url === "https://github.com/hfe3/proof402", "/api/status repository URL mismatch");
+  assert(status.repository?.visibility === "public", "/api/status repository visibility mismatch");
+  assert(status.links?.securityTxt === "/.well-known/security.txt", "/api/status missing security.txt link");
+
+  const trust = results.get("/api/trust");
+  assert(trust.service === "Proof402", "/api/trust service mismatch");
+  if (expectX402) {
+    assert(trust.x402?.enabled === true, "/api/trust expected x402.enabled=true");
+    assert(trust.x402?.network === "eip155:8453", `/api/trust network mismatch: ${trust.x402?.network}`);
+    assert(trust.x402?.price === "$0.005", `/api/trust price mismatch: ${trust.x402?.price}`);
+  }
+
+  const openapi = results.get("/openapi.json");
+  assert(openapi.info?.version === packageVersion, "/openapi.json version mismatch");
+  assert(openapi.paths?.["/api/proof/notarize"]?.post, "/openapi.json missing paid proof route");
+  assert(openapi.paths?.["/marketplace.json"]?.get, "/openapi.json missing marketplace JSON route");
+
+  const marketplace = results.get("/marketplace.json");
+  assert(marketplace.version === packageVersion, "/marketplace.json version mismatch");
+  assert(marketplace.paidAction?.path === "/api/proof/notarize", "/marketplace.json paid action mismatch");
+  assert(marketplace.x402?.price === "$0.005", `/marketplace.json price mismatch: ${marketplace.x402?.price}`);
+  assert(marketplace.safety?.rawPayloadStorage === false, "/marketplace.json raw payload storage must be false");
+
+  const securityTxt = results.get("/.well-known/security.txt");
+  assert(securityTxt.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"), "security.txt missing canonical URL");
+  assert(/^Expires: \d{4}-\d{2}-\d{2}T/m.test(securityTxt), "security.txt missing RFC-style Expires field");
+
+  const robots = results.get("/robots.txt");
+  assert(robots.includes("Sitemap: https://proof402.vercel.app/sitemap.xml"), "robots.txt missing sitemap");
+
+  const sitemap = results.get("/sitemap.xml");
+  for (const url of [
+    "https://proof402.vercel.app/marketplace",
+    "https://proof402.vercel.app/marketplace.json",
+    "https://proof402.vercel.app/openapi.json",
+    "https://proof402.vercel.app/api/status"
+  ]) {
+    assert(sitemap.includes(url), `sitemap.xml missing ${url}`);
   }
 }
 

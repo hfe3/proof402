@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.10 - 2026-05-17
+
+### Changed
+
+- Hardened `npm run deploy:check` to validate production discovery metadata,
+  version consistency, x402/mainnet settings, marketplace safety fields,
+  repository status, and `security.txt`/sitemap contents.
+
 ## 0.1.9 - 2026-05-17
 
 ### Added

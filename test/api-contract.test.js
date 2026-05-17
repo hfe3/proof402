@@ -131,6 +131,7 @@ test("llms.txt and public pages load", async () => {
   const securityTxt = await request("/.well-known/security.txt");
   assert.equal(securityTxt.response.status, 200);
   assert.ok(securityTxt.body.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"));
+  assert.match(securityTxt.body, /^Expires: \d{4}-\d{2}-\d{2}T/m);
 
   const socialCard = await request("/proof402-social.svg");
   assert.equal(socialCard.response.status, 200);
