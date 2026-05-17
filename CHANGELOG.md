@@ -4,6 +4,10 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.1 - 2026-05-17
+
 ### Added
 
 - Registered the production Proof402 origin with AgentCash discovery and added

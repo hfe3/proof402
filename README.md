@@ -142,8 +142,8 @@ License: MIT
 CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
 ```
 
-Release history is tracked in `CHANGELOG.md`. The public `0.1.0` release notes
-are in `RELEASE_NOTES.md`.
+Release history is tracked in `CHANGELOG.md`. The latest release notes are in
+`RELEASE_NOTES.md`.
 
 ## Verification
 

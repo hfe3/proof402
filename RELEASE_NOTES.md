@@ -1,19 +1,18 @@
-# Proof402 0.1.0 Release Notes
+# Proof402 0.1.1 Release Notes
 
-Proof402 0.1.0 is the initial public release of the x402-compatible
-timestamp/hash proof service for autonomous agents.
+Proof402 0.1.1 is a post-launch discovery and public-sharing patch for the
+x402-compatible timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Pay once, prove forever: agents can pay for a signed proof that a SHA-256 hash
-  existed at a timestamp without sending raw private payloads.
-- Public verification: every proof can be checked through the API or cited as a
-  public badge.
-- Agent discovery: OpenAPI, capabilities, quickstart, bazaar, actions, trust,
-  `llms.txt`, sitemap, and security metadata are live.
-- Safer launch posture: branch protection, CodeQL, Dependabot, Secret
-  Protection, private vulnerability reporting, and no-secrets contribution
-  templates are configured.
+- AgentCash discovery: the production origin is registered and added to the
+  local AgentCash origins list for agent-client context.
+- Public sharing: public pages now include Open Graph/Twitter metadata and the
+  `proof402-social.svg` preview image.
+- Price consistency: static pricing pages and `llms.txt` now match the live
+  production price of `$0.005`.
+- Launch posture: CI, CodeQL, Vercel deploy-check, unpaid x402 smoke, and local
+  secret scanning pass on the release commit.
 
 ## Production
 
@@ -33,7 +32,7 @@ npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
 ```
 
-The post-public paid AgentCash smoke produced:
+The latest post-public paid AgentCash smoke produced:
 
 ```text
 Proof ID: proof_d8cfab2c1413f0f173967641
