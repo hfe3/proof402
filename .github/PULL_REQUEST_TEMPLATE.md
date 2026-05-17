@@ -8,6 +8,7 @@ Describe the change and why it is needed.
 - [ ] `npm run local:doctor -- http://127.0.0.1:4022`
 - [ ] `npm run security:scan`
 - [ ] `npm audit --omit=dev`
+- [ ] `npm run version:check`
 - [ ] `npm run deploy:check -- http://127.0.0.1:4022`
 - [ ] Local bundle: `npm run verify:local`
 - [ ] Production-facing change: `npm run deploy:check -- https://proof402.vercel.app --expect-x402`

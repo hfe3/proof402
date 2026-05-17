@@ -12,6 +12,7 @@ npm install
 npm run dev:demo
 npm run local:doctor
 npm run verify:local
+npm run version:check
 ```
 
 Open:
@@ -176,6 +177,7 @@ The individual local checks are:
 
 ```powershell
 npm test
+npm run version:check
 npm run local:doctor -- http://127.0.0.1:4022
 npm run security:scan
 npm audit --omit=dev
@@ -194,6 +196,10 @@ Or run the full production verification bundle:
 ```powershell
 npm run verify:production
 ```
+
+`version:check` verifies that package metadata, runtime config, OpenAPI/service
+metadata, marketplace JSON, brand docs, changelog, release notes, and launch
+checklist all report the same version.
 
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
 run through AgentCash or another x402-capable buyer wallet with a strict

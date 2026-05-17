@@ -41,8 +41,9 @@ Before tagging:
 
 - Confirm `CHANGELOG.md` has the intended release entry.
 - Confirm `RELEASE_NOTES.md` matches the tag being prepared.
-- Confirm package, runtime, OpenAPI, marketplace JSON, and brand docs share the
-  same version.
+- Run `npm run version:check` to confirm package, runtime, marketplace JSON,
+  brand docs, changelog, release notes, and launch checklist share the same
+  version.
 - Run `npm run local:doctor -- http://127.0.0.1:4022` before trusting local
   demo results.
 - Prefer `npm run verify:local` and `npm run verify:production` when preparing

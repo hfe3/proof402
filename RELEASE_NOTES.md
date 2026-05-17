@@ -1,17 +1,17 @@
-# Proof402 0.1.13 Release Notes
+# Proof402 0.1.14 Release Notes
 
-Proof402 0.1.13 is an operator-verification patch for the x402-compatible
+Proof402 0.1.14 is a release-consistency hardening patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `npm run verify:local` for the full local release-check bundle.
-- Added `npm run verify:production` for the full production release-check
-  bundle, including unpaid x402 smoke and AgentCash discovery.
-- README, operations, launch checklist, PR template, and bug-report template now
-  point to the verification bundles.
+- Added `npm run version:check` to enforce version consistency across package
+  metadata, runtime config, marketplace JSON, brand docs, changelog, release
+  notes, and launch checklist.
+- `verify:local`, `verify:production`, GitHub Actions, PR templates, and
+  bug-report prompts now include the version check.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.13`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.14`.
 
 ## Production
 

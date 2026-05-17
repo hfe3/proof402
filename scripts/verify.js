@@ -8,6 +8,7 @@ const npx = "npx";
 const plans = {
   local: [
     [npm, ["test"]],
+    [npm, ["run", "version:check"]],
     [npm, ["run", "local:doctor", "--", target]],
     [npm, ["run", "security:scan"]],
     [npm, ["audit", "--omit=dev"]],
@@ -15,6 +16,7 @@ const plans = {
   ],
   production: [
     [npm, ["test"]],
+    [npm, ["run", "version:check"]],
     [npm, ["run", "security:scan"]],
     [npm, ["audit", "--omit=dev"]],
     [npm, ["run", "deploy:check", "--", target, "--expect-x402"]],

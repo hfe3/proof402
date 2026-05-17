@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.14 - 2026-05-18
+
+### Added
+
+- Added `npm run version:check` to enforce release-version consistency across
+  package metadata, runtime config, marketplace metadata, brand docs, changelog,
+  release notes, and launch checklist.
+
 ## 0.1.13 - 2026-05-18
 
 ### Added

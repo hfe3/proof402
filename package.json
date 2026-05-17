@@ -1,6 +1,6 @@
 {
   "name": "proof402",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -24,6 +24,7 @@
     "smoke:x402": "node scripts/x402-smoke.js",
     "start": "node src/server.js",
     "test": "node --import ./scripts/test-env.js --test test/api-contract.test.js test/proof.test.js test/store.test.js test/x402.test.js",
+    "version:check": "node scripts/version-check.js",
     "verify:local": "node scripts/verify.js local",
     "verify:production": "node scripts/verify.js production"
   },
