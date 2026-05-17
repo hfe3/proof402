@@ -4,7 +4,11 @@ All notable Proof402 changes are documented here.
 
 ## Unreleased
 
-No unreleased changes yet.
+### Changed
+
+- Updated GitHub Actions maintenance dependencies:
+  - `actions/checkout` from `v4` to `v6`
+  - `actions/setup-node` from `v4` to `v6`
 
 ## 0.1.1 - 2026-05-17
 
