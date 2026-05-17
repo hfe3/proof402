@@ -22,8 +22,9 @@ Use this checklist for the public launch and post-launch verification.
 - Code scanning: CodeQL workflow configured in `.github/workflows/codeql.yml`
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
+- Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.7`.
+  prepared. Latest release: `v0.1.8`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -77,6 +78,7 @@ managed secret store.
 - GitHub Actions CI is green on `main`.
 - Branch protection is enabled for `main`.
 - `SECURITY.md`, `LICENSE`, and `THIRD_PARTY_NOTICES.md` are present.
+- `OPERATIONS.md` is present and current.
 - `CONTRIBUTING.md`, issue templates, and pull request template are present.
 - `CHANGELOG.md` and `RELEASE_NOTES.md` are present before tagging a public
   release.

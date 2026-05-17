@@ -147,6 +147,9 @@ CI: GitHub Actions runs npm ci, npm test, local demo smoke, and deploy-check
 Release history is tracked in `CHANGELOG.md`. The latest release notes are in
 `RELEASE_NOTES.md`.
 
+Operational checks, rollback notes, and receipt-secret rotation steps are in
+`OPERATIONS.md`.
+
 ## Verification
 
 ```powershell
@@ -243,6 +246,9 @@ payment canary automation
 See `SECURITY.md` before reporting vulnerabilities. Do not include live
 secrets, wallet material, payment headers, database URLs, or private payloads
 in GitHub issues, commits, logs, or screenshots.
+
+For production operations, rollback, and secret-rotation procedures, see
+`OPERATIONS.md`.
 
 ## Contributing
 

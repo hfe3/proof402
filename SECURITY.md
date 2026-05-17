@@ -64,3 +64,6 @@ or another x402-capable buyer wallet with a strict per-request max amount, then
 verify the returned proof through `/api/verify/proofs/{id}`.
 
 Then confirm that tracked files contain no secret material.
+
+For operational incident response, rollback, and receipt-secret rotation steps,
+see `OPERATIONS.md`.

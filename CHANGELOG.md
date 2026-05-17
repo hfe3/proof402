@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.8 - 2026-05-17
+
+### Added
+
+- Added `OPERATIONS.md` with production verification, release checks, incident
+  triage, rollback, receipt-secret rotation, paid-smoke, and ADS browser
+  hygiene guidance.
+
 ## 0.1.7 - 2026-05-17
 
 ### Changed

@@ -1,18 +1,17 @@
-# Proof402 0.1.7 Release Notes
+# Proof402 0.1.8 Release Notes
 
-Proof402 0.1.7 is an environment documentation patch for the x402-compatible
+Proof402 0.1.8 is an operations runbook patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- `.env.example` now documents receipt key rotation through
-  `RECEIPT_PREVIOUS_SECRETS`.
-- Production env docs now include Postgres SSL, facilitator URL, receipt key ID,
-  retention, metadata and label limits, rate limiting, and logging controls.
-- Security guidance now states the `RECEIPT_PREVIOUS_SECRETS` format and keeps
-  old receipt secrets in managed environment variables only.
+- Added `OPERATIONS.md` with routine production verification, release checks,
+  incident triage, rollback guidance, receipt-secret rotation, paid-smoke rules,
+  and ADS browser hygiene.
+- README, `SECURITY.md`, and `LAUNCH_CHECKLIST.md` now point operators to the
+  runbook.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.7`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.8`.
 
 ## Production
 
