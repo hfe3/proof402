@@ -32,13 +32,13 @@ Storage: Postgres
 Paid endpoint: POST https://proof402.vercel.app/api/proof/notarize
 ```
 
-Paid AgentCash smoke test:
+Latest paid AgentCash smoke test:
 
 ```text
-Proof ID: proof_c45f0b2e3f679172078e19d5
-Proof page: https://proof402.vercel.app/proof/proof_c45f0b2e3f679172078e19d5
-Verify API: https://proof402.vercel.app/api/verify/proofs/proof_c45f0b2e3f679172078e19d5
-Payment tx: 0x6e6f35d1b7a3cfb2cba75a13305e9e68f619d59cd78ecde523e54deef40216c6
+Proof ID: proof_8d950ac70c17b62be2c0919f
+Proof page: https://proof402.vercel.app/proof/proof_8d950ac70c17b62be2c0919f
+Verify API: https://proof402.vercel.app/api/verify/proofs/proof_8d950ac70c17b62be2c0919f
+Payment tx: 0x063d6d71fed51a180f3b94d7646342f5aa6ab50724f7ea6cafb6992491b864b3
 ```
 
 ## Paid Primitive
@@ -152,6 +152,10 @@ When testing an x402-protected deployment:
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
 ```
+
+`smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
+run through AgentCash or another x402-capable buyer wallet with a strict
+per-request max amount.
 
 ## Required Production Env Vars
 

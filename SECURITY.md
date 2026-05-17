@@ -42,4 +42,8 @@ npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
 ```
 
+`smoke:x402` validates the unpaid payment challenge. For a full paid smoke, use
+AgentCash or another x402-capable buyer wallet with a strict per-request max
+amount, then verify the returned proof through `/api/verify/proofs/{id}`.
+
 Then confirm that tracked files contain no secret material.
