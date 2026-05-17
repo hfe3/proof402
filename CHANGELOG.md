@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.7 - 2026-05-17
+
+### Changed
+
+- Documented receipt key rotation, Postgres SSL, facilitator, rate limiting,
+  retention, metadata, label, and logging environment variables.
+
 ## 0.1.6 - 2026-05-17
 
 ### Changed

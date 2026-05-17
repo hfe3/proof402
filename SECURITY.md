@@ -25,6 +25,9 @@ For non-security bugs and feature requests, use the public issue templates.
 - Keep `RECEIPT_SECRET` stable and private. When rotating it, issue a new
   `RECEIPT_KEY_ID` and preserve verification for older proofs through
   `RECEIPT_PREVIOUS_SECRETS`.
+- Keep `RECEIPT_PREVIOUS_SECRETS` in managed environment variables only. Use
+  the format `old-key-id:old-secret,older-key-id:older-secret` and remove old
+  entries only after their proofs no longer need verification.
 - Store production values only in Vercel Environment Variables or another
   managed secret store.
 - Redact x402 payment headers and private request metadata from logs.

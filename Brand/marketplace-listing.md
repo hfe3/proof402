@@ -8,7 +8,7 @@ URLs, dashboard screenshots, or private payload examples.
 
 ```text
 Name: Proof402
-Version: 0.1.6
+Version: 0.1.7
 Tagline: Pay once. Prove forever.
 Category: agent-infrastructure
 Short description: Timestamped hash proof for autonomous agents.

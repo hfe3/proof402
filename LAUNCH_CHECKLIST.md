@@ -23,7 +23,7 @@ Use this checklist for the public launch and post-launch verification.
 - Community health: `CONTRIBUTING.md`, pull request template, and issue
   templates are configured with no-secrets guidance
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.6`.
+  prepared. Latest release: `v0.1.7`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`

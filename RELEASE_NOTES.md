@@ -1,16 +1,18 @@
-# Proof402 0.1.6 Release Notes
+# Proof402 0.1.7 Release Notes
 
-Proof402 0.1.6 is a launch checklist wording patch for the x402-compatible
+Proof402 0.1.7 is an environment documentation patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- The root launch checklist now reflects the live GitHub state: the canonical
-  `hfe3/proof402` repository is public.
-- The old "make public" instructions are now framed as guidance only for a
-  future private fork or rebuild, not for ordinary Proof402 release work.
+- `.env.example` now documents receipt key rotation through
+  `RECEIPT_PREVIOUS_SECRETS`.
+- Production env docs now include Postgres SSL, facilitator URL, receipt key ID,
+  retention, metadata and label limits, rate limiting, and logging controls.
+- Security guidance now states the `RECEIPT_PREVIOUS_SECRETS` format and keeps
+  old receipt secrets in managed environment variables only.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.6`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.7`.
 
 ## Production
 

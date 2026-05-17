@@ -4,7 +4,7 @@
 
 ```text
 Name: Proof402
-Version: 0.1.6
+Version: 0.1.7
 Category: agent-infrastructure
 Tagline: Pay once. Prove forever.
 Short description: Timestamped hash proof for autonomous agents.

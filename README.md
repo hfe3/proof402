@@ -195,10 +195,30 @@ X402_PRICE=$0.005
 PAY_TO=0x...
 STORE_DRIVER=postgres
 DATABASE_URL=postgres://...
+POSTGRES_SSL=true
+FACILITATOR_URL=https://api.cdp.coinbase.com/platform/v2/x402
+RECEIPT_KEY_ID=default
 RECEIPT_SECRET=...
+RECEIPT_PREVIOUS_SECRETS=old-key-id:old-secret
 CDP_API_KEY_ID=...
 CDP_API_KEY_SECRET=...
 ```
+
+Optional operational controls:
+
+```text
+PROOF_RETENTION_MS=7776000000
+MAX_METADATA_BYTES=8192
+MAX_LABEL_LENGTH=120
+RATE_LIMIT_ENABLED=true
+RATE_LIMIT_WINDOW_MS=60000
+RATE_LIMIT_MAX_REQUESTS=60
+LOG_LEVEL=info
+REQUEST_LOG_ENABLED=true
+```
+
+`RECEIPT_PREVIOUS_SECRETS` is only for key rotation. Keep old receipt secrets in
+managed environment variables, never in tracked files.
 
 ## Local-only Files
 
