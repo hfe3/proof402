@@ -1,6 +1,6 @@
 {
   "name": "proof402",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -19,6 +19,7 @@
     "dev:testnet": "node scripts/start-profile.js testnet",
     "dev:mainnet": "node scripts/start-profile.js mainnet",
     "deploy:check": "node scripts/deploy-check.js",
+    "local:doctor": "node scripts/local-doctor.js",
     "security:scan": "node scripts/security-scan.js",
     "smoke:x402": "node scripts/x402-smoke.js",
     "start": "node src/server.js",

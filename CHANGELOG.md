@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.11 - 2026-05-18
+
+### Added
+
+- Added `npm run local:doctor` to detect stale local Proof402 servers before
+  trusting default-port demo checks.
+
 ## 0.1.10 - 2026-05-17
 
 ### Changed

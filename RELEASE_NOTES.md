@@ -1,17 +1,17 @@
-# Proof402 0.1.10 Release Notes
+# Proof402 0.1.11 Release Notes
 
-Proof402 0.1.10 is a deployment-verification hardening patch for the
-x402-compatible timestamp/hash proof service for autonomous agents.
+Proof402 0.1.11 is a local-operations hardening patch for the x402-compatible
+timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- `npm run deploy:check` now verifies version consistency, paid action
-  metadata, public repository status, marketplace safety fields, and
-  `security.txt`/sitemap contents.
-- With `--expect-x402`, deploy checks now assert production mainnet settings:
-  `profile=mainnet`, `x402Enabled=true`, `eip155:8453`, and `$0.005`.
+- Added `npm run local:doctor` to verify that the local `/health` response
+  matches the current checkout version, demo profile, and local x402-disabled
+  mode.
+- The doctor command reports the listening PID on Windows when default port
+  `4022` is occupied by a stale local service.
 - Version consistency: runtime health, capabilities, OpenAPI metadata,
-  marketplace JSON, package metadata, and brand docs now report `0.1.10`.
+  marketplace JSON, package metadata, and brand docs now report `0.1.11`.
 
 ## Production
 

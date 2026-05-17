@@ -24,7 +24,7 @@ Use this checklist for the public launch and post-launch verification.
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.10`.
+  prepared. Latest release: `v0.1.11`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -41,6 +41,7 @@ Run locally from `D:\Agents_402\proof402`:
 ```powershell
 git status --short --ignored
 npm test
+npm run local:doctor -- http://127.0.0.1:4022
 npm run security:scan
 npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402

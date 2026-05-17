@@ -23,6 +23,7 @@ Run from `D:\Agents_402\proof402`:
 ```powershell
 git status --short --ignored
 npm test
+npm run local:doctor -- http://127.0.0.1:4022
 npm run security:scan
 npm audit --omit=dev
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
@@ -34,6 +35,11 @@ npx agentcash discover https://proof402.vercel.app --format json
 not settle a payment. Run a real paid smoke only after explicit operator
 approval for the maximum spend.
 
+For local demo work, `local:doctor` verifies that the running `4022` service is
+from the current checkout. If it reports a stale version, stop the old local
+process or start the current checkout on another `PORT` and matching
+`PUBLIC_BASE_URL`.
+
 ## Release Verification
 
 Before tagging:
@@ -42,6 +48,8 @@ Before tagging:
 - Confirm `RELEASE_NOTES.md` matches the tag being prepared.
 - Confirm package, runtime, OpenAPI, marketplace JSON, and brand docs share the
   same version.
+- Run `npm run local:doctor -- http://127.0.0.1:4022` before trusting local
+  demo results.
 - Run the routine verification commands above.
 - Confirm `git status --short --ignored` shows only expected ignored local
   files such as `.env`, `.vercel/`, `data/`, `node_modules/`, and logs.

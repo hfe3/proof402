@@ -10,6 +10,7 @@ It creates a signed proof that a SHA-256 hash existed at a specific time. The se
 cd D:\Agents_402\proof402
 npm install
 npm run dev:demo
+npm run local:doctor
 ```
 
 Open:
@@ -19,6 +20,10 @@ http://127.0.0.1:4022/
 http://127.0.0.1:4022/demo
 http://127.0.0.1:4022/api/quickstart
 ```
+
+`local:doctor` checks the running local `/health` response against this
+checkout's package version and fails loudly if port `4022` is occupied by a
+stale Proof402 process.
 
 ## Production
 
@@ -156,6 +161,7 @@ Community safety expectations are documented in `CODE_OF_CONDUCT.md`.
 
 ```powershell
 npm test
+npm run local:doctor -- http://127.0.0.1:4022
 npm run security:scan
 npm run deploy:check -- http://127.0.0.1:4022
 ```
