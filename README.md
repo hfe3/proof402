@@ -11,6 +11,7 @@ cd D:\Agents_402\proof402
 npm install
 npm run dev:demo
 npm run local:doctor
+npm run monitor:production
 npm run verify:local
 npm run version:check
 ```
@@ -215,6 +216,11 @@ production source-control commit metadata, and live production metadata for
 `deploy:check` also verifies baseline browser security headers on `/health` and
 the public home page, including CSP, frame denial, MIME sniffing protection,
 referrer policy, permissions policy, and HSTS on HTTPS.
+
+`monitor:production` is the lightweight post-launch monitor. It checks live
+production metadata, OpenAPI paid discovery, `/.well-known/x402`, recent proof
+feed availability, and the unpaid x402 challenge without settling a payment or
+creating a proof. GitHub Actions also runs it on a daily schedule.
 
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
 run through AgentCash or another x402-capable buyer wallet with a strict

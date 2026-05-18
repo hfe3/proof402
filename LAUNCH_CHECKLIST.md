@@ -24,7 +24,7 @@ Use this checklist for the public launch and post-launch verification.
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.22`.
+  prepared. Latest release: `v0.1.23`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC, OpenAPI
   exposes `x-payment-info`, and `/.well-known/x402` is available as fallback
@@ -32,6 +32,8 @@ Use this checklist for the public launch and post-launch verification.
   are configured on public pages
 - Vercel GitHub integration: connected to `hfe3/proof402`; production deploys
   are triggered from pushes to `main`
+- Production monitor: `.github/workflows/production-monitor.yml` runs the
+  unpaid `npm run monitor:production` check on a daily schedule
 - Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
   transaction `0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e`
 
@@ -43,6 +45,7 @@ Run locally from `D:\Agents_402\proof402`:
 git status --short --ignored
 npm run verify:local
 npm run verify:production
+npm run monitor:production
 ```
 
 After the tag, GitHub Release, CI run, and production deployment exist:

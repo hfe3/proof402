@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.23 - 2026-05-18
+
+### Added
+
+- Added `npm run monitor:production` for lightweight read-only post-launch
+  checks.
+- Added a scheduled GitHub Actions production monitor workflow.
+
 ## 0.1.22 - 2026-05-18
 
 ### Added

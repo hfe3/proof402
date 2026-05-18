@@ -24,6 +24,7 @@ Run from `D:\Agents_402\proof402`:
 git status --short --ignored
 npm run verify:local
 npm run verify:production
+npm run monitor:production
 ```
 
 `smoke:x402` is unpaid. It checks the `402 Payment Required` challenge and does
@@ -41,6 +42,11 @@ run the post-release gate:
 ```powershell
 npm run release:check
 ```
+
+`monitor:production` is a lightweight read-only monitor for scheduled and manual
+post-launch checks. It verifies production metadata, OpenAPI paid discovery,
+`/.well-known/x402`, recent proof feed availability, and the unpaid x402
+challenge. It does not settle a payment or create a proof.
 
 ## Release Verification
 
@@ -68,6 +74,7 @@ After pushing:
   should also expose the deployed Git commit SHA.
 - Confirm `npm run deploy:check` passes the baseline security-header checks for
   `/health` and the public home page.
+- Confirm `npm run monitor:production` passes without payment.
 - Publish the GitHub Release for the tag and verify it is not a draft.
 - Run `npm run release:check` after the release exists. It checks the clean
   `main` checkout, current tag, GitHub Release, required GitHub Actions and
@@ -85,6 +92,7 @@ Start with read-only checks:
 npm run deploy:check -- https://proof402.vercel.app --expect-x402
 npm run smoke:x402 -- https://proof402.vercel.app
 npx agentcash discover https://proof402.vercel.app --format json
+npm run monitor:production
 ```
 
 Then inspect:

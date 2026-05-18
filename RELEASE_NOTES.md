@@ -1,16 +1,15 @@
-# Proof402 0.1.22 Release Notes
+# Proof402 0.1.23 Release Notes
 
-Proof402 0.1.22 is a public launch-pack documentation patch for the x402-compatible
+Proof402 0.1.23 is a production monitoring patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `Brand/social-launch-pack.md` with public-safe posts, directory copy,
-  reply copy, and launch links.
-- Synchronized brand metadata with `GET /.well-known/x402` after the AgentCash
-  discovery patch.
-- Kept launch language explicit: timestamped hash proof, not legal
-  notarization or factual-truth attestation.
+- Added `npm run monitor:production`, a lightweight read-only production monitor.
+- Added a daily GitHub Actions production monitor workflow.
+- The monitor checks production metadata, OpenAPI paid discovery,
+  `/.well-known/x402`, recent proof feed availability, and the unpaid x402
+  challenge without settling payment or creating a proof.
 - The checks remain unpaid: they do not settle a payment or create a new proof.
 
 ## Production
