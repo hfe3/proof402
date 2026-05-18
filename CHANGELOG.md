@@ -6,6 +6,18 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.21 - 2026-05-18
+
+### Added
+
+- Added OpenAPI `x-payment-info` metadata for the paid proof route so AgentCash
+  can classify `POST /api/proof/notarize` as paid from discovery.
+- Added `GET /.well-known/x402` as an x402 discovery fallback.
+
+### Changed
+
+- Expanded deploy and release checks to verify paid discovery metadata.
+
 ## 0.1.20 - 2026-05-18
 
 ### Changed

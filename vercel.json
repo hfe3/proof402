@@ -68,6 +68,10 @@
       "destination": "/api/index?__proof402_path=/openapi.json"
     },
     {
+      "source": "/.well-known/x402",
+      "destination": "/api/index?__proof402_path=/.well-known/x402"
+    },
+    {
       "source": "/agents",
       "destination": "/agents.html"
     },

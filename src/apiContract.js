@@ -86,6 +86,41 @@ function abs(path) {
   return `${config.publicBaseUrl}${path}`;
 }
 
+function priceAmount() {
+  return String(config.x402Price).replace(/^\$/, "");
+}
+
+function paymentInfo() {
+  return {
+    price: {
+      mode: "fixed",
+      amount: priceAmount(),
+      currency: "USD"
+    },
+    protocols: [
+      {
+        x402: {
+          version: 2,
+          scheme: "exact",
+          network: config.x402Network,
+          payTo: config.payTo || null
+        }
+      }
+    ]
+  };
+}
+
+export function x402WellKnown() {
+  return {
+    version: 1,
+    name: SERVICE.name,
+    description: SERVICE.description,
+    resources: [`POST ${abs(SERVICE.paidPath)}`],
+    instructions:
+      "Submit only a SHA-256 contentHash, label, optional non-secret metadata, and idempotencyKey. Satisfy the x402 Payment Required challenge, then verify the returned proof through /api/verify/proofs/{id}."
+  };
+}
+
 export function publicCapabilities() {
   return {
     name: SERVICE.name,
@@ -250,6 +285,7 @@ export function openApiSpec() {
       [SERVICE.paidPath]: {
         post: {
           summary: "Create or replay a timestamped proof for a SHA-256 hash",
+          "x-payment-info": paymentInfo(),
           requestBody: {
             required: true,
             content: {
@@ -346,6 +382,14 @@ export function openApiSpec() {
           summary: "Plain-text guidance for LLM and agent crawlers",
           responses: {
             "200": { description: "LLM guidance" }
+          }
+        }
+      },
+      "/.well-known/x402": {
+        get: {
+          summary: "x402 well-known discovery document",
+          responses: {
+            "200": { description: "x402 discovery document" }
           }
         }
       }

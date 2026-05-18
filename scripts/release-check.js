@@ -98,11 +98,13 @@ async function checkGitHubRelease() {
 
 async function checkProductionMetadata() {
   const head = git(["rev-parse", "HEAD"]);
-  const [health, status, trust, marketplace] = await Promise.all([
+  const [health, status, trust, marketplace, openapi, x402WellKnown] = await Promise.all([
     fetchJson("/health"),
     fetchJson("/api/status"),
     fetchJson("/api/trust"),
-    fetchJson("/marketplace.json")
+    fetchJson("/marketplace.json"),
+    fetchJson("/openapi.json"),
+    fetchJson("/.well-known/x402")
   ]);
 
   assert(health.service === "Proof402", `/health service mismatch: ${health.service}`);
@@ -125,6 +127,19 @@ async function checkProductionMetadata() {
   assert(marketplace.version === expectedVersion, `/marketplace.json version ${marketplace.version}, expected ${expectedVersion}`);
   assert(marketplace.x402?.network === "eip155:8453", `/marketplace.json network mismatch: ${marketplace.x402?.network}`);
   assert(marketplace.x402?.price === "$0.005", `/marketplace.json price mismatch: ${marketplace.x402?.price}`);
+
+  const paidOperation = openapi.paths?.["/api/proof/notarize"]?.post;
+  assert(openapi.info?.version === expectedVersion, `/openapi.json version ${openapi.info?.version}, expected ${expectedVersion}`);
+  assert(paidOperation?.["x-payment-info"]?.price?.mode === "fixed", "/openapi.json missing fixed x-payment-info");
+  assert(paidOperation?.["x-payment-info"]?.price?.amount === "0.005", "/openapi.json x-payment-info price mismatch");
+  assert(
+    paidOperation?.["x-payment-info"]?.protocols?.some((protocol) => protocol.x402?.network === "eip155:8453"),
+    "/openapi.json x-payment-info missing Base mainnet x402 protocol"
+  );
+  assert(
+    x402WellKnown.resources?.includes(`POST ${baseUrl}/api/proof/notarize`),
+    "/.well-known/x402 missing paid proof resource"
+  );
 
   return `${health.version} mainnet x402`;
 }

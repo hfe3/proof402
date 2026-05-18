@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "tagline": "Pay once. Prove forever.",
   "category": "agent-infrastructure",
   "shortDescription": "Timestamped hash proof for autonomous agents.",
@@ -38,7 +38,8 @@
     "llms": "https://proof402.vercel.app/llms.txt",
     "robots": "https://proof402.vercel.app/robots.txt",
     "sitemap": "https://proof402.vercel.app/sitemap.xml",
-    "securityTxt": "https://proof402.vercel.app/.well-known/security.txt"
+    "securityTxt": "https://proof402.vercel.app/.well-known/security.txt",
+    "x402WellKnown": "https://proof402.vercel.app/.well-known/x402"
   },
   "assets": {
     "mark": "https://proof402.vercel.app/proof402-mark.svg",

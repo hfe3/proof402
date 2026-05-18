@@ -230,12 +230,16 @@ npx agentcash check https://proof402.vercel.app/api/proof/notarize -m POST -b '{
 ```
 
 The production paid endpoint probes as x402 on Base mainnet (`eip155:8453`) for
-`5000` micro-USDC (`$0.005`). The origin has also been added to the local
-AgentCash origins list; restart the AgentCash MCP server for that local client
-entry to appear in model context.
+`5000` micro-USDC (`$0.005`). `agentcash check` should classify
+`POST /api/proof/notarize` as `requiresPayment=true` from OpenAPI
+`x-payment-info`, and the live route still returns a normal x402
+`402 Payment Required` challenge when called without payment. The origin has
+also been added to the local AgentCash origins list; restart the AgentCash MCP
+server for that local client entry to appear in model context.
 
 For marketplace and directory crawlers, use `GET /marketplace` for the public
-listing page and `GET /marketplace.json` for machine-readable listing metadata.
+listing page, `GET /marketplace.json` for machine-readable listing metadata,
+and `GET /.well-known/x402` for the x402 well-known fallback.
 
 ## Required Production Env Vars
 

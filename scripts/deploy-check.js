@@ -28,6 +28,7 @@ const checks = [
   ["/api/status", "json"],
   ["/openapi.json", "json"],
   ["/marketplace.json", "json"],
+  ["/.well-known/x402", "json"],
   ["/llms.txt", "text"],
   ["/robots.txt", "text"],
   ["/sitemap.xml", "text"],
@@ -151,8 +152,16 @@ function checkDiscoveryDocuments(results) {
 
   const openapi = results.get("/openapi.json");
   assert(openapi.info?.version === packageVersion, "/openapi.json version mismatch");
-  assert(openapi.paths?.["/api/proof/notarize"]?.post, "/openapi.json missing paid proof route");
+  const paidOperation = openapi.paths?.["/api/proof/notarize"]?.post;
+  assert(paidOperation, "/openapi.json missing paid proof route");
+  assert(paidOperation["x-payment-info"]?.price?.mode === "fixed", "/openapi.json missing fixed x-payment-info");
+  assert(paidOperation["x-payment-info"]?.price?.currency === "USD", "/openapi.json x-payment-info currency mismatch");
+  assert(
+    paidOperation["x-payment-info"]?.protocols?.some((protocol) => protocol.x402),
+    "/openapi.json x-payment-info missing x402 protocol"
+  );
   assert(openapi.paths?.["/marketplace.json"]?.get, "/openapi.json missing marketplace JSON route");
+  assert(openapi.paths?.["/.well-known/x402"]?.get, "/openapi.json missing x402 well-known route");
 
   const marketplace = results.get("/marketplace.json");
   assert(marketplace.version === packageVersion, "/marketplace.json version mismatch");
@@ -164,6 +173,13 @@ function checkDiscoveryDocuments(results) {
   assert(securityTxt.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"), "security.txt missing canonical URL");
   assert(/^Expires: \d{4}-\d{2}-\d{2}T/m.test(securityTxt), "security.txt missing RFC-style Expires field");
 
+  const x402WellKnown = results.get("/.well-known/x402");
+  assert(x402WellKnown.name === "Proof402", "/.well-known/x402 name mismatch");
+  assert(
+    x402WellKnown.resources?.includes(`POST ${baseUrl}/api/proof/notarize`),
+    "/.well-known/x402 missing paid proof resource"
+  );
+
   const robots = results.get("/robots.txt");
   assert(robots.includes("Sitemap: https://proof402.vercel.app/sitemap.xml"), "robots.txt missing sitemap");
 
@@ -172,6 +188,7 @@ function checkDiscoveryDocuments(results) {
     "https://proof402.vercel.app/marketplace",
     "https://proof402.vercel.app/marketplace.json",
     "https://proof402.vercel.app/openapi.json",
+    "https://proof402.vercel.app/.well-known/x402",
     "https://proof402.vercel.app/api/status"
   ]) {
     assert(sitemap.includes(url), `sitemap.xml missing ${url}`);

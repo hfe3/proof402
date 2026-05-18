@@ -60,6 +60,11 @@ test("openapi document exposes proof routes", async () => {
   assert.ok(body.paths["/marketplace"].get);
   assert.ok(body.paths["/marketplace.json"].get);
   assert.ok(body.paths["/api/status"].get);
+  assert.ok(body.paths["/.well-known/x402"].get);
+  const paymentInfo = body.paths["/api/proof/notarize"].post["x-payment-info"];
+  assert.equal(paymentInfo.price.mode, "fixed");
+  assert.equal(paymentInfo.price.currency, "USD");
+  assert.ok(paymentInfo.protocols.some((protocol) => protocol.x402?.network === "eip155:84532"));
   assert.ok(body.components.schemas.ProofRequest);
   assert.ok(body.components.schemas.ProofResponse);
 });
@@ -148,11 +153,17 @@ test("llms.txt and public pages load", async () => {
   assert.equal(marketplaceJson.body.safety.rawPayloadStorage, false);
   assert.equal(marketplaceJson.body.discovery.status, "https://proof402.vercel.app/api/status");
   assert.equal(marketplaceJson.body.discovery.securityTxt, "https://proof402.vercel.app/.well-known/security.txt");
+  assert.equal(marketplaceJson.body.discovery.x402WellKnown, "https://proof402.vercel.app/.well-known/x402");
 
   const securityTxt = await request("/.well-known/security.txt");
   assert.equal(securityTxt.response.status, 200);
   assert.ok(securityTxt.body.includes("Canonical: https://proof402.vercel.app/.well-known/security.txt"));
   assert.match(securityTxt.body, /^Expires: \d{4}-\d{2}-\d{2}T/m);
+
+  const x402WellKnown = await request("/.well-known/x402");
+  assert.equal(x402WellKnown.response.status, 200);
+  assert.equal(x402WellKnown.body.name, "Proof402");
+  assert.ok(x402WellKnown.body.resources.includes("POST http://127.0.0.1:4022/api/proof/notarize"));
 
   const socialCard = await request("/proof402-social.svg");
   assert.equal(socialCard.response.status, 200);

@@ -42,7 +42,11 @@
   </url>
   <url>
     <loc>https://proof402.vercel.app/openapi.json</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
+  </url>
+  <url>
+    <loc>https://proof402.vercel.app/.well-known/x402</loc>
+    <lastmod>2026-05-18</lastmod>
   </url>
   <url>
     <loc>https://proof402.vercel.app/api/capabilities</loc>

@@ -3,7 +3,7 @@ import express from "express";
 import { config, assertProductionConfig, publicSourceControl, runtimeSummary } from "./config.js";
 import { publicActionCatalog, publicQuickstart } from "./actionCatalog.js";
 import { publicBazaarMetadata } from "./bazaar.js";
-import { openApiSpec, publicCapabilities } from "./apiContract.js";
+import { openApiSpec, publicCapabilities, x402WellKnown } from "./apiContract.js";
 import { ApiError, errorBody } from "./errors.js";
 import { logEvent, observabilitySummary, recordMetric, requestLogger } from "./observability.js";
 import { proofLinks, publicProof } from "./proofService.js";
@@ -29,6 +29,10 @@ app.use(express.static("public", { extensions: ["html"] }));
 
 app.get(["/security.txt", "/.well-known/security.txt"], (_req, res) => {
   res.type("text/plain").sendFile("security.txt", { root: "public" });
+});
+
+app.get("/.well-known/x402", (_req, res) => {
+  res.json(x402WellKnown());
 });
 
 app.get("/health", async (_req, res, next) => {

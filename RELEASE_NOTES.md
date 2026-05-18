@@ -1,15 +1,15 @@
-# Proof402 0.1.20 Release Notes
+# Proof402 0.1.21 Release Notes
 
-Proof402 0.1.20 is a Vercel static-route security-header patch for the x402-compatible
+Proof402 0.1.21 is an AgentCash discovery metadata patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added Vercel platform headers so static public pages and API routes share the
-  same baseline browser security headers in production.
-- `deploy:check` continues to verify CSP, frame denial, MIME sniffing
-  protection, removal of `X-Powered-By`, referrer policy, permissions policy,
-  and HTTPS HSTS on `/health` and `/`.
+- Added OpenAPI `x-payment-info` on `POST /api/proof/notarize` so AgentCash and
+  other discovery clients can classify the route as paid directly from the spec.
+- Added `GET /.well-known/x402` as a simple x402 discovery fallback.
+- `deploy:check` now verifies both the OpenAPI paid metadata and the x402
+  well-known resource.
 - The checks remain unpaid: they do not settle a payment or create a new proof.
 
 ## Production
