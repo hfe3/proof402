@@ -63,6 +63,7 @@ https://proof402.vercel.app/api/quickstart
 https://proof402.vercel.app/api/actions
 https://proof402.vercel.app/api/trust
 https://proof402.vercel.app/openapi.json
+https://proof402.vercel.app/.well-known/x402
 https://proof402.vercel.app/llms.txt
 ```
 

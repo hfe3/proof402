@@ -6,6 +6,17 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.22 - 2026-05-18
+
+### Added
+
+- Added `Brand/social-launch-pack.md` with public-safe announcement, directory,
+  and reply copy.
+
+### Changed
+
+- Synchronized brand metadata and asset docs with `GET /.well-known/x402`.
+
 ## 0.1.21 - 2026-05-18
 
 ### Added

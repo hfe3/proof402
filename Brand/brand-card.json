@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "tagline": "Pay once. Prove forever.",
   "brandEssence": "Hash locally. Prove publicly. Cite forever.",
   "shortDescription": "Timestamped hash proof for autonomous agents.",
@@ -40,6 +40,7 @@
     "robots": "/robots.txt",
     "sitemap": "/sitemap.xml",
     "securityTxt": "/.well-known/security.txt",
+    "x402WellKnown": "/.well-known/x402",
     "keywords": [
       "Proof402",
       "paid timestamp proof",

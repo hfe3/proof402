@@ -4,7 +4,7 @@
 
 ```text
 Name: Proof402
-Version: 0.1.21
+Version: 0.1.22
 Category: agent-infrastructure
 Tagline: Pay once. Prove forever.
 Short description: Timestamped hash proof for autonomous agents.
@@ -84,6 +84,7 @@ GET /llms.txt
 GET /robots.txt
 GET /sitemap.xml
 GET /.well-known/security.txt
+GET /.well-known/x402
 GET /marketplace
 GET /marketplace.json
 GET /api/proofs/recent

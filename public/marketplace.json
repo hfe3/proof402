@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "tagline": "Pay once. Prove forever.",
   "category": "agent-infrastructure",
   "shortDescription": "Timestamped hash proof for autonomous agents.",

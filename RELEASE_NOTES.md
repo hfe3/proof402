@@ -1,15 +1,16 @@
-# Proof402 0.1.21 Release Notes
+# Proof402 0.1.22 Release Notes
 
-Proof402 0.1.21 is an AgentCash discovery metadata patch for the x402-compatible
+Proof402 0.1.22 is a public launch-pack documentation patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added OpenAPI `x-payment-info` on `POST /api/proof/notarize` so AgentCash and
-  other discovery clients can classify the route as paid directly from the spec.
-- Added `GET /.well-known/x402` as a simple x402 discovery fallback.
-- `deploy:check` now verifies both the OpenAPI paid metadata and the x402
-  well-known resource.
+- Added `Brand/social-launch-pack.md` with public-safe posts, directory copy,
+  reply copy, and launch links.
+- Synchronized brand metadata with `GET /.well-known/x402` after the AgentCash
+  discovery patch.
+- Kept launch language explicit: timestamped hash proof, not legal
+  notarization or factual-truth attestation.
 - The checks remain unpaid: they do not settle a payment or create a new proof.
 
 ## Production

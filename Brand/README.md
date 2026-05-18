@@ -13,6 +13,7 @@ This folder is the brand and agent-information source for Proof402. It is safe t
 - `brand-card.json` - machine-readable brand and agent facts.
 - `asset-index.md` - where assets live and how to use them.
 - `launch-checklist.md` - brand/design checklist before GitHub, Vercel, or marketplace publication.
+- `social-launch-pack.md` - public-safe announcement posts, reply copy, and posting checklist.
 - `proof402-mark.svg` - local copy of the current Proof402 mark.
 - `proof402-wordmark.svg` - wordmark for listings and README-style surfaces.
 - `proof402-marketplace-banner.svg` - public-safe marketplace banner.
@@ -25,7 +26,7 @@ This folder is the brand and agent-information source for Proof402. It is safe t
 Name: Proof402
 Tagline: Pay once. Prove forever.
 Public URL: https://proof402.vercel.app
-Version: 0.1.21
+Version: 0.1.22
 Profile: mainnet
 x402: enabled
 Network: eip155:8453
