@@ -34,35 +34,88 @@
         </nav>
       </header>
       <main>
-        <section class="hero">
-          <div>
-            <p class="eyebrow">x402-compatible proof primitive</p>
-            <h1>Proof402</h1>
-            <p>Pay once. Prove forever. Autonomous agents send a SHA-256 result hash and receive a signed timestamped proof with verification links.</p>
-            <p><span class="route">POST /api/proof/notarize</span></p>
+        <section class="home-hero" aria-labelledby="home-title">
+          <div class="home-copy">
+            <p class="eyebrow">Trust summary</p>
+            <h1 id="home-title">Proof402</h1>
+            <p class="home-lead">Timestamped hash proof for autonomous agents. Lead with verification checks, redaction policy, and proof mechanics before asking an agent to pay.</p>
+            <div class="home-routes" aria-label="Primary Proof402 routes">
+              <span><code>GET /api/trust</code></span>
+              <span><code>GET /api/proofs/{id}</code></span>
+              <span><code>GET /api/verify/proofs/{id}</code></span>
+            </div>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="button" href="/demo">Create proof</a>
+              <a class="button secondary" href="/trust">Inspect trust summary</a>
+            </div>
           </div>
-          <div class="seal">
-            <img src="/proof402-mark.svg" alt="Proof402 proof seal">
+          <div class="home-trust-board" aria-label="Proof402 verification promises">
+            <article class="trust-panel trust-panel-ok">
+              <span>Verification</span>
+              <strong>verified: true</strong>
+              <p>Signature matches the canonical proof payload.</p>
+            </article>
+            <article class="trust-panel">
+              <span>Signed fields</span>
+              <strong>proofId</strong>
+              <strong>timestamp</strong>
+              <strong>contentHash</strong>
+              <strong>metadataHash</strong>
+            </article>
+            <article class="trust-panel">
+              <span>Redaction</span>
+              <strong>no raw payloads</strong>
+              <strong>metadata keys only</strong>
+              <strong>recent signatures truncated</strong>
+            </article>
           </div>
         </section>
+
+        <section class="band home-proof-strip" aria-label="Proof402 proof boundaries">
+          <article>
+            <span>Private by default</span>
+            <p>Agents keep private payloads local and submit only a SHA-256 content hash plus public-safe metadata.</p>
+          </article>
+          <article>
+            <span>Public verification</span>
+            <p>Every proof can be checked through a badge page or a machine-readable verification endpoint.</p>
+          </article>
+          <article>
+            <span>Precise claim</span>
+            <p>Proof402 proves hash existence at a timestamp, not legal notarization or factual truth.</p>
+          </article>
+        </section>
+
         <section class="band">
+          <div class="home-section-heading">
+            <p class="eyebrow">Agent route</p>
+            <h2>One paid action, two ways to verify.</h2>
+          </div>
           <div class="grid">
-            <article class="card">
-              <h2>Paid primitive</h2>
-              <p>Create a proof for a hash, not for a private payload. The raw output stays with the caller.</p>
+            <article class="card route-card">
+              <span>Paid action</span>
+              <h3><code>POST /api/proof/notarize</code></h3>
+              <p>Submit a hash, label, optional non-secret metadata, and an idempotency key.</p>
             </article>
-            <article class="card">
-              <h2>Verification</h2>
-              <p>Every proof has a public badge and a machine-readable verification endpoint.</p>
+            <article class="card route-card">
+              <span>Verification API</span>
+              <h3><code>GET /api/verify/proofs/{id}</code></h3>
+              <p>Returns signed fields, verification checks, and public proof data.</p>
             </article>
-            <article class="card">
-              <h2>Local first</h2>
-              <p>This MVP runs in demo mode locally. Mainnet x402 config is present but not claimed as deployed.</p>
+            <article class="card route-card">
+              <span>Public badge</span>
+              <h3><code>GET /proof/{id}</code></h3>
+              <p>A citable page for the proof without exposing private raw output.</p>
             </article>
           </div>
         </section>
-        <section class="band">
-          <h2>Request</h2>
+
+        <section class="band home-request">
+          <div>
+            <p class="eyebrow">Request shape</p>
+            <h2>Send hashes, not secrets.</h2>
+            <p class="muted">The metadata object must stay public-safe. Public surfaces expose metadata hashes and keys, not private payloads.</p>
+          </div>
           <pre><code>{
   "contentHash": "sha256:7b3d0f0f7c847c28f20b8c17d38b4f0c7df3da7d8ddfb979a9dd4f9f1f2a35cc",
   "label": "agent result hash",

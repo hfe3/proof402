@@ -6,6 +6,20 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.24 - 2026-05-18
+
+### Added
+
+- Added public landing mockup PNG assets for marketplace, trust, API, seal,
+  ledger, console, badge, and homepage variants.
+
+### Changed
+
+- Refined the public homepage to lead with trust, verification routes, and
+  privacy boundaries.
+- Expanded landing mockups with marketplace, trust, API, and minimal seal
+  concepts for public launch review.
+
 ## 0.1.23 - 2026-05-18
 
 ### Added

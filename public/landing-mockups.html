@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Proof402 landing mockups">
     <meta name="twitter:description" content="Proof badge and agent workflow concepts.">
     <meta name="twitter:image" content="https://proof402.vercel.app/proof402-social.svg">
-    <link rel="stylesheet" href="landing-mockups.css?v=2">
+    <link rel="stylesheet" href="landing-mockups.css?v=3">
   </head>
   <body>
     <header class="mockup-topbar" aria-label="Landing mockup navigation">
@@ -28,6 +28,10 @@
         <a href="#ledger">Ledger</a>
         <a href="#console">Console</a>
         <a href="#badge">Badge</a>
+        <a href="#market">Market</a>
+        <a href="#trust">Trust</a>
+        <a href="#api">API</a>
+        <a href="#seal">Seal</a>
         <a href="/openapi.json">OpenAPI</a>
       </nav>
     </header>
@@ -234,6 +238,188 @@
             <h2>Use only for hash existence.</h2>
             <p>Proof402 does not claim legal notarization or factual truth beyond the submitted content hash.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="mockup-shell market" id="market" aria-labelledby="market-title">
+        <div class="market-stage" aria-hidden="true">
+          <img class="market-banner" src="proof402-marketplace-banner.svg" alt="">
+          <div class="market-facts">
+            <div>
+              <span>category</span>
+              <strong>agent infra</strong>
+            </div>
+            <div>
+              <span>price</span>
+              <strong>$0.005</strong>
+            </div>
+            <div>
+              <span>network</span>
+              <strong>Base mainnet</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hero-copy market-copy">
+          <p class="eyebrow">Marketplace-ready</p>
+          <h1 id="market-title">Proof402</h1>
+          <p class="lead">A marketplace landing page for agents looking for one paid action: timestamp a result hash, keep the payload private, and cite the receipt.</p>
+          <div class="hero-actions" aria-label="Marketplace actions">
+            <a class="button primary" href="/api/bazaar">Read capabilities</a>
+            <a class="button secondary" href="/api/actions">View actions</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band market-band" aria-label="Marketplace landing details">
+        <div class="split-band compact">
+          <div>
+            <p class="eyebrow">Buyer path</p>
+            <h2>Built around the listing card, not a broad marketing story.</h2>
+          </div>
+          <div class="checklist">
+            <span>Use when: signed timestamp for a result hash.</span>
+            <span>Avoid when: legal notarization or factual truth proof.</span>
+            <span>Public surfaces: proof badge, verify API, OpenAPI, llms.txt.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mockup-shell trust" id="trust" aria-labelledby="trust-title">
+        <div class="trust-board" aria-hidden="true">
+          <div class="trust-column primary-check">
+            <span class="metric-label">verification</span>
+            <strong>verified: true</strong>
+            <p>signature matches canonical payload</p>
+          </div>
+          <div class="trust-column">
+            <span class="metric-label">signed fields</span>
+            <strong>proofId</strong>
+            <strong>timestamp</strong>
+            <strong>contentHash</strong>
+            <strong>metadataHash</strong>
+          </div>
+          <div class="trust-column">
+            <span class="metric-label">redaction</span>
+            <strong>no raw payloads</strong>
+            <strong>metadata keys only</strong>
+            <strong>recent signatures truncated</strong>
+          </div>
+        </div>
+        <div class="hero-copy trust-copy">
+          <p class="eyebrow">Trust summary</p>
+          <h1 id="trust-title">Proof402</h1>
+          <p class="lead">A landing page that leads with verification checks, redaction policy, and proof mechanics for technical buyers.</p>
+          <div class="route-stack light" aria-label="Trust endpoints">
+            <span>GET /api/trust</span>
+            <span>GET /api/proofs/{id}</span>
+            <span>GET /api/verify/proofs/{id}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band trust-band" aria-label="Trust landing details">
+        <div class="three-up dense">
+          <article class="info-card">
+            <h3>Private by default</h3>
+            <p>Public proof pages never require raw private output.</p>
+          </article>
+          <article class="info-card">
+            <h3>Factual boundary</h3>
+            <p>Proof402 proves hash existence, not the truth of the underlying claim.</p>
+          </article>
+          <article class="info-card">
+            <h3>Agent-readable</h3>
+            <p>Verification endpoints return structured checks another agent can inspect.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mockup-shell api" id="api" aria-labelledby="api-title">
+        <div class="api-stage" aria-hidden="true">
+          <div class="api-rail">
+            <span class="active">POST /api/proof/notarize</span>
+            <span>GET /api/actions</span>
+            <span>GET /api/quickstart</span>
+            <span>GET /openapi.json</span>
+          </div>
+          <pre class="api-code"><code>{
+  "contentHash": "sha256:7b3d...a35cc",
+  "label": "agent result hash",
+  "metadata": {
+    "agent": "research-bot"
+  },
+  "idempotencyKey": "proof-task-123"
+}</code></pre>
+          <div class="api-response">
+            <span class="metric-label">response</span>
+            <strong>proof.id proof_...</strong>
+            <span>/proof/proof_...</span>
+            <span>/api/verify/proofs/proof_...</span>
+          </div>
+        </div>
+        <div class="hero-copy api-copy">
+          <p class="eyebrow">Docs-first</p>
+          <h1 id="api-title">Proof402</h1>
+          <p class="lead">A developer landing page where the route, JSON contract, retry behavior, and verification URL are visible above the fold.</p>
+          <div class="hero-actions" aria-label="API actions">
+            <a class="button primary" href="/api/quickstart">Open quickstart</a>
+            <a class="button secondary" href="/openapi.json">OpenAPI</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band api-band" aria-label="API landing details">
+        <div class="feature-list">
+          <article>
+            <span class="list-index">POST</span>
+            <h2>One paid route.</h2>
+            <p>The core page is built around <code>POST /api/proof/notarize</code>.</p>
+          </article>
+          <article>
+            <span class="list-index">GET</span>
+            <h2>Two verification paths.</h2>
+            <p>Human badge and machine endpoint are presented as equal outputs.</p>
+          </article>
+          <article>
+            <span class="list-index">KEY</span>
+            <h2>Retry-safe creation.</h2>
+            <p>The idempotency key is treated as a first-class agent requirement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mockup-shell seal" id="seal" aria-labelledby="seal-title">
+        <div class="seal-stage" aria-hidden="true">
+          <img class="wordmark-panel" src="proof402-wordmark.svg" alt="">
+          <div class="seal-lines">
+            <span>Hash locally.</span>
+            <span>Prove publicly.</span>
+            <span>Cite forever.</span>
+          </div>
+          <img class="seal-badge-example" src="proof402-proof-badge-example.svg" alt="">
+        </div>
+        <div class="hero-copy seal-copy">
+          <p class="eyebrow">Minimal seal</p>
+          <h1 id="seal-title">Proof402</h1>
+          <p class="lead">A calmer brand-led page with the seal, wordmark, and receipt example doing most of the work.</p>
+          <div class="hero-actions" aria-label="Seal actions">
+            <a class="button primary" href="/proofs">Recent proofs</a>
+            <a class="button secondary" href="/llms.txt">llms.txt</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band seal-band" aria-label="Seal landing details">
+        <div class="split-band compact">
+          <div>
+            <p class="eyebrow">Brand feel</p>
+            <h2>Best when the final site should feel more like a durable proof utility than an API dashboard.</h2>
+          </div>
+          <div class="tone-block">
+            <span>Clear before clever.</span>
+            <span>Calm before excited.</span>
+            <span>Evidence before promises.</span>
+          </div>
         </div>
       </section>
     </main>

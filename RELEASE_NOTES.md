@@ -1,16 +1,18 @@
-# Proof402 0.1.23 Release Notes
+# Proof402 0.1.24 Release Notes
 
-Proof402 0.1.23 is a production monitoring patch for the x402-compatible
+Proof402 0.1.24 is a public launch polish patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `npm run monitor:production`, a lightweight read-only production monitor.
-- Added a daily GitHub Actions production monitor workflow.
-- The monitor checks production metadata, OpenAPI paid discovery,
-  `/.well-known/x402`, recent proof feed availability, and the unpaid x402
-  challenge without settling payment or creating a proof.
-- The checks remain unpaid: they do not settle a payment or create a new proof.
+- Refined the public homepage around trust checks, verification links, and
+  private-by-default proof boundaries.
+- Added public landing mockup PNG assets for marketplace, trust, API, seal,
+  ledger, console, badge, and homepage variants.
+- Expanded `/landing-mockups.html` with marketplace, trust, API, and minimal
+  seal concepts for public launch review.
+- No secrets, wallets, local stores, or Vercel project state are included in
+  the release.
 
 ## Production
 
