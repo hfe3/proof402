@@ -1,14 +1,15 @@
-# Proof402 0.1.15 Release Notes
+# Proof402 0.1.16 Release Notes
 
-Proof402 0.1.15 is a post-release verification hardening patch for the x402-compatible
+Proof402 0.1.16 is a post-release verification hardening patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added `npm run release:check` for the post-release operator gate.
-- The new gate verifies a clean `main` checkout, current release tag, published
-  GitHub Release, required GitHub check-runs, and live production metadata.
-- The check is unpaid: it does not settle a payment or create a new proof.
+- Hardened `npm run release:check` so the post-release gate now requires both
+  `Test and local smoke` and CodeQL `Analyze JavaScript` to succeed.
+- The gate still verifies a clean `main` checkout, current release tag,
+  published GitHub Release, and live production metadata.
+- The check remains unpaid: it does not settle a payment or create a new proof.
 
 ## Production
 

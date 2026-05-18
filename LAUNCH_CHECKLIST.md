@@ -24,7 +24,7 @@ Use this checklist for the public launch and post-launch verification.
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.15`.
+  prepared. Latest release: `v0.1.16`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -90,8 +90,8 @@ managed secret store.
   surface, and `agentcash check` with a valid body reports payment required for
   `POST /api/proof/notarize`.
 - The GitHub Release page exists for the current tag and is not a draft.
-- `npm run release:check` passes after the tag, release, CI, and production
-  deployment are all in place.
+- `npm run release:check` passes after the tag, release, GitHub Actions,
+  CodeQL, and production deployment are all in place.
 - Static public pages, `llms.txt`, and pricing copy match the production
   `$0.005` price.
 - The README links to the production URL, paid endpoint, proof example, verify

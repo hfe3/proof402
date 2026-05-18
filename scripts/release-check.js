@@ -8,7 +8,7 @@ const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 const expectedVersion = packageJson.version;
 const expectedTag = `v${expectedVersion}`;
 const repository = "hfe3/proof402";
-const requiredCheckRuns = ["Test and local smoke"];
+const requiredCheckRuns = ["Test and local smoke", "Analyze JavaScript"];
 
 const checks = [
   ["git working tree", checkGitWorkingTree],

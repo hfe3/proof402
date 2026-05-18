@@ -208,8 +208,9 @@ metadata, marketplace JSON, brand docs, changelog, release notes, and launch
 checklist all report the same version.
 
 `release:check` verifies the clean `main` checkout, current release tag,
-published GitHub Release, successful GitHub check-runs, and live production
-metadata for `https://proof402.vercel.app`. It does not settle a payment.
+published GitHub Release, required GitHub Actions and CodeQL check-runs, and
+live production metadata for `https://proof402.vercel.app`. It does not settle
+a payment.
 
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
 run through AgentCash or another x402-capable buyer wallet with a strict

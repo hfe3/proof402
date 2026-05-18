@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "tagline": "Pay once. Prove forever.",
   "brandEssence": "Hash locally. Prove publicly. Cite forever.",
   "shortDescription": "Timestamped hash proof for autonomous agents.",

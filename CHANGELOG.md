@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.16 - 2026-05-18
+
+### Changed
+
+- Hardened `npm run release:check` to require both the GitHub Actions local
+  smoke check and the CodeQL `Analyze JavaScript` check before a release is
+  considered verified.
+
 ## 0.1.15 - 2026-05-18
 
 ### Added
