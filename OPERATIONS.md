@@ -48,6 +48,10 @@ post-launch checks. It verifies production metadata, OpenAPI paid discovery,
 `/.well-known/x402`, recent proof feed availability, and the unpaid x402
 challenge. It does not settle a payment or create a proof.
 
+For monitoring outside GitHub Actions, use `MONITORING.md`. External monitors
+should use read-only endpoints and unpaid 402 challenge checks unless the
+operator explicitly approves a spend-bearing synthetic transaction.
+
 ## Release Verification
 
 Before tagging:
@@ -149,3 +153,15 @@ Paid smoke is optional and spend-bearing. Use it only when the operator approves
 the maximum amount for that specific run. After paid smoke, record only public
 proof id, verify URL, proof URL, tx hash, network, price, and timestamp. Do not
 record wallet secrets, payment headers, or private request payloads.
+
+Latest operator-approved paid smoke:
+
+```text
+Proof: proof_47a6f27da15a71a27e17194d
+Verify: https://proof402.vercel.app/api/verify/proofs/proof_47a6f27da15a71a27e17194d
+Proof page: https://proof402.vercel.app/proof/proof_47a6f27da15a71a27e17194d
+Transaction: 0x13e39f0989f293eb03db1869416d37ec1e8817aeb2769a5ce3d8b3c266ee3770
+Network: Base mainnet
+Price: $0.005
+Timestamp: 2026-05-18T04:33:14.619Z
+```

@@ -1,18 +1,21 @@
-# Proof402 0.1.24 Release Notes
+# Proof402 0.1.25 Release Notes
 
-Proof402 0.1.24 is a public launch polish patch for the x402-compatible
+Proof402 0.1.25 closes the post-launch optional work for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Refined the public homepage around trust checks, verification links, and
-  private-by-default proof boundaries.
-- Added public landing mockup PNG assets for marketplace, trust, API, seal,
-  ledger, console, badge, and homepage variants.
-- Expanded `/landing-mockups.html` with marketplace, trust, API, and minimal
-  seal concepts for public launch review.
-- No secrets, wallets, local stores, or Vercel project state are included in
-  the release.
+- Recorded the latest operator-approved paid AgentCash smoke evidence.
+- Added `MONITORING.md` for external uptime checks, unpaid synthetic checks,
+  Vercel log-drain setup, and alert routing.
+- Added `Brand/external-publication.md` for account-bound social and directory
+  publication.
+- Added `ROADMAP.md` for dashboard, proof search, accounts, API keys, and
+  webhook receipt follow-up work.
+- Malformed JSON request bodies now return `400 invalid_json` instead of a
+  generic internal error.
+- No secrets, wallets, local stores, payment headers, or Vercel project state
+  are included in the release.
 
 ## Production
 
@@ -39,7 +42,7 @@ npx agentcash discover https://proof402.vercel.app --format json
 The latest post-public paid AgentCash smoke remains:
 
 ```text
-Proof ID: proof_d8cfab2c1413f0f173967641
-Verify API: https://proof402.vercel.app/api/verify/proofs/proof_d8cfab2c1413f0f173967641
-Payment tx: 0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e
+Proof ID: proof_47a6f27da15a71a27e17194d
+Verify API: https://proof402.vercel.app/api/verify/proofs/proof_47a6f27da15a71a27e17194d
+Payment tx: 0x13e39f0989f293eb03db1869416d37ec1e8817aeb2769a5ce3d8b3c266ee3770
 ```

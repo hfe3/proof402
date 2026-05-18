@@ -202,12 +202,21 @@ app.use((req, _res, next) => {
 });
 
 app.use((error, _req, res, _next) => {
-  const status = error instanceof ApiError ? error.status : 500;
-  if (!(error instanceof ApiError)) {
+  const normalizedError = normalizeExpressError(error);
+  const status = normalizedError instanceof ApiError ? normalizedError.status : 500;
+  if (!(normalizedError instanceof ApiError)) {
     logEvent("error", "http.unhandled_error", { message: error.message, stack: error.stack });
   }
-  res.status(status).json(errorBody(error));
+  res.status(status).json(errorBody(normalizedError));
 });
+
+function normalizeExpressError(error) {
+  if (error instanceof SyntaxError && error.status === 400 && error.type === "entity.parse.failed") {
+    return new ApiError(400, "invalid_json", "Request body must be valid JSON.", {});
+  }
+
+  return error;
+}
 
 export function startServer() {
   const server = app.listen(config.port, config.host, () => {

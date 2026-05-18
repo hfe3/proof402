@@ -23,8 +23,10 @@ Use this checklist for the public launch and post-launch verification.
 - Community health: `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, pull request
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
+- External monitoring runbook: `MONITORING.md`
+- Product roadmap: `ROADMAP.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.24`.
+  prepared. Latest release: `v0.1.25`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC, OpenAPI
   exposes `x-payment-info`, and `/.well-known/x402` is available as fallback
@@ -34,8 +36,10 @@ Use this checklist for the public launch and post-launch verification.
   are triggered from pushes to `main`
 - Production monitor: `.github/workflows/production-monitor.yml` runs the
   unpaid `npm run monitor:production` check on a daily schedule
-- Latest post-public paid AgentCash smoke: `proof_d8cfab2c1413f0f173967641`,
-  transaction `0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e`
+- External publication tracker: `Brand/external-publication.md`
+- Latest operator-approved paid AgentCash smoke:
+  - Proof: `proof_47a6f27da15a71a27e17194d`
+  - Transaction: `0x13e39f0989f293eb03db1869416d37ec1e8817aeb2769a5ce3d8b3c266ee3770`
 
 ## Required Checks
 

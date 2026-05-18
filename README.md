@@ -49,6 +49,15 @@ Verify API: https://proof402.vercel.app/api/verify/proofs/proof_d8cfab2c1413f0f1
 Payment tx: 0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e
 ```
 
+Latest local operator paid AgentCash smoke test:
+
+```text
+Proof ID: proof_47a6f27da15a71a27e17194d
+Proof page: https://proof402.vercel.app/proof/proof_47a6f27da15a71a27e17194d
+Verify API: https://proof402.vercel.app/api/verify/proofs/proof_47a6f27da15a71a27e17194d
+Payment tx: 0x13e39f0989f293eb03db1869416d37ec1e8817aeb2769a5ce3d8b3c266ee3770
+```
+
 ## Paid Primitive
 
 ```text
@@ -158,6 +167,13 @@ Release history is tracked in `CHANGELOG.md`. The latest release notes are in
 
 Operational checks, rollback notes, and receipt-secret rotation steps are in
 `OPERATIONS.md`.
+
+External uptime/log-drain setup is documented in `MONITORING.md`.
+
+Product follow-up work is tracked in `ROADMAP.md`.
+
+Public posting and directory submission copy is in `Brand/external-publication.md`
+and `Brand/social-launch-pack.md`.
 
 Community safety expectations are documented in `CODE_OF_CONDUCT.md`.
 

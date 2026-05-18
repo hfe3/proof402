@@ -6,6 +6,24 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.25 - 2026-05-18
+
+### Added
+
+- Added `MONITORING.md` with external uptime, unpaid synthetic, and Vercel
+  log-drain setup guidance.
+- Added `ROADMAP.md` for dashboard, proof search, accounts, API keys, and
+  webhook receipt follow-up work.
+- Added `Brand/external-publication.md` as the account-bound posting and
+  directory submission tracker.
+- Recorded the latest operator-approved AgentCash paid smoke proof and
+  transaction.
+
+### Fixed
+
+- Malformed JSON request bodies now return structured `400 invalid_json`
+  responses instead of generic internal errors.
+
 ## 0.1.24 - 2026-05-18
 
 ### Added
@@ -262,6 +280,6 @@ Initial public release.
 - Price: `$0.005`
 - Network: Base mainnet, `eip155:8453`
 - Latest post-public paid AgentCash smoke:
-  - Proof: `proof_d8cfab2c1413f0f173967641`
-  - Verify: `https://proof402.vercel.app/api/verify/proofs/proof_d8cfab2c1413f0f173967641`
-  - Transaction: `0x873efda606100f78e7464c6b66604c6dacb4f29fc39de6646e67f2e8bc1a9c7e`
+  - Proof: `proof_47a6f27da15a71a27e17194d`
+  - Verify: `https://proof402.vercel.app/api/verify/proofs/proof_47a6f27da15a71a27e17194d`
+  - Transaction: `0x13e39f0989f293eb03db1869416d37ec1e8817aeb2769a5ce3d8b3c266ee3770`

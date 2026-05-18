@@ -91,6 +91,18 @@ test("status document exposes safe launch metadata", async () => {
   assert.equal(body.links.paidEndpoint, "/api/proof/notarize");
 });
 
+test("malformed JSON returns structured invalid_json error", async () => {
+  const { response, body } = await request("/api/proof/notarize", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: "{contentHash:x}"
+  });
+
+  assert.equal(response.status, 400);
+  assert.equal(body.error.code, "invalid_json");
+  assert.equal(body.error.message, "Request body must be valid JSON.");
+});
+
 test("bazaar, quickstart, and action catalog expose agent discovery metadata", async () => {
   const bazaar = await request("/api/bazaar");
   assert.equal(bazaar.response.status, 200);
