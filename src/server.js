@@ -8,6 +8,7 @@ import { ApiError, errorBody } from "./errors.js";
 import { logEvent, observabilitySummary, recordMetric, requestLogger } from "./observability.js";
 import { proofLinks, publicProof } from "./proofService.js";
 import { createRateLimiter } from "./rateLimit.js";
+import { securityHeaders } from "./securityHeaders.js";
 import { buildStatusSummary, buildTrustSummary } from "./trustSummary.js";
 import { maybeInstallX402 } from "./x402.js";
 import { getProof, initStore, listRecentProofs, storeStats } from "./store.js";
@@ -20,7 +21,9 @@ logEvent("info", "service.starting", runtimeSummary());
 
 export const app = express();
 app.set("trust proxy", true);
+app.disable("x-powered-by");
 
+app.use(securityHeaders);
 app.use(requestLogger);
 app.use(express.static("public", { extensions: ["html"] }));
 

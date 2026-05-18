@@ -6,6 +6,15 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.19 - 2026-05-18
+
+### Added
+
+- Added baseline browser security headers for API and public-page responses.
+- Hardened `npm run deploy:check` to verify CSP, frame denial, MIME sniffing
+  protection, removal of `X-Powered-By`, referrer policy, permissions policy,
+  and HSTS on HTTPS.
+
 ## 0.1.18 - 2026-05-18
 
 ### Changed

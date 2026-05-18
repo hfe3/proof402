@@ -212,6 +212,10 @@ published GitHub Release, required GitHub Actions and CodeQL check-runs,
 production source-control commit metadata, and live production metadata for
 `https://proof402.vercel.app`. It does not settle a payment.
 
+`deploy:check` also verifies baseline browser security headers on `/health` and
+the public home page, including CSP, frame denial, MIME sniffing protection,
+referrer policy, permissions policy, and HSTS on HTTPS.
+
 `smoke:x402` validates the unpaid 402 challenge. A real paid smoke should be
 run through AgentCash or another x402-capable buyer wallet with a strict
 per-request max amount.

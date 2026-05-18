@@ -85,12 +85,32 @@ try {
 async function checkGet(path, kind) {
   const response = await fetch(`${baseUrl}${path}`);
   assert(response.ok, `${path} returned ${response.status}`);
+  if (path === "/health" || path === "/") {
+    checkSecurityHeaders(response, path);
+  }
   if (kind === "json") {
     return response.json();
   }
   const text = await response.text();
   assert(text.length > 0, `${path} returned empty text`);
   return text;
+}
+
+function checkSecurityHeaders(response, path) {
+  const csp = response.headers.get("content-security-policy") || "";
+  assert(response.headers.get("x-content-type-options") === "nosniff", `${path} missing X-Content-Type-Options`);
+  assert(!response.headers.has("x-powered-by"), `${path} must not expose X-Powered-By`);
+  assert(response.headers.get("x-frame-options") === "DENY", `${path} missing X-Frame-Options`);
+  assert(
+    response.headers.get("referrer-policy") === "strict-origin-when-cross-origin",
+    `${path} missing Referrer-Policy`
+  );
+  assert(csp.includes("default-src 'self'"), `${path} missing CSP default-src`);
+  assert(csp.includes("frame-ancestors 'none'"), `${path} CSP missing frame-ancestors`);
+  assert(response.headers.get("permissions-policy")?.includes("camera=()"), `${path} missing Permissions-Policy`);
+  if (baseUrl.startsWith("https://")) {
+    assert(response.headers.get("strict-transport-security")?.includes("max-age=31536000"), `${path} missing HSTS`);
+  }
 }
 
 function checkDiscoveryDocuments(results) {

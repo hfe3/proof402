@@ -29,6 +29,23 @@ test("capabilities document exposes Proof402 paid action", async () => {
   assert.ok(body.links.securityTxt.endsWith("/.well-known/security.txt"));
 });
 
+test("responses include baseline browser security headers", async () => {
+  const { response } = await request("/health");
+
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(response.headers.get("cross-origin-opener-policy"), "same-origin");
+  assert.equal(response.headers.get("cross-origin-resource-policy"), "same-origin");
+  assert.equal(response.headers.get("x-powered-by"), null);
+  assert.ok(response.headers.get("permissions-policy").includes("camera=()"));
+
+  const csp = response.headers.get("content-security-policy");
+  assert.ok(csp.includes("default-src 'self'"));
+  assert.ok(csp.includes("frame-ancestors 'none'"));
+  assert.ok(csp.includes("object-src 'none'"));
+});
+
 test("openapi document exposes proof routes", async () => {
   const { response, body } = await request("/openapi.json");
 

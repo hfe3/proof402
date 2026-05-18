@@ -66,6 +66,8 @@ After pushing:
 - Confirm live `/health`, `/api/capabilities`, `/openapi.json`, and
   `/marketplace.json` report the new version; `/health` and `/api/status`
   should also expose the deployed Git commit SHA.
+- Confirm `npm run deploy:check` passes the baseline security-header checks for
+  `/health` and the public home page.
 - Publish the GitHub Release for the tag and verify it is not a draft.
 - Run `npm run release:check` after the release exists. It checks the clean
   `main` checkout, current tag, GitHub Release, required GitHub Actions and

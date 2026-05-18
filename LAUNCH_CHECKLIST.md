@@ -24,7 +24,7 @@ Use this checklist for the public launch and post-launch verification.
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.18`.
+  prepared. Latest release: `v0.1.19`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC
 - Public sharing metadata: Open Graph/Twitter tags and `proof402-social.svg`
@@ -102,6 +102,8 @@ managed secret store.
 
 - `https://proof402.vercel.app/health` reports `profile=mainnet` and
   `x402Enabled=true`, plus the deployed git commit SHA.
+- `https://proof402.vercel.app/health` and the public home page return baseline
+  browser security headers checked by `npm run deploy:check`.
 - `https://proof402.vercel.app/api/status` reports repository visibility as
   `public` and source-control repository as `hfe3/proof402`.
 - Environment Variables are configured in Vercel, not committed to GitHub.
