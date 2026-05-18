@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proof402 dashboard</title>
+    <meta name="description" content="Proof402 product dashboard for proof search, account state, API keys, and webhook receipts.">
+    <link rel="canonical" href="https://proof402.vercel.app/dashboard">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Proof402">
+    <meta property="og:title" content="Proof402 dashboard">
+    <meta property="og:description" content="Search public proofs and inspect product-layer readiness.">
+    <meta property="og:url" content="https://proof402.vercel.app/dashboard">
+    <meta property="og:image" content="https://proof402.vercel.app/proof402-social.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Proof402 dashboard">
+    <meta name="twitter:description" content="Proof search and product readiness dashboard.">
+    <meta name="twitter:image" content="https://proof402.vercel.app/proof402-social.svg">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><img src="/proof402-mark.svg" alt="">Proof402</a>
+      <nav class="nav">
+        <a href="/proofs">Proofs</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/trust">Trust</a>
+        <a href="/actions">Actions</a>
+      </nav>
+    </header>
+    <main class="band dashboard-shell">
+      <div class="dashboard-head">
+        <div>
+          <p class="eyebrow">Product console</p>
+          <h1>Dashboard</h1>
+        </div>
+        <a class="button secondary" href="/api/dashboard/summary">JSON</a>
+      </div>
+
+      <section class="metric-grid" id="dashboard-metrics" aria-live="polite"></section>
+
+      <section class="search-panel">
+        <form id="proof-search-form" class="search-form">
+          <label>
+            <span>Search</span>
+            <input name="q" type="search" autocomplete="off" placeholder="proof id, hash, label, account">
+          </label>
+          <label>
+            <span>Content hash</span>
+            <input name="contentHash" type="text" autocomplete="off" placeholder="sha256:...">
+          </label>
+          <label>
+            <span>Metadata hash</span>
+            <input name="metadataHash" type="text" autocomplete="off" placeholder="sha256:...">
+          </label>
+          <label>
+            <span>Account</span>
+            <input name="accountId" type="text" autocomplete="off" placeholder="acct_...">
+          </label>
+          <label>
+            <span>API key</span>
+            <input name="apiKeyId" type="text" autocomplete="off" placeholder="key_...">
+          </label>
+          <label>
+            <span>Idempotency</span>
+            <input name="idempotencyKey" type="text" autocomplete="off" placeholder="proof-task-123">
+          </label>
+          <button class="button" type="submit">Search</button>
+        </form>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="table-card">
+          <div class="table-head">
+            <h2>Proofs</h2>
+            <span id="proof-count" class="muted"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Proof</th>
+                  <th>Label</th>
+                  <th>Account</th>
+                  <th>Timestamp</th>
+                  <th>Links</th>
+                </tr>
+              </thead>
+              <tbody id="proof-search-results"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="ops-panel">
+          <h2>Operations</h2>
+          <dl id="ops-list"></dl>
+        </aside>
+      </section>
+    </main>
+    <footer class="footer"><a href="/openapi.json">OpenAPI</a></footer>
+    <script src="/dashboard.js"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.26",
+  "version": "0.2.0",
   "tagline": "Pay once. Prove forever.",
   "category": "agent-infrastructure",
   "shortDescription": "Timestamped hash proof for autonomous agents.",
@@ -39,7 +39,20 @@
     "robots": "https://proof402.vercel.app/robots.txt",
     "sitemap": "https://proof402.vercel.app/sitemap.xml",
     "securityTxt": "https://proof402.vercel.app/.well-known/security.txt",
-    "x402WellKnown": "https://proof402.vercel.app/.well-known/x402"
+    "x402WellKnown": "https://proof402.vercel.app/.well-known/x402",
+    "dashboard": "https://proof402.vercel.app/dashboard",
+    "dashboardSummary": "https://proof402.vercel.app/api/dashboard/summary",
+    "proofSearch": "https://proof402.vercel.app/api/proofs/search"
+  },
+  "product": {
+    "dashboard": "https://proof402.vercel.app/dashboard",
+    "proofSearch": "GET /api/proofs/search",
+    "apiKeyHeader": "X-Proof402-Key",
+    "adminHeader": "X-Proof402-Admin-Key",
+    "webhookEvents": [
+      "proof.created",
+      "webhook.test"
+    ]
   },
   "assets": {
     "mark": "https://proof402.vercel.app/proof402-mark.svg",
@@ -50,6 +63,8 @@
   },
   "safety": {
     "rawPayloadStorage": false,
+    "rawApiKeysStored": false,
+    "webhookPayloadBodiesStored": false,
     "legalNotarization": false,
     "storesSecrets": false,
     "proofScope": "Proof402 verifies the signed timestamp/hash proof, not the factual truth of the original claim."

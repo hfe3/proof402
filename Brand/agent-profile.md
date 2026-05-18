@@ -4,7 +4,7 @@
 
 ```text
 Name: Proof402
-Version: 0.1.26
+Version: 0.2.0
 Category: agent-infrastructure
 Tagline: Pay once. Prove forever.
 Short description: Timestamped hash proof for autonomous agents.
@@ -87,11 +87,29 @@ GET /.well-known/security.txt
 GET /.well-known/x402
 GET /marketplace
 GET /marketplace.json
+GET /dashboard
+GET /api/dashboard/summary
 GET /api/proofs/recent
+GET /api/proofs/search
 GET /api/proofs/{id}
 GET /api/verify/proofs/{id}
 GET /proof/{id}
 ```
+
+## Product Layer
+
+```text
+Dashboard: GET /dashboard
+Proof search: GET /api/proofs/search
+API key header: X-Proof402-Key
+Admin header: X-Proof402-Admin-Key
+Webhook events: proof.created, webhook.test
+```
+
+The dashboard is read-only for public proof discovery. Account creation, API
+key creation/revocation, and webhook setup require the operator admin header.
+Raw API keys are shown once and stored only as hashes. Webhook delivery history
+stores status, hashes, and response metadata, not raw private payload bodies.
 
 ## Agent Prompt
 

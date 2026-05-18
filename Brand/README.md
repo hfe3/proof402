@@ -27,13 +27,15 @@ This folder is the brand and agent-information source for Proof402. It is safe t
 Name: Proof402
 Tagline: Pay once. Prove forever.
 Public URL: https://proof402.vercel.app
-Version: 0.1.26
+Version: 0.2.0
 Profile: mainnet
 x402: enabled
 Network: eip155:8453
 Price: $0.005
 Store: postgres
 Paid endpoint: POST /api/proof/notarize
+Dashboard: GET /dashboard
+Proof search: GET /api/proofs/search
 Verification: GET /api/verify/proofs/{id}
 Proof badge: GET /proof/{id}
 ```

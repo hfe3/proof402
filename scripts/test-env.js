@@ -13,3 +13,4 @@ process.env.RECEIPT_SECRET =
   process.env.RECEIPT_SECRET || "test-proof402-receipt-secret-with-enough-length";
 process.env.LOG_LEVEL = "silent";
 process.env.REQUEST_LOG_ENABLED = "false";
+process.env.PROOF402_ADMIN_KEY = process.env.PROOF402_ADMIN_KEY || "test-proof402-admin-key-with-enough-length";

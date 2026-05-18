@@ -100,6 +100,24 @@ Frequency: 5 minutes
 Alert after: 3 failed checks
 ```
 
+### Dashboard Summary
+
+```text
+Name: Proof402 dashboard summary
+Method: GET
+URL: https://proof402.vercel.app/api/dashboard/summary
+Expected status: 200
+Expected JSON:
+  ok=true
+  product.dashboard=true
+  product.proofSearch=true
+Frequency: 5 minutes
+Alert after: 3 failed checks
+```
+
+Do not configure external uptime monitors with `X-Proof402-Admin-Key`,
+`X-Proof402-Key`, wallet credentials, or payment headers.
+
 ## Paid Synthetic Checks
 
 Paid synthetic checks are spend-bearing. Use them only when an operator
@@ -170,6 +188,8 @@ Log-drain rules:
 - Do not log request bodies for paid proof creation.
 - Do not log `X-PAYMENT`, `payment-required`, authorization headers, cookies,
   wallet material, or private metadata values.
+- Do not log `X-Proof402-Admin-Key`, raw `X-Proof402-Key` values, webhook
+  signing secrets, or raw webhook payload bodies.
 - Keep proof ids, public verification URLs, status codes, durations, versions,
   and commit SHAs.
 - Alert on repeated `5xx`, repeated `402` discovery failures, store connection

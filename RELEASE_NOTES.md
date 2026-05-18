@@ -1,24 +1,31 @@
-# Proof402 0.1.26 Release Notes
+# Proof402 0.2.0 Release Notes
 
-Proof402 0.1.26 adds Better Stack production monitoring and a safe logging
-fallback for the x402-compatible timestamp/hash proof service.
+Proof402 0.2.0 adds the first product layer on top of the already-working
+x402-compatible timestamp/hash proof primitive: dashboard, proof search,
+accounts, API keys, and signed webhook receipts.
 
 ## Highlights
 
-- Better Stack uptime monitors are configured for health, status, x402
-  discovery, and unpaid `402` challenge checks.
-- Better Stack Telemetry source `2446913` is configured for Proof402 logs.
-- Vercel Log Drains are unavailable on the current Vercel team, so Proof402 now
-  supports direct Better Stack HTTP logging via env vars.
-- `/health` reports Better Stack logging state without exposing tokens.
-- No secrets, wallets, local stores, source tokens, payment headers, or Vercel
-  project state are included in the release.
+- Public dashboard at `/dashboard` with read-only proof search.
+- `GET /api/dashboard/summary` and `GET /api/proofs/search` for agent/operator
+  discovery.
+- Admin-protected accounts and one-time API key creation.
+- API-key authenticated proof creation through `X-Proof402-Key`.
+- Signed webhook receipts for `proof.created` and `webhook.test`.
+- Webhook delivery history stores status, payload hashes, and response metadata,
+  not private payload bodies.
+- Postgres-ready schema paths for proof search, accounts, API keys, webhooks,
+  and delivery history.
+- No secrets, wallets, local stores, API key raw values, webhook signing
+  secrets, payment headers, or Vercel project state are included in the release.
 
 ## Production
 
 ```text
 URL: https://proof402.vercel.app
 Paid endpoint: POST /api/proof/notarize
+Dashboard: GET /dashboard
+Proof search: GET /api/proofs/search
 Network: Base mainnet, eip155:8453
 Price: $0.005
 ```
@@ -36,7 +43,7 @@ npm run release:check
 npx agentcash discover https://proof402.vercel.app --format json
 ```
 
-The latest post-public paid AgentCash smoke remains:
+The latest paid AgentCash smoke before this release remains:
 
 ```text
 Proof ID: proof_47a6f27da15a71a27e17194d

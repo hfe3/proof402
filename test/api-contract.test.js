@@ -27,6 +27,9 @@ test("capabilities document exposes Proof402 paid action", async () => {
   assert.ok(body.links.marketplaceJson.endsWith("/marketplace.json"));
   assert.ok(body.links.status.endsWith("/api/status"));
   assert.ok(body.links.securityTxt.endsWith("/.well-known/security.txt"));
+  assert.equal(body.product.dashboard, "/dashboard");
+  assert.equal(body.product.proofSearch, "/api/proofs/search");
+  assert.equal(body.product.apiKeyHeader, "X-Proof402-Key");
 });
 
 test("responses include baseline browser security headers", async () => {
@@ -71,6 +74,12 @@ test("openapi document exposes proof routes", async () => {
   assert.ok(body.paths["/marketplace"].get);
   assert.ok(body.paths["/marketplace.json"].get);
   assert.ok(body.paths["/api/status"].get);
+  assert.ok(body.paths["/dashboard"].get);
+  assert.ok(body.paths["/api/dashboard/summary"].get);
+  assert.ok(body.paths["/api/proofs/search"].get);
+  assert.ok(body.paths["/api/accounts"].get);
+  assert.ok(body.paths["/api/accounts/{id}/api-keys"].post);
+  assert.ok(body.paths["/api/accounts/{id}/webhooks"].post);
   assert.ok(body.paths["/.well-known/x402"].get);
   const paymentInfo = body.paths["/api/proof/notarize"].post["x-payment-info"];
   assert.equal(paymentInfo.price.mode, "fixed");
@@ -100,6 +109,11 @@ test("status document exposes safe launch metadata", async () => {
   assert.equal(body.links.marketplaceJson, "/marketplace.json");
   assert.equal(body.links.securityTxt, "/.well-known/security.txt");
   assert.equal(body.links.paidEndpoint, "/api/proof/notarize");
+  assert.equal(body.links.dashboard, "/dashboard");
+  assert.equal(body.links.proofSearch, "/api/proofs/search");
+  assert.equal(body.product.dashboard, true);
+  assert.equal(body.safety.rawApiKeysStored, false);
+  assert.equal(body.safety.webhookPayloadBodiesStored, false);
 });
 
 test("malformed JSON returns structured invalid_json error", async () => {
@@ -166,6 +180,8 @@ test("llms.txt and public pages load", async () => {
   assert.equal(sitemap.response.status, 200);
   assert.ok(sitemap.body.includes("https://proof402.vercel.app/api/status"));
   assert.ok(sitemap.body.includes("https://proof402.vercel.app/marketplace"));
+  assert.ok(sitemap.body.includes("https://proof402.vercel.app/dashboard"));
+  assert.ok(sitemap.body.includes("https://proof402.vercel.app/api/proofs/search"));
 
   const marketplaceJson = await request("/marketplace.json");
   assert.equal(marketplaceJson.response.status, 200);
@@ -177,6 +193,8 @@ test("llms.txt and public pages load", async () => {
   assert.equal(marketplaceJson.body.discovery.status, "https://proof402.vercel.app/api/status");
   assert.equal(marketplaceJson.body.discovery.securityTxt, "https://proof402.vercel.app/.well-known/security.txt");
   assert.equal(marketplaceJson.body.discovery.x402WellKnown, "https://proof402.vercel.app/.well-known/x402");
+  assert.equal(marketplaceJson.body.discovery.dashboard, "https://proof402.vercel.app/dashboard");
+  assert.equal(marketplaceJson.body.product.apiKeyHeader, "X-Proof402-Key");
 
   const securityTxt = await request("/.well-known/security.txt");
   assert.equal(securityTxt.response.status, 200);
@@ -209,6 +227,7 @@ test("llms.txt and public pages load", async () => {
     "/demo",
     "/actions",
     "/marketplace",
+    "/dashboard",
     "/trust",
     "/proofs",
     "/proof/proof_missing",

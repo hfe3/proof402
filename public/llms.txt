@@ -7,6 +7,8 @@ When to use:
 - You need a public proof badge for an agent result hash.
 - You need a machine-readable verification endpoint.
 - You need idempotent proof creation for retryable workflows.
+- You need read-only proof search by proof id, content hash, label, or metadata hash.
+- You need account-scoped API keys and signed webhook receipts for agent operations.
 
 When not to use:
 - Do not use Proof402 as legal notarization.
@@ -27,9 +29,15 @@ GET /openapi.json
 GET /llms.txt
 GET /marketplace
 GET /marketplace.json
+GET /dashboard
+GET /api/dashboard/summary
+GET /api/proofs/search
 GET /proof/{id}
 GET /api/proofs/{id}
 GET /api/verify/proofs/{id}
+
+Operator endpoints:
+Account, API key, and webhook management endpoints require X-Proof402-Admin-Key. API-key proof creation can use X-Proof402-Key. Raw API keys are shown once and stored only as hashes.
 
 Price:
 $0.005 on production mainnet when x402 is enabled. Local demo mode does not require real payment.

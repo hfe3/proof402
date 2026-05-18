@@ -82,6 +82,47 @@ const errorSchema = {
   }
 };
 
+const accountSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    name: { type: "string" },
+    ownerLabel: { type: "string" },
+    status: { type: "string" },
+    createdAt: { type: "string", format: "date-time" },
+    updatedAt: { type: "string", format: "date-time" }
+  }
+};
+
+const apiKeySchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    accountId: { type: "string" },
+    name: { type: "string" },
+    keyPrefix: { type: "string" },
+    scopes: { type: "array", items: { type: "string" } },
+    status: { type: "string" },
+    createdAt: { type: "string", format: "date-time" },
+    lastUsedAt: { type: ["string", "null"], format: "date-time" },
+    revokedAt: { type: ["string", "null"], format: "date-time" }
+  }
+};
+
+const webhookSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    accountId: { type: "string" },
+    name: { type: "string" },
+    url: { type: "string", format: "uri" },
+    events: { type: "array", items: { type: "string" } },
+    status: { type: "string" },
+    createdAt: { type: "string", format: "date-time" },
+    updatedAt: { type: "string", format: "date-time" }
+  }
+};
+
 function abs(path) {
   return `${config.publicBaseUrl}${path}`;
 }
@@ -175,6 +216,15 @@ export function publicCapabilities() {
       proofBadge: SERVICE.proofPathTemplate,
       recentProofs: "/api/proofs/recent"
     },
+    product: {
+      dashboard: "/dashboard",
+      dashboardSummary: "/api/dashboard/summary",
+      proofSearch: "/api/proofs/search",
+      accounts: "/api/accounts",
+      apiKeyHeader: "X-Proof402-Key",
+      adminHeader: "X-Proof402-Admin-Key",
+      webhookEvents: ["proof.created", "webhook.test"]
+    },
     safety: {
       rawPayloadStorage: false,
       privateHeadersStored: false,
@@ -198,6 +248,7 @@ export function publicCapabilities() {
       marketplaceJson: abs("/marketplace.json"),
       trust: abs("/trust"),
       proofs: abs("/proofs"),
+      dashboard: abs("/dashboard"),
       llms: abs("/llms.txt"),
       openapi: abs("/openapi.json"),
       robots: abs("/robots.txt"),
@@ -207,6 +258,7 @@ export function publicCapabilities() {
       quickstart: abs("/api/quickstart"),
       actionCatalog: abs("/api/actions"),
       status: abs("/api/status"),
+      proofSearch: abs("/api/proofs/search"),
       paidEndpoint: abs(SERVICE.paidPath)
     }
   };
@@ -282,6 +334,14 @@ export function openApiSpec() {
           }
         }
       },
+      "/api/dashboard/summary": {
+        get: {
+          summary: "Product dashboard summary",
+          responses: {
+            "200": { description: "Dashboard summary" }
+          }
+        }
+      },
       [SERVICE.paidPath]: {
         post: {
           summary: "Create or replay a timestamped proof for a SHA-256 hash",
@@ -332,6 +392,22 @@ export function openApiSpec() {
           }
         }
       },
+      "/api/proofs/search": {
+        get: {
+          summary: "Search public proofs by id, hash, label, metadata hash, or account",
+          parameters: [
+            { name: "q", in: "query", schema: { type: "string" } },
+            { name: "contentHash", in: "query", schema: { type: "string" } },
+            { name: "metadataHash", in: "query", schema: { type: "string" } },
+            { name: "accountId", in: "query", schema: { type: "string" } },
+            { name: "idempotencyKey", in: "query", schema: { type: "string" } },
+            { name: "limit", in: "query", schema: { type: "integer", minimum: 1, maximum: 100 } }
+          ],
+          responses: {
+            "200": { description: "Search result" }
+          }
+        }
+      },
       "/api/proofs/{id}": {
         get: {
           summary: "Public proof document",
@@ -377,6 +453,102 @@ export function openApiSpec() {
           }
         }
       },
+      "/dashboard": {
+        get: {
+          summary: "Product dashboard UI",
+          responses: {
+            "200": { description: "Dashboard HTML" }
+          }
+        }
+      },
+      "/api/accounts": {
+        get: {
+          summary: "List accounts",
+          security: [{ AdminKey: [] }],
+          responses: {
+            "200": { description: "Account list" },
+            "401": { description: "Admin key required" }
+          }
+        },
+        post: {
+          summary: "Create an account",
+          security: [{ AdminKey: [] }],
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    ownerLabel: { type: "string" }
+                  }
+                }
+              }
+            }
+          },
+          responses: {
+            "201": { description: "Account created" },
+            "401": { description: "Admin key required" }
+          }
+        }
+      },
+      "/api/accounts/{id}/api-keys": {
+        get: {
+          summary: "List account API keys",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Redacted API key list" }
+          }
+        },
+        post: {
+          summary: "Create an API key for an account",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "201": { description: "API key created; raw key returned once" }
+          }
+        }
+      },
+      "/api/accounts/{id}/webhooks": {
+        get: {
+          summary: "List account webhooks and recent deliveries",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Webhook list" }
+          }
+        },
+        post: {
+          summary: "Create a webhook receipt sink",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "201": { description: "Webhook created; signing secret returned once" }
+          }
+        }
+      },
+      "/api/api-keys/{id}/revoke": {
+        post: {
+          summary: "Revoke an API key",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "API key revoked" }
+          }
+        }
+      },
+      "/api/webhooks/{id}/test": {
+        post: {
+          summary: "Send a signed webhook test event",
+          security: [{ AdminKey: [] }],
+          parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+          responses: {
+            "200": { description: "Webhook test delivery recorded" }
+          }
+        }
+      },
       "/llms.txt": {
         get: {
           summary: "Plain-text guidance for LLM and agent crawlers",
@@ -395,10 +567,25 @@ export function openApiSpec() {
       }
     },
     components: {
+      securitySchemes: {
+        AdminKey: {
+          type: "apiKey",
+          in: "header",
+          name: "X-Proof402-Admin-Key"
+        },
+        Proof402Key: {
+          type: "apiKey",
+          in: "header",
+          name: "X-Proof402-Key"
+        }
+      },
       schemas: {
         ProofRequest: proofRequestSchema,
         ProofResponse: proofResponseSchema,
-        ErrorResponse: errorSchema
+        ErrorResponse: errorSchema,
+        Account: accountSchema,
+        ApiKey: apiKeySchema,
+        Webhook: webhookSchema
       }
     }
   };

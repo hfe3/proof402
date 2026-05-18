@@ -7,6 +7,11 @@ credentials.
 ## Now
 
 - Keep the mainnet x402 proof primitive stable.
+- Keep the v0.2 dashboard and proof search stable:
+  - `GET /dashboard`
+  - `GET /api/dashboard/summary`
+  - `GET /api/proofs/search`
+- Keep account-scoped API keys and webhook receipts admin-only.
 - Keep public discovery healthy:
   - `GET /openapi.json`
   - `GET /.well-known/x402`
@@ -16,38 +21,48 @@ credentials.
 - Keep paid smoke manual unless an operator explicitly approves spend-bearing
   automation.
 
-## Next Product Version
+## Current Product Version: 0.2.0
 
 ### Dashboard
 
-- Recent proof explorer with filters by label, timestamp, metadata keys, and
-  verification status.
+- Recent proof explorer with filters by proof id, label, content hash, metadata
+  hash, account id, API key id, and idempotency key.
 - Direct links to proof badge pages and verify API responses.
 - Redaction-first UI that never asks for raw private payloads.
 
 ### Proof Search
 
-- Search by proof id, content hash, metadata hash, label, and timestamp range.
-- Public-safe export of proof evidence.
-- Pagination and stable sort order for larger proof sets.
+- Search by proof id, content hash, metadata hash, label, account id, API key
+  id, and idempotency key.
+- Public-safe proof evidence responses.
+- Stable created-time ordering with bounded limits.
 
 ### Accounts And API Keys
 
 - Optional account layer for teams and agents.
-- API keys scoped to proof creation, verification, and admin operations.
-- Rate limits per account or key.
+- API keys scoped to proof creation context through `X-Proof402-Key`.
+- Raw API keys shown once and stored only as hashes.
+- Admin operations protected by `X-Proof402-Admin-Key`.
 - Public docs that make clear API keys are not wallet keys.
 
 ### Webhook Receipts
 
 - Optional webhook delivery after a proof is created.
 - Signed webhook payloads.
-- Retry schedule with idempotent delivery ids.
 - Webhook test endpoint and delivery logs.
+- Delivery history stores payload hashes and response metadata, not raw private
+  payload bodies.
+
+## Next Product Version
+
+- Dashboard auth and operator sessions.
+- Per-key rate limits and quotas.
+- Webhook retry queue with scheduled backoff.
+- Pagination cursors for larger proof/account datasets.
+- SDK examples for JavaScript and Python agents.
 
 ## Later
 
-- SDK examples for JavaScript and Python agents.
 - Batch proof creation for agent runs that produce multiple result hashes.
 - Public trust dashboard with release, monitor, and paid-smoke evidence.
 - Optional owner-controlled custom domains.

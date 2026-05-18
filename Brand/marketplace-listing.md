@@ -8,12 +8,14 @@ URLs, dashboard screenshots, or private payload examples.
 
 ```text
 Name: Proof402
-Version: 0.1.26
+Version: 0.2.0
 Tagline: Pay once. Prove forever.
 Category: agent-infrastructure
 Short description: Timestamped hash proof for autonomous agents.
 Public URL: https://proof402.vercel.app
 Paid action: POST /api/proof/notarize
+Dashboard: GET /dashboard
+Proof search: GET /api/proofs/search
 Price: $0.005
 Network: Base mainnet, eip155:8453
 Payment scheme: exact
@@ -54,6 +56,9 @@ https://proof402.vercel.app/robots.txt
 https://proof402.vercel.app/sitemap.xml
 https://proof402.vercel.app/.well-known/security.txt
 https://proof402.vercel.app/.well-known/x402
+https://proof402.vercel.app/dashboard
+https://proof402.vercel.app/api/dashboard/summary
+https://proof402.vercel.app/api/proofs/search
 ```
 
 ## API Example

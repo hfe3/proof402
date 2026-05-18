@@ -21,6 +21,7 @@ Open:
 ```text
 http://127.0.0.1:4022/
 http://127.0.0.1:4022/demo
+http://127.0.0.1:4022/dashboard
 http://127.0.0.1:4022/api/quickstart
 ```
 
@@ -38,6 +39,8 @@ x402: enabled
 Price: $0.005
 Storage: Postgres
 Paid endpoint: POST https://proof402.vercel.app/api/proof/notarize
+Dashboard: https://proof402.vercel.app/dashboard
+Proof search: GET https://proof402.vercel.app/api/proofs/search
 ```
 
 Latest post-public paid AgentCash smoke test:
@@ -100,6 +103,37 @@ Response:
 }
 ```
 
+## Product Dashboard And Search
+
+```text
+GET /dashboard
+GET /api/dashboard/summary
+GET /api/proofs/search
+```
+
+The dashboard is a read-only operator surface for recent proofs, search, and
+product readiness. Search supports proof id, content hash, label, metadata hash,
+account id, API key id, and idempotency key filters. Public verification remains
+open and does not require an account.
+
+## Accounts, API Keys, And Webhooks
+
+Admin operations require:
+
+```text
+X-Proof402-Admin-Key: <operator admin key>
+```
+
+Agent proof calls can be associated with an account by using:
+
+```text
+X-Proof402-Key: <one-time raw API key value>
+```
+
+Raw API keys are returned once during creation and are stored only as hashes.
+Webhook receipts are signed and delivery history stores status, timestamps,
+payload hashes, and response metadata, not raw private payload bodies.
+
 ## Free Endpoints
 
 ```text
@@ -117,7 +151,10 @@ GET /sitemap.xml
 GET /.well-known/security.txt
 GET /marketplace
 GET /marketplace.json
+GET /dashboard
+GET /api/dashboard/summary
 GET /api/proofs/recent
+GET /api/proofs/search
 GET /api/proofs/{id}
 GET /api/verify/proofs/{id}
 GET /proof/{id}
@@ -295,6 +332,8 @@ RATE_LIMIT_WINDOW_MS=60000
 RATE_LIMIT_MAX_REQUESTS=60
 LOG_LEVEL=info
 REQUEST_LOG_ENABLED=true
+PROOF402_ADMIN_KEY=...
+WEBHOOK_TIMEOUT_MS=2500
 ```
 
 `RECEIPT_PREVIOUS_SECRETS` is only for key rotation. Keep old receipt secrets in

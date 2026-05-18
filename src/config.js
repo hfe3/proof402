@@ -80,7 +80,7 @@ const storeDriver = String(
 
 export const config = {
   serviceName: "Proof402",
-  version: "0.1.26",
+  version: "0.2.0",
   tagline: "Pay once. Prove forever.",
   profile,
   port,
@@ -113,6 +113,8 @@ export const config = {
   betterStackIngestHost: process.env.BETTER_STACK_INGEST_HOST || "",
   betterStackSourceToken: process.env.BETTER_STACK_SOURCE_TOKEN || "",
   betterStackSourceId: process.env.BETTER_STACK_SOURCE_ID || "",
+  adminApiKey: process.env.PROOF402_ADMIN_KEY || "",
+  webhookTimeoutMs: intFromEnv(process.env.WEBHOOK_TIMEOUT_MS, 2500),
   sourceControl: sourceControlFromEnv()
 };
 
@@ -225,6 +227,14 @@ export function validateStartupConfig(runtimeConfig = config) {
     if (!runtimeConfig.betterStackSourceToken || runtimeConfig.betterStackSourceToken.length < 16) {
       errors.push("BETTER_STACK_LOGS_ENABLED=true requires BETTER_STACK_SOURCE_TOKEN.");
     }
+  }
+
+  if (runtimeConfig.adminApiKey && runtimeConfig.adminApiKey.length < 24) {
+    errors.push("PROOF402_ADMIN_KEY must be at least 24 characters when configured.");
+  }
+
+  if (runtimeConfig.webhookTimeoutMs < 250 || runtimeConfig.webhookTimeoutMs > 30000) {
+    errors.push("WEBHOOK_TIMEOUT_MS must be between 250 and 30000.");
   }
 
   if (!runtimeConfig.x402Enabled) return errors;

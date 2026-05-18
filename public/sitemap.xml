@@ -25,6 +25,10 @@
     <lastmod>2026-05-17</lastmod>
   </url>
   <url>
+    <loc>https://proof402.vercel.app/dashboard</loc>
+    <lastmod>2026-05-18</lastmod>
+  </url>
+  <url>
     <loc>https://proof402.vercel.app/trust</loc>
     <lastmod>2026-05-17</lastmod>
   </url>
@@ -71,5 +75,13 @@
   <url>
     <loc>https://proof402.vercel.app/api/status</loc>
     <lastmod>2026-05-17</lastmod>
+  </url>
+  <url>
+    <loc>https://proof402.vercel.app/api/dashboard/summary</loc>
+    <lastmod>2026-05-18</lastmod>
+  </url>
+  <url>
+    <loc>https://proof402.vercel.app/api/proofs/search</loc>
+    <lastmod>2026-05-18</lastmod>
   </url>
 </urlset>

@@ -26,6 +26,15 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
       publicBadge: "/proof/{id}",
       verification: "/api/verify/proofs/{id}"
     },
+    productModel: {
+      dashboard: "/dashboard",
+      proofSearch: "/api/proofs/search",
+      apiKeyHeader: "X-Proof402-Key",
+      adminHeader: "X-Proof402-Admin-Key",
+      webhookEvents: ["proof.created", "webhook.test"],
+      rawApiKeysStored: false,
+      webhookPayloadStorage: "payloadHash only"
+    },
     recentProofCount: recent.length,
     safety: {
       useWhen: USE_WHEN,
@@ -67,6 +76,8 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
       llms: "/llms.txt",
       proofBadge: SERVICE.proofPathTemplate,
       verify: SERVICE.verifyPathTemplate,
+      dashboard: "/dashboard",
+      proofSearch: "/api/proofs/search",
       securityTxt: "/.well-known/security.txt"
     }
   };
@@ -96,7 +107,19 @@ export async function buildStatusSummary({ storeStats }) {
     storage: {
       driver: stats.driver,
       durable: stats.durable,
-      proofCount: stats.proofCount
+      proofCount: stats.proofCount ?? stats.proofs ?? 0,
+      accountCount: stats.accounts ?? 0,
+      apiKeyCount: stats.apiKeys ?? 0,
+      webhookCount: stats.webhooks ?? 0,
+      webhookDeliveryCount: stats.webhookDeliveries ?? 0
+    },
+    product: {
+      dashboard: true,
+      proofSearch: true,
+      accounts: true,
+      apiKeys: true,
+      webhookReceipts: true,
+      postgresReady: true
     },
     repository: {
       url: "https://github.com/hfe3/proof402",
@@ -108,7 +131,9 @@ export async function buildStatusSummary({ storeStats }) {
       rawPayloadStorage: false,
       metadataPublishedRaw: false,
       secretFilesCommitted: false,
-      rateLimitEnabled: config.rateLimitEnabled
+      rateLimitEnabled: config.rateLimitEnabled,
+      rawApiKeysStored: false,
+      webhookPayloadBodiesStored: false
     },
     links: {
       health: "/health",
@@ -119,6 +144,8 @@ export async function buildStatusSummary({ storeStats }) {
       actions: "/api/actions",
       marketplace: "/marketplace",
       marketplaceJson: "/marketplace.json",
+      dashboard: "/dashboard",
+      proofSearch: "/api/proofs/search",
       openapi: "/openapi.json",
       llms: "/llms.txt",
       robots: "/robots.txt",

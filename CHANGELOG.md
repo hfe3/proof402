@@ -6,6 +6,29 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.2.0 - 2026-05-18
+
+### Added
+
+- Added a public product dashboard at `/dashboard` with read-only proof search
+  and product readiness metadata.
+- Added `GET /api/dashboard/summary` and `GET /api/proofs/search` for
+  dashboard, agent, and operator discovery flows.
+- Added an admin-protected account model with `X-Proof402-Admin-Key`.
+- Added hashed API keys with the `X-Proof402-Key` proof-creation header,
+  one-time raw key display, last-used tracking, and revocation.
+- Added webhook receipt configuration, signed webhook test deliveries, and
+  delivery history that stores payload hashes instead of raw payload bodies.
+- Added Postgres-ready account, API key, webhook, delivery, and proof-search
+  schema paths for production storage.
+
+### Changed
+
+- Paid proof creation now associates proofs with an optional account/API key
+  context while keeping public verification open.
+- Public discovery, trust, OpenAPI, brand, and marketplace metadata now expose
+  the dashboard, proof search, API key, and webhook capabilities.
+
 ## 0.1.26 - 2026-05-18
 
 ### Added

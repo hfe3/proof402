@@ -53,7 +53,7 @@ export function validateProofRequest(input = {}) {
   };
 }
 
-export async function notarizeProof(input = {}) {
+export async function notarizeProof(input = {}, context = {}) {
   const normalized = validateProofRequest(input);
   const existing = await getProofByIdempotencyKey(normalized.idempotencyKey);
 
@@ -75,7 +75,9 @@ export async function notarizeProof(input = {}) {
     label: normalized.label,
     metadataHash: normalized.metadataHash,
     metadataKeys: normalized.metadataKeys,
-    idempotencyKey: normalized.idempotencyKey
+    idempotencyKey: normalized.idempotencyKey,
+    accountId: context.accountId || null,
+    apiKeyId: context.apiKeyId || null
   };
 
   proof.signature = signProofPayload(buildProofPayload(proof));
@@ -100,6 +102,7 @@ export function publicProof(proof, { includeSignature = true, direct = true } = 
     label: proof.label,
     metadataHash: proof.metadataHash,
     metadataKeys: proof.metadataKeys || [],
+    accountId: proof.accountId || undefined,
     signature,
     keyId: direct ? proof.keyId : undefined
   };

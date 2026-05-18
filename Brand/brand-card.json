@@ -1,6 +1,6 @@
 {
   "name": "Proof402",
-  "version": "0.1.26",
+  "version": "0.2.0",
   "tagline": "Pay once. Prove forever.",
   "brandEssence": "Hash locally. Prove publicly. Cite forever.",
   "shortDescription": "Timestamped hash proof for autonomous agents.",
@@ -41,6 +41,9 @@
     "sitemap": "/sitemap.xml",
     "securityTxt": "/.well-known/security.txt",
     "x402WellKnown": "/.well-known/x402",
+    "dashboard": "/dashboard",
+    "dashboardSummary": "/api/dashboard/summary",
+    "proofSearch": "/api/proofs/search",
     "keywords": [
       "Proof402",
       "paid timestamp proof",
@@ -53,6 +56,22 @@
       "proof notary for autonomous agents",
       "verifiable agent output"
     ]
+  },
+  "product": {
+    "dashboard": "/dashboard",
+    "proofSearch": "GET /api/proofs/search",
+    "accounts": "admin-managed account records for operators and agents",
+    "apiKeyHeader": "X-Proof402-Key",
+    "adminHeader": "X-Proof402-Admin-Key",
+    "webhookEvents": [
+      "proof.created",
+      "webhook.test"
+    ],
+    "privacy": {
+      "rawApiKeysStored": false,
+      "webhookPayloadBodiesStored": false,
+      "publicVerificationRequiresAuth": false
+    }
   },
   "brand": {
     "colors": {

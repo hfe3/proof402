@@ -24,9 +24,12 @@ Use this checklist for the public launch and post-launch verification.
   template, and issue templates are configured with no-secrets guidance
 - Operations runbook: `OPERATIONS.md`
 - External monitoring runbook: `MONITORING.md`
+- Product dashboard: `GET /dashboard`
+- Product APIs: `GET /api/dashboard/summary`, `GET /api/proofs/search`,
+  admin accounts/API keys, and signed webhook receipts
 - Product roadmap: `ROADMAP.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.26`.
+  prepared. Latest release: `v0.2.0`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC, OpenAPI
   exposes `x-payment-info`, and `/.well-known/x402` is available as fallback

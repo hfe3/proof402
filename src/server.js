@@ -7,6 +7,22 @@ import { openApiSpec, publicCapabilities, x402WellKnown } from "./apiContract.js
 import { ApiError, errorBody } from "./errors.js";
 import { logEvent, observabilitySummary, recordMetric, requestLogger } from "./observability.js";
 import { proofLinks, publicProof } from "./proofService.js";
+import {
+  accountSnapshot,
+  attachApiKeyContext,
+  createAccountFromInput,
+  createApiKeyForAccount,
+  createWebhookForAccount,
+  dashboardSummary,
+  dispatchProofCreatedWebhooks,
+  listPublicAccounts,
+  publicApiKey,
+  publicWebhook,
+  requireAdmin,
+  revokeApiKeyById,
+  searchPublicProofs,
+  testWebhookById
+} from "./product.js";
 import { createRateLimiter } from "./rateLimit.js";
 import { securityHeaders } from "./securityHeaders.js";
 import { buildStatusSummary, buildTrustSummary } from "./trustSummary.js";
@@ -106,6 +122,14 @@ app.get("/openapi.json", (_req, res) => {
   res.json(openApiSpec());
 });
 
+app.get("/api/dashboard/summary", async (_req, res, next) => {
+  try {
+    res.json(await dashboardSummary());
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get("/proof/:id", (_req, res) => {
   res.sendFile("proof.html", { root: "public" });
 });
@@ -129,6 +153,24 @@ app.get("/api/proofs/recent", async (req, res, next) => {
         links: proofLinks(proof.id)
       }))
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/proofs/search", async (req, res, next) => {
+  try {
+    res.json(
+      await searchPublicProofs({
+        q: req.query.q,
+        contentHash: req.query.contentHash,
+        metadataHash: req.query.metadataHash,
+        accountId: req.query.accountId,
+        apiKeyId: req.query.apiKeyId,
+        idempotencyKey: req.query.idempotencyKey,
+        limit: req.query.limit
+      })
+    );
   } catch (error) {
     next(error);
   }
@@ -178,18 +220,117 @@ await maybeInstallX402(app);
 
 app.use(express.json({ limit: "128kb" }));
 app.use(createRateLimiter(config));
+app.use(attachApiKeyContext);
+
+app.get("/api/accounts", requireAdmin, async (_req, res, next) => {
+  try {
+    res.json({ ok: true, accounts: await listPublicAccounts() });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/accounts", requireAdmin, async (req, res, next) => {
+  try {
+    const account = await createAccountFromInput(req.body || {});
+    res.status(201).json({ ok: true, account });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/accounts/:id", requireAdmin, async (req, res, next) => {
+  try {
+    res.json({ ok: true, ...(await accountSnapshot(req.params.id)) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/accounts/:id/api-keys", requireAdmin, async (req, res, next) => {
+  try {
+    const { apiKey, rawKey } = await createApiKeyForAccount(req.params.id, req.body || {});
+    res.status(201).json({
+      ok: true,
+      apiKey: publicApiKey(apiKey),
+      rawKey,
+      note: "Store rawKey now. Proof402 only stores its hash and will not show it again."
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/accounts/:id/api-keys", requireAdmin, async (req, res, next) => {
+  try {
+    const snapshot = await accountSnapshot(req.params.id);
+    res.json({ ok: true, account: snapshot.account, apiKeys: snapshot.apiKeys });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/api-keys/:id/revoke", requireAdmin, async (req, res, next) => {
+  try {
+    res.json({ ok: true, apiKey: await revokeApiKeyById(req.params.id) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/accounts/:id/webhooks", requireAdmin, async (req, res, next) => {
+  try {
+    const { webhook, signingSecret } = await createWebhookForAccount(req.params.id, req.body || {});
+    res.status(201).json({
+      ok: true,
+      webhook: publicWebhook(webhook),
+      signingSecret,
+      note: "Store signingSecret now. It is derived from the server receipt secret and is returned only on creation."
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/accounts/:id/webhooks", requireAdmin, async (req, res, next) => {
+  try {
+    const snapshot = await accountSnapshot(req.params.id);
+    res.json({ ok: true, account: snapshot.account, webhooks: snapshot.webhooks, deliveries: snapshot.deliveries });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/webhooks/:id/test", requireAdmin, async (req, res, next) => {
+  try {
+    res.json({ ok: true, delivery: await testWebhookById(req.params.id) });
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.post("/api/proof/notarize", async (req, res, next) => {
   try {
-    const result = await notarizeProof(req.body || {});
+    const result = await notarizeProof(req.body || {}, req.proof402Auth || {});
     recordMetric("proof.created_or_replayed");
     if (result.idempotentReplay) recordMetric("proof.idempotent_replay");
+    let webhookDeliveries = [];
+    if (!result.idempotentReplay && result.proof.accountId) {
+      webhookDeliveries = await dispatchProofCreatedWebhooks(result.proof).catch((error) => {
+        logEvent("warn", "webhook.dispatch_failed", { message: error.message, accountId: result.proof.accountId });
+        return [];
+      });
+    }
 
     res.json({
       ok: true,
       mode: config.x402Enabled ? "x402" : "demo",
       idempotentReplay: result.idempotentReplay,
+      account: req.proof402Auth?.account || null,
       proof: publicProof(result.proof, { includeSignature: true, direct: true }),
+      webhooks: {
+        attempted: webhookDeliveries.length
+      },
       links: proofLinks(result.proof.id)
     });
   } catch (error) {
