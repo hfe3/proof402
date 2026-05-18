@@ -5,6 +5,7 @@ const DEFAULT_TESTNET_NETWORK = "eip155:84532";
 const DEFAULT_MAINNET_NETWORK = "eip155:8453";
 const DEFAULT_TESTNET_FACILITATOR = "https://x402.org/facilitator";
 const DEFAULT_MAINNET_FACILITATOR = "https://api.cdp.coinbase.com/platform/v2/x402";
+const DEFAULT_REPOSITORY = "hfe3/proof402";
 
 function boolFromEnv(value, fallback = false) {
   if (value === undefined) return fallback;
@@ -45,6 +46,19 @@ function publicBaseUrlFromEnv(port) {
   return `http://127.0.0.1:${port}`;
 }
 
+function sourceControlFromEnv() {
+  const owner = process.env.VERCEL_GIT_REPO_OWNER || "";
+  const slug = process.env.VERCEL_GIT_REPO_SLUG || "";
+  const repository = owner && slug ? `${owner}/${slug}` : process.env.GITHUB_REPOSITORY || DEFAULT_REPOSITORY;
+
+  return {
+    provider: process.env.VERCEL ? "vercel" : "local",
+    repository,
+    branch: process.env.VERCEL_GIT_COMMIT_REF || process.env.GITHUB_REF_NAME || "",
+    commitSha: process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || ""
+  };
+}
+
 const profile = process.env.PROOF402_PROFILE || process.env.NODE_ENV || "demo";
 const facilitatorUrl =
   process.env.FACILITATOR_URL ||
@@ -66,7 +80,7 @@ const storeDriver = String(
 
 export const config = {
   serviceName: "Proof402",
-  version: "0.1.16",
+  version: "0.1.17",
   tagline: "Pay once. Prove forever.",
   profile,
   port,
@@ -94,7 +108,8 @@ export const config = {
   rateLimitWindowMs: intFromEnv(process.env.RATE_LIMIT_WINDOW_MS, 60000),
   rateLimitMaxRequests: intFromEnv(process.env.RATE_LIMIT_MAX_REQUESTS, 60),
   logLevel: String(process.env.LOG_LEVEL || (process.env.NODE_ENV === "test" ? "silent" : "info")).toLowerCase(),
-  requestLogEnabled: boolFromEnv(process.env.REQUEST_LOG_ENABLED, process.env.NODE_ENV !== "test")
+  requestLogEnabled: boolFromEnv(process.env.REQUEST_LOG_ENABLED, process.env.NODE_ENV !== "test"),
+  sourceControl: sourceControlFromEnv()
 };
 
 function isAbsoluteHttpUrl(value) {
@@ -251,6 +266,21 @@ export function runtimeSummary(runtimeConfig = config) {
     x402Mock: runtimeConfig.x402Mock,
     x402Network: runtimeConfig.x402Network,
     x402Price: runtimeConfig.x402Price,
-    storeDriver: runtimeConfig.storeDriver
+    storeDriver: runtimeConfig.storeDriver,
+    sourceControl: publicSourceControl(runtimeConfig)
+  };
+}
+
+export function publicSourceControl(runtimeConfig = config) {
+  const sourceControl = runtimeConfig.sourceControl || {};
+  const repository = sourceControl.repository || DEFAULT_REPOSITORY;
+  const commitSha = sourceControl.commitSha || "";
+
+  return {
+    provider: sourceControl.provider || "local",
+    repository,
+    branch: sourceControl.branch || null,
+    commitSha: commitSha || null,
+    commitUrl: commitSha ? `https://github.com/${repository}/commit/${commitSha}` : null
   };
 }

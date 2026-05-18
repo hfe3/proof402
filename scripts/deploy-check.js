@@ -97,12 +97,14 @@ function checkDiscoveryDocuments(results) {
   const health = results.get("/health");
   assert(health.service === "Proof402", "/health service mismatch");
   assert(health.version === packageVersion, `/health version mismatch: expected ${packageVersion}, got ${health.version}`);
+  assert(health.sourceControl?.repository === "hfe3/proof402", "/health sourceControl repository mismatch");
 
   if (expectX402) {
     assert(health.profile === "mainnet", `/health expected profile=mainnet, got ${health.profile}`);
     assert(health.x402Enabled === true, "/health expected x402Enabled=true");
     assert(health.network === "eip155:8453", `/health network mismatch: ${health.network}`);
     assert(health.price === "$0.005", `/health price mismatch: ${health.price}`);
+    assert(/^[a-f0-9]{40}$/i.test(health.sourceControl?.commitSha || ""), "/health missing Vercel git commit SHA");
   }
 
   const capabilities = results.get("/api/capabilities");
@@ -114,14 +116,17 @@ function checkDiscoveryDocuments(results) {
   assert(status.version === packageVersion, "/api/status version mismatch");
   assert(status.repository?.url === "https://github.com/hfe3/proof402", "/api/status repository URL mismatch");
   assert(status.repository?.visibility === "public", "/api/status repository visibility mismatch");
+  assert(status.sourceControl?.repository === "hfe3/proof402", "/api/status sourceControl repository mismatch");
   assert(status.links?.securityTxt === "/.well-known/security.txt", "/api/status missing security.txt link");
 
   const trust = results.get("/api/trust");
   assert(trust.service === "Proof402", "/api/trust service mismatch");
+  assert(trust.sourceControl?.repository === "hfe3/proof402", "/api/trust sourceControl repository mismatch");
   if (expectX402) {
     assert(trust.x402?.enabled === true, "/api/trust expected x402.enabled=true");
     assert(trust.x402?.network === "eip155:8453", `/api/trust network mismatch: ${trust.x402?.network}`);
     assert(trust.x402?.price === "$0.005", `/api/trust price mismatch: ${trust.x402?.price}`);
+    assert(trust.sourceControl?.commitSha === health.sourceControl?.commitSha, "/api/trust sourceControl commit mismatch");
   }
 
   const openapi = results.get("/openapi.json");

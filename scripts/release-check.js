@@ -97,6 +97,7 @@ async function checkGitHubRelease() {
 }
 
 async function checkProductionMetadata() {
+  const head = git(["rev-parse", "HEAD"]);
   const [health, status, trust, marketplace] = await Promise.all([
     fetchJson("/health"),
     fetchJson("/api/status"),
@@ -110,13 +111,17 @@ async function checkProductionMetadata() {
   assert(health.x402Enabled === true, "/health expected x402Enabled=true");
   assert(health.network === "eip155:8453", `/health network mismatch: ${health.network}`);
   assert(health.price === "$0.005", `/health price mismatch: ${health.price}`);
+  assert(health.sourceControl?.repository === repository, `/health sourceControl repository mismatch: ${health.sourceControl?.repository}`);
+  assert(health.sourceControl?.commitSha === head, `/health sourceControl commit ${short(health.sourceControl?.commitSha)} does not match local HEAD ${short(head)}`);
 
   assert(status.version === expectedVersion, `/api/status version ${status.version}, expected ${expectedVersion}`);
   assert(status.repository?.url === "https://github.com/hfe3/proof402", "/api/status repository URL mismatch");
   assert(status.repository?.visibility === "public", "/api/status repository visibility mismatch");
+  assert(status.sourceControl?.commitSha === head, `/api/status sourceControl commit ${short(status.sourceControl?.commitSha)} does not match local HEAD ${short(head)}`);
 
   assert(trust.x402?.enabled === true, "/api/trust expected x402.enabled=true");
   assert(trust.productionReadiness?.deployment?.activeMainnet === true, "/api/trust activeMainnet is not true");
+  assert(trust.sourceControl?.commitSha === head, `/api/trust sourceControl commit ${short(trust.sourceControl?.commitSha)} does not match local HEAD ${short(head)}`);
   assert(marketplace.version === expectedVersion, `/marketplace.json version ${marketplace.version}, expected ${expectedVersion}`);
   assert(marketplace.x402?.network === "eip155:8453", `/marketplace.json network mismatch: ${marketplace.x402?.network}`);
   assert(marketplace.x402?.price === "$0.005", `/marketplace.json price mismatch: ${marketplace.x402?.price}`);

@@ -1,15 +1,17 @@
-import { config } from "./config.js";
+import { config, publicSourceControl } from "./config.js";
 import { AVOID_WHEN, SERVICE, USE_WHEN } from "./serviceInfo.js";
 
 export async function buildTrustSummary({ storeStats, listRecentProofs }) {
   const stats = await storeStats();
   const recent = await listRecentProofs(10);
+  const sourceControl = publicSourceControl();
 
   return {
     ok: true,
     service: SERVICE.name,
     generatedAt: new Date().toISOString(),
     profile: config.profile,
+    sourceControl,
     x402: {
       enabled: config.x402Enabled,
       mock: config.x402Mock,
@@ -41,6 +43,7 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
       },
       deployment: {
         publicBaseUrl: config.publicBaseUrl,
+        sourceControl,
         vercelConfigured: config.publicBaseUrl.includes("vercel.app"),
         activeMainnet: config.profile === "mainnet" && config.x402Enabled && config.x402Network === "eip155:8453"
       },
@@ -71,6 +74,7 @@ export async function buildTrustSummary({ storeStats, listRecentProofs }) {
 
 export async function buildStatusSummary({ storeStats }) {
   const stats = await storeStats();
+  const sourceControl = publicSourceControl();
 
   return {
     ok: true,
@@ -79,6 +83,7 @@ export async function buildStatusSummary({ storeStats }) {
     version: SERVICE.version,
     publicBaseUrl: config.publicBaseUrl,
     profile: config.profile,
+    sourceControl,
     paidAction: {
       method: "POST",
       path: SERVICE.paidPath,

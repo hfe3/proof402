@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import express from "express";
-import { config, assertProductionConfig, runtimeSummary } from "./config.js";
+import { config, assertProductionConfig, publicSourceControl, runtimeSummary } from "./config.js";
 import { publicActionCatalog, publicQuickstart } from "./actionCatalog.js";
 import { publicBazaarMetadata } from "./bazaar.js";
 import { openApiSpec, publicCapabilities } from "./apiContract.js";
@@ -40,6 +40,7 @@ app.get("/health", async (_req, res, next) => {
       network: config.x402Network,
       price: config.x402Price,
       publicBaseUrl: config.publicBaseUrl,
+      sourceControl: publicSourceControl(),
       store: await storeStats(),
       observability: observabilitySummary(),
       rateLimit: {

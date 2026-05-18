@@ -6,6 +6,15 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.17 - 2026-05-18
+
+### Added
+
+- Added public-safe source-control metadata to health, status, and trust
+  responses.
+- Hardened `npm run release:check` to require production source-control commit
+  metadata to match the local release commit.
+
 ## 0.1.16 - 2026-05-18
 
 ### Changed

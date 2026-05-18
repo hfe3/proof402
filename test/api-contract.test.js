@@ -57,6 +57,9 @@ test("status document exposes safe launch metadata", async () => {
   assert.equal(body.repository.url, "https://github.com/hfe3/proof402");
   assert.equal(body.repository.visibility, "public");
   assert.equal(body.repository.license, "MIT");
+  assert.equal(body.sourceControl.provider, "local");
+  assert.equal(body.sourceControl.repository, "hfe3/proof402");
+  assert.equal(body.sourceControl.commitSha, null);
   assert.equal(body.safety.rawPayloadStorage, false);
   assert.equal(body.safety.secretFilesCommitted, false);
   assert.equal(body.links.trust, "/api/trust");
@@ -94,6 +97,7 @@ test("bazaar, quickstart, and action catalog expose agent discovery metadata", a
 
   const trust = await request("/api/trust");
   assert.equal(trust.response.status, 200);
+  assert.equal(trust.body.sourceControl.repository, "hfe3/proof402");
   assert.equal(trust.body.links.marketplace, "/marketplace");
   assert.equal(trust.body.links.marketplaceJson, "/marketplace.json");
 });

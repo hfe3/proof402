@@ -64,11 +64,13 @@ After pushing:
 - Confirm Vercel production is `READY`.
 - Confirm GitHub Actions CI and CodeQL are `success`.
 - Confirm live `/health`, `/api/capabilities`, `/openapi.json`, and
-  `/marketplace.json` report the new version.
+  `/marketplace.json` report the new version; `/health` and `/api/status`
+  should also expose the deployed Git commit SHA.
 - Publish the GitHub Release for the tag and verify it is not a draft.
 - Run `npm run release:check` after the release exists. It checks the clean
   `main` checkout, current tag, GitHub Release, required GitHub Actions and
-  CodeQL check-runs, and production metadata without settling a payment.
+  CodeQL check-runs, production commit metadata, and production runtime
+  metadata without settling a payment.
 - If ADS profile 48 is used, close only the temporary tab opened for the check
   and confirm no temporary `about:blank`, release, commit, or Actions tab
   remains.
