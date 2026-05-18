@@ -1,15 +1,15 @@
-# Proof402 0.1.19 Release Notes
+# Proof402 0.1.20 Release Notes
 
-Proof402 0.1.19 is a browser security-header hardening patch for the x402-compatible
+Proof402 0.1.20 is a Vercel static-route security-header patch for the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added a no-dependency security-header middleware for API and public-page
-  responses.
-- `deploy:check` now verifies CSP, frame denial, MIME sniffing protection,
-  removal of `X-Powered-By`, referrer policy, permissions policy, and HTTPS
-  HSTS on `/health` and `/`.
+- Added Vercel platform headers so static public pages and API routes share the
+  same baseline browser security headers in production.
+- `deploy:check` continues to verify CSP, frame denial, MIME sniffing
+  protection, removal of `X-Powered-By`, referrer policy, permissions policy,
+  and HTTPS HSTS on `/health` and `/`.
 - The checks remain unpaid: they do not settle a payment or create a new proof.
 
 ## Production

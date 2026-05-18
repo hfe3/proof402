@@ -6,6 +6,13 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.20 - 2026-05-18
+
+### Changed
+
+- Added Vercel platform headers so static public pages and API routes share the
+  same security-header baseline in production.
+
 ## 0.1.19 - 2026-05-18
 
 ### Added
