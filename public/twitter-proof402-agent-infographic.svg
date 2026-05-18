@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Proof402 agent capability infographic</title>
+  <desc id="desc">Brand infographic for Proof402, an x402-paid timestamped hash proof agent for autonomous workflows.</desc>
+  <rect width="1600" height="900" fill="#fbfaf6"/>
+
+  <rect x="58" y="58" width="1484" height="784" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="3"/>
+
+  <g transform="translate(102 96)">
+    <rect width="106" height="106" rx="20" fill="#111418"/>
+    <circle cx="53" cy="53" r="32" fill="#f4f0e8"/>
+    <circle cx="53" cy="53" r="23" fill="none" stroke="#1f7a5c" stroke-width="6"/>
+    <path d="M35 55h36M40 44h27M42 66h23" stroke="#111418" stroke-width="6" stroke-linecap="round"/>
+    <path d="M73 75l15 15" stroke="#b64646" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <text x="244" y="142" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="72" font-weight="800">Proof402</text>
+  <text x="248" y="196" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="31" font-weight="800">Pay once. Prove forever.</text>
+  <text x="102" y="280" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="46" font-weight="800">Timestamped hash proof for autonomous agents</text>
+  <text x="102" y="334" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28">Hash private work locally, pay through x402, and publish a signed proof receipt another agent can verify.</text>
+
+  <g transform="translate(102 400)">
+    <rect width="430" height="112" rx="8" fill="#182028"/>
+    <text x="28" y="45" fill="#d7ded8" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="800">PAID ACTION</text>
+    <text x="28" y="80" fill="#ffffff" font-family="Consolas, 'Courier New', monospace" font-size="25" font-weight="700">POST /api/proof/notarize</text>
+  </g>
+
+  <g transform="translate(558 400)">
+    <rect width="250" height="112" rx="8" fill="#f4f0e8" stroke="#d7ded8" stroke-width="2"/>
+    <text x="24" y="43" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="800">PRICE</text>
+    <text x="24" y="80" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="34" font-weight="800">$0.005</text>
+  </g>
+
+  <g transform="translate(834 400)">
+    <rect width="302" height="112" rx="8" fill="#f4f0e8" stroke="#d7ded8" stroke-width="2"/>
+    <text x="24" y="43" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="800">NETWORK</text>
+    <text x="24" y="80" fill="#111418" font-family="Consolas, 'Courier New', monospace" font-size="27" font-weight="700">eip155:8453</text>
+  </g>
+
+  <g transform="translate(1162 400)">
+    <rect width="278" height="112" rx="8" fill="#eaf2ed" stroke="#c8dccf" stroke-width="2"/>
+    <text x="24" y="43" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="800">OUTPUT</text>
+    <text x="24" y="80" fill="#1f7a5c" font-family="Consolas, 'Courier New', monospace" font-size="27" font-weight="700">verified: true</text>
+  </g>
+
+  <g transform="translate(102 568)">
+    <rect width="318" height="164" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="2"/>
+    <text x="24" y="42" fill="#b8872f" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="900">01</text>
+    <text x="24" y="78" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Hash locally</text>
+    <text x="24" y="114" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">Keep raw outputs,</text>
+    <text x="24" y="144" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">headers, and secrets private.</text>
+  </g>
+
+  <g transform="translate(448 568)">
+    <rect width="318" height="164" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="2"/>
+    <text x="24" y="42" fill="#b8872f" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="900">02</text>
+    <text x="24" y="78" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Pay via x402</text>
+    <text x="24" y="114" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">One paid proof route</text>
+    <text x="24" y="144" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">with retry-safe idempotency.</text>
+  </g>
+
+  <g transform="translate(794 568)">
+    <rect width="318" height="164" rx="8" fill="#ffffff" stroke="#d7ded8" stroke-width="2"/>
+    <text x="24" y="42" fill="#b8872f" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="900">03</text>
+    <text x="24" y="78" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Verify publicly</text>
+    <text x="24" y="114" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">Use /proof/{id}</text>
+    <text x="24" y="144" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">or /api/verify/proofs/{id}.</text>
+  </g>
+
+  <g transform="translate(1140 568)">
+    <rect width="300" height="164" rx="8" fill="#fff8f6" stroke="#ead3cf" stroke-width="2"/>
+    <text x="24" y="42" fill="#b64646" font-family="Inter, Arial, Helvetica, sans-serif" font-size="18" font-weight="900">BOUNDARY</text>
+    <text x="24" y="78" fill="#111418" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Hash existence only</text>
+    <text x="24" y="114" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">Proof402 proves hash</text>
+    <text x="24" y="144" fill="#5d6570" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22">existence, not facts.</text>
+  </g>
+
+  <rect x="102" y="770" width="874" height="54" rx="8" fill="#182028"/>
+  <text x="126" y="806" fill="#ffffff" font-family="Consolas, 'Courier New', monospace" font-size="24">Input: contentHash + label + metadata + idempotencyKey</text>
+  <text x="1012" y="806" fill="#1f7a5c" font-family="Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="800">https://proof402.vercel.app</text>
+</svg>

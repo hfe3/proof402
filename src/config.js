@@ -80,7 +80,7 @@ const storeDriver = String(
 
 export const config = {
   serviceName: "Proof402",
-  version: "0.1.25",
+  version: "0.1.26",
   tagline: "Pay once. Prove forever.",
   profile,
   port,
@@ -109,6 +109,10 @@ export const config = {
   rateLimitMaxRequests: intFromEnv(process.env.RATE_LIMIT_MAX_REQUESTS, 60),
   logLevel: String(process.env.LOG_LEVEL || (process.env.NODE_ENV === "test" ? "silent" : "info")).toLowerCase(),
   requestLogEnabled: boolFromEnv(process.env.REQUEST_LOG_ENABLED, process.env.NODE_ENV !== "test"),
+  betterStackLogsEnabled: boolFromEnv(process.env.BETTER_STACK_LOGS_ENABLED, false),
+  betterStackIngestHost: process.env.BETTER_STACK_INGEST_HOST || "",
+  betterStackSourceToken: process.env.BETTER_STACK_SOURCE_TOKEN || "",
+  betterStackSourceId: process.env.BETTER_STACK_SOURCE_ID || "",
   sourceControl: sourceControlFromEnv()
 };
 
@@ -148,6 +152,16 @@ function isPlaceholderSecret(value) {
     value.includes("replace") ||
     value.includes("your-")
   );
+}
+
+function isHttpIngestTarget(value) {
+  if (!value) return false;
+  try {
+    const parsed = new URL(value.startsWith("http") ? value : `https://${value}`);
+    return parsed.protocol === "https:" && parsed.hostname.endsWith(".betterstackdata.com");
+  } catch {
+    return false;
+  }
 }
 
 export function validateStartupConfig(runtimeConfig = config) {
@@ -202,6 +216,15 @@ export function validateStartupConfig(runtimeConfig = config) {
 
   if (!["debug", "info", "warn", "error", "silent"].includes(runtimeConfig.logLevel)) {
     errors.push("LOG_LEVEL must be debug, info, warn, error, or silent.");
+  }
+
+  if (runtimeConfig.betterStackLogsEnabled) {
+    if (!isHttpIngestTarget(runtimeConfig.betterStackIngestHost)) {
+      errors.push("BETTER_STACK_INGEST_HOST must be a Better Stack HTTPS ingest host.");
+    }
+    if (!runtimeConfig.betterStackSourceToken || runtimeConfig.betterStackSourceToken.length < 16) {
+      errors.push("BETTER_STACK_LOGS_ENABLED=true requires BETTER_STACK_SOURCE_TOKEN.");
+    }
   }
 
   if (!runtimeConfig.x402Enabled) return errors;

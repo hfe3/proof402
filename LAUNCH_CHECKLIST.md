@@ -26,7 +26,7 @@ Use this checklist for the public launch and post-launch verification.
 - External monitoring runbook: `MONITORING.md`
 - Product roadmap: `ROADMAP.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.1.25`.
+  prepared. Latest release: `v0.1.26`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC, OpenAPI
   exposes `x-payment-info`, and `/.well-known/x402` is available as fallback

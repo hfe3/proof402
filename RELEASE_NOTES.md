@@ -1,21 +1,18 @@
-# Proof402 0.1.25 Release Notes
+# Proof402 0.1.26 Release Notes
 
-Proof402 0.1.25 closes the post-launch optional work for the x402-compatible
-timestamp/hash proof service for autonomous agents.
+Proof402 0.1.26 adds Better Stack production monitoring and a safe logging
+fallback for the x402-compatible timestamp/hash proof service.
 
 ## Highlights
 
-- Recorded the latest operator-approved paid AgentCash smoke evidence.
-- Added `MONITORING.md` for external uptime checks, unpaid synthetic checks,
-  Vercel log-drain setup, and alert routing.
-- Added `Brand/external-publication.md` for account-bound social and directory
-  publication.
-- Added `ROADMAP.md` for dashboard, proof search, accounts, API keys, and
-  webhook receipt follow-up work.
-- Malformed JSON request bodies now return `400 invalid_json` instead of a
-  generic internal error.
-- No secrets, wallets, local stores, payment headers, or Vercel project state
-  are included in the release.
+- Better Stack uptime monitors are configured for health, status, x402
+  discovery, and unpaid `402` challenge checks.
+- Better Stack Telemetry source `2446913` is configured for Proof402 logs.
+- Vercel Log Drains are unavailable on the current Vercel team, so Proof402 now
+  supports direct Better Stack HTTP logging via env vars.
+- `/health` reports Better Stack logging state without exposing tokens.
+- No secrets, wallets, local stores, source tokens, payment headers, or Vercel
+  project state are included in the release.
 
 ## Production
 

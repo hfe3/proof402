@@ -46,6 +46,17 @@ test("responses include baseline browser security headers", async () => {
   assert.ok(csp.includes("object-src 'none'"));
 });
 
+test("health exposes Better Stack state without secret values", async () => {
+  const { response, body } = await request("/health");
+
+  assert.equal(response.status, 200);
+  assert.equal(body.observability.betterStack.enabled, false);
+  assert.equal(body.observability.betterStack.sourceId, null);
+  assert.equal(body.observability.betterStack.ingestHostConfigured, false);
+  assert.equal(body.observability.betterStack.sourceTokenConfigured, false);
+  assert.equal(body.observability.betterStack.sourceToken, undefined);
+});
+
 test("openapi document exposes proof routes", async () => {
   const { response, body } = await request("/openapi.json");
 

@@ -140,6 +140,31 @@ npx vercel logs https://proof402.vercel.app --status-code 500 --since 1h --expan
 If configuring a Vercel Log Drain, send logs to an operator-owned sink such as
 Better Stack, Datadog, Axiom, New Relic, or another managed log destination.
 
+Current Better Stack setup:
+
+```text
+Uptime team: t544694
+Monitors:
+  Proof402 health
+  Proof402 status API
+  Proof402 x402 discovery
+  Proof402 unpaid x402 challenge
+Telemetry source: Proof402 Vercel HTTP logs
+Telemetry source id: 2446913
+Ingest host: s2446913.eu-fsn-3.betterstackdata.com
+Vercel Log Drain: unavailable on the current Vercel team; Vercel returned 403.
+Fallback: direct Better Stack HTTP logging via BETTER_STACK_LOGS_ENABLED=true.
+```
+
+Enable the direct logging fallback with Vercel environment variables:
+
+```text
+BETTER_STACK_LOGS_ENABLED=true
+BETTER_STACK_INGEST_HOST=s2446913.eu-fsn-3.betterstackdata.com
+BETTER_STACK_SOURCE_ID=2446913
+BETTER_STACK_SOURCE_TOKEN=<Better Stack source token>
+```
+
 Log-drain rules:
 
 - Do not log request bodies for paid proof creation.

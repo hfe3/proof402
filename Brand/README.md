@@ -27,7 +27,7 @@ This folder is the brand and agent-information source for Proof402. It is safe t
 Name: Proof402
 Tagline: Pay once. Prove forever.
 Public URL: https://proof402.vercel.app
-Version: 0.1.25
+Version: 0.1.26
 Profile: mainnet
 x402: enabled
 Network: eip155:8453

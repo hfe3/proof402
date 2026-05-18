@@ -6,6 +6,16 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.26 - 2026-05-18
+
+### Added
+
+- Added Better Stack direct HTTP logging fallback for environments where Vercel
+  Log Drains are unavailable.
+- Added Better Stack observability state to `/health` without exposing source
+  tokens or secret values.
+- Documented the configured Better Stack uptime monitors and telemetry source.
+
 ## 0.1.25 - 2026-05-18
 
 ### Added
