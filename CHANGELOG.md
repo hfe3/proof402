@@ -6,6 +6,14 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.1.18 - 2026-05-18
+
+### Changed
+
+- Limited published source-control commit SHA metadata to Vercel runtime commit
+  data so local and GitHub Actions test runs stay deterministic while
+  production commit attestation remains strict.
+
 ## 0.1.17 - 2026-05-18
 
 ### Added

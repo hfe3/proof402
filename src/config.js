@@ -55,7 +55,7 @@ function sourceControlFromEnv() {
     provider: process.env.VERCEL ? "vercel" : "local",
     repository,
     branch: process.env.VERCEL_GIT_COMMIT_REF || process.env.GITHUB_REF_NAME || "",
-    commitSha: process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || ""
+    commitSha: process.env.VERCEL_GIT_COMMIT_SHA || ""
   };
 }
 
@@ -80,7 +80,7 @@ const storeDriver = String(
 
 export const config = {
   serviceName: "Proof402",
-  version: "0.1.17",
+  version: "0.1.18",
   tagline: "Pay once. Prove forever.",
   profile,
   port,

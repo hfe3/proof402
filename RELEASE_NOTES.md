@@ -1,15 +1,16 @@
-# Proof402 0.1.17 Release Notes
+# Proof402 0.1.18 Release Notes
 
-Proof402 0.1.17 is a production attestation hardening patch for the x402-compatible
+Proof402 0.1.18 is a CI-stability patch for production attestation metadata in the x402-compatible
 timestamp/hash proof service for autonomous agents.
 
 ## Highlights
 
-- Added public-safe source-control metadata to `/health`, `/api/status`, and
-  `/api/trust`, including repository, branch, deployed commit SHA, and commit
-  URL when the host provides it.
-- Hardened `npm run release:check` so production must report the same commit
-  SHA as the local release tag before the release is considered verified.
+- Kept public-safe source-control metadata on `/health`, `/api/status`, and
+  `/api/trust`.
+- Limited published commit SHA metadata to Vercel runtime commit data so local
+  tests and GitHub Actions do not accidentally report CI-only `GITHUB_SHA`.
+- `npm run release:check` still requires production to report the same Vercel
+  commit SHA as the local release tag before the release is considered verified.
 - The check remains unpaid: it does not settle a payment or create a new proof.
 
 ## Production
