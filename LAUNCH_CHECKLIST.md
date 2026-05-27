@@ -29,7 +29,7 @@ Use this checklist for the public launch and post-launch verification.
   admin accounts/API keys, and signed webhook receipts
 - Product roadmap: `ROADMAP.md`
 - Release: `CHANGELOG.md`, `RELEASE_NOTES.md`, and the current release tag are
-  prepared. Latest release: `v0.2.0`.
+  prepared. Latest release: `v0.2.1`.
 - AgentCash discovery: production origin registered and added locally; paid
   endpoint probes as x402 on Base mainnet for `5000` micro-USDC, OpenAPI
   exposes `x-payment-info`, and `/.well-known/x402` is available as fallback

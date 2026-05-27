@@ -6,6 +6,19 @@ All notable Proof402 changes are documented here.
 
 No unreleased changes yet.
 
+## 0.2.1 - 2026-05-27
+
+### Fixed
+
+- Refreshed the production dependency lockfile to clear `npm audit --omit=dev`
+  advisories in the x402 dependency chain.
+
+### Documentation
+
+- Updated public evidence references after rechecking production audit,
+  AgentCash discovery, Bazaar metadata, unpaid x402 smoke, and x402scan search
+  status.
+
 ## 0.2.0 - 2026-05-18
 
 ### Added

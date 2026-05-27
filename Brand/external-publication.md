@@ -30,6 +30,20 @@ Price: $0.005
 Timestamp: 2026-05-18T04:33:14.619Z
 ```
 
+Latest production evidence refresh:
+
+```text
+Date: 2026-05-27
+Release: v0.2.1
+Production audit: npm audit --omit=dev passed with 0 vulnerabilities after qs/ws/viem lockfile refresh.
+Production monitor: npm run monitor:production passed against https://proof402.vercel.app.
+Unpaid x402 smoke: npm run smoke:x402 -- https://proof402.vercel.app passed.
+AgentCash discovery: npx agentcash discover https://proof402.vercel.app --format json found the paid OpenAPI endpoint.
+Bazaar metadata: https://proof402.vercel.app/api/bazaar exposes 11 quality signals, x402 enabled, Base mainnet, exact $0.005.
+x402 well-known: https://proof402.vercel.app/.well-known/x402 exposes POST /api/proof/notarize.
+x402scan: public search did not confirm a Proof402 listing on 2026-05-27; registration remains a separate external-directory action.
+```
+
 ## Submission Queue
 
 | Destination | Status | Link or Action |
@@ -39,6 +53,8 @@ Timestamp: 2026-05-18T04:33:14.619Z
 | Production site | Done | https://proof402.vercel.app |
 | AgentCash discovery | Done | `npx agentcash discover https://proof402.vercel.app` |
 | x402 well-known discovery | Done | https://proof402.vercel.app/.well-known/x402 |
+| Bazaar metadata | Done | https://proof402.vercel.app/api/bazaar |
+| x402scan listing | Not confirmed | Public search did not confirm Proof402 on 2026-05-27; use https://www.x402scan.com/resources/register when submitting externally |
 | Marketplace listing page | Done | https://proof402.vercel.app/marketplace |
 | Machine-readable marketplace JSON | Done | https://proof402.vercel.app/marketplace.json |
 | Operator social post | Operator action | Use `Brand/social-launch-pack.md` primary post |

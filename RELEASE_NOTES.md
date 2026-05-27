@@ -1,23 +1,20 @@
-# Proof402 0.2.0 Release Notes
+# Proof402 0.2.1 Release Notes
 
-Proof402 0.2.0 adds the first product layer on top of the already-working
-x402-compatible timestamp/hash proof primitive: dashboard, proof search,
-accounts, API keys, and signed webhook receipts.
+Proof402 0.2.1 is a production evidence refresh and maintenance release for
+the already-working x402-compatible timestamp/hash proof primitive. It keeps the
+paid proof route, dashboard, proof search, accounts, API keys, webhook receipts,
+price, and Base mainnet configuration unchanged.
 
 ## Highlights
 
-- Public dashboard at `/dashboard` with read-only proof search.
-- `GET /api/dashboard/summary` and `GET /api/proofs/search` for agent/operator
-  discovery.
-- Admin-protected accounts and one-time API key creation.
-- API-key authenticated proof creation through `X-Proof402-Key`.
-- Signed webhook receipts for `proof.created` and `webhook.test`.
-- Webhook delivery history stores status, payload hashes, and response metadata,
-  not private payload bodies.
-- Postgres-ready schema paths for proof search, accounts, API keys, webhooks,
-  and delivery history.
+- Refreshed the production dependency lockfile through `npm audit fix`.
+- Updated `viem`, `ws`, `qs`, and `ox` transitive dependency versions to clear
+  the production `npm audit --omit=dev` advisories.
+- Rechecked public production discovery surfaces, unpaid x402 challenge smoke,
+  and AgentCash discovery metadata before updating public evidence references.
 - No secrets, wallets, local stores, API key raw values, webhook signing
-  secrets, payment headers, or Vercel project state are included in the release.
+  secrets, payment headers, or Vercel project state are included in this
+  release.
 
 ## Production
 

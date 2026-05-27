@@ -1,6 +1,6 @@
 export const SERVICE = {
   name: "Proof402",
-  version: "0.2.0",
+  version: "0.2.1",
   tagline: "Pay once. Prove forever.",
   shortDescription: "Timestamped hash proof for autonomous agents.",
   description:

@@ -80,7 +80,7 @@ const storeDriver = String(
 
 export const config = {
   serviceName: "Proof402",
-  version: "0.2.0",
+  version: "0.2.1",
   tagline: "Pay once. Prove forever.",
   profile,
   port,
